@@ -1,0 +1,14 @@
+name: Husni
+super: true
+id: 13378934-e157-45c5-aea9-e26c1b46437b
+password_hash: $2y$10$ePvSTSWuv7rgf0kVB6HwFuA3PGADEcXBih64EoXH1SYR7./u8wKx2
+preferences:
+  forms:
+    contact_us:
+      columns:
+        - datestamp
+        - name
+        - email
+        - mobile_number
+        - country_code
+        - message
