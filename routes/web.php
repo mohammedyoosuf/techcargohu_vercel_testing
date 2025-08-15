@@ -27,3 +27,7 @@ use Statamic\Facades\Entry;
 // Route::statamic('example', 'example-view', [
 //    'title' => 'Example'
 // ]);
+
+Route::get('/calculator', function () {
+    return view('calculator');
+});

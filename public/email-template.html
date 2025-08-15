@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Warehousing Quotation from Tech Cargo Hub</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #01A68C; }
+        .header { background-color: #0D3832; padding: 20px; text-align: center; }
+        .header img { max-width: 150px; }
+        .content { padding: 30px; color: #555555; line-height: 1.6; }
+        .content h1 { color: #0D3832; font-size: 22px; margin-top: 0; }
+        .content p { margin: 0 0 15px; }
+        .quote-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .quote-table th, .quote-table td { text-align: left; padding: 12px; border-bottom: 1px solid #dddddd; }
+        .quote-table th { background-color: #f9f9f9; color: #333333; font-weight: bold; }
+        .quote-table .highlight { font-weight: bold; color: #01A68C; font-size: 1.1em; }
+        .footer { background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888888; }
+        .footer a { color: #01A68C; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="assets/images/tchLogo.png" alt="Tech Cargo Hub Logo">
+        </div>
+        <div class="content">
+            <h1>Warehousing Quotation Estimate</h1>
+            <p>Dear {{name}},</p>
+            <p>Thank you for using the Tech Cargo Hub Price Calculator. Here is the summary of your quotation estimate for <strong>{{organization}}</strong>.</p>
+            
+            <table class="quote-table">
+                <tr>
+                    <th colspan="2">Shipment Details</th>
+                </tr>
+                <tr>
+                    <td>Packing Type</td>
+                    <td>{{packingType}}</td>
+                </tr>
+                <tr>
+                    <td>Container Type</td>
+                    <td>{{containerType}}</td>
+                </tr>
+                <tr>
+                    <td>Number of Units</td>
+                    <td>{{numberOfUnits}}</td>
+                </tr>
+                <tr>
+                    <td>Approximate CBM</td>
+                    <td>{{calculatedCBM}}</td>
+                </tr>
+                 <tr>
+                    <th colspan="2" style="padding-top: 20px;">User Information</th>
+                </tr>
+                <tr>
+                    <td>Product Type</td>
+                    <td>{{productType}}</td>
+                </tr>
+                 <tr>
+                    <td>Service Requirement</td>
+                    <td>{{serviceTime}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="padding-top: 20px;">Estimated Charges</th>
+                </tr>
+                <tr>
+                    <td>Estimated Charge (15 Days)</td>
+                    <td class="highlight">Rs. {{cost15Days}}</td>
+                </tr>
+                <tr>
+                    <td>Estimated Charge (30 Days)</td>
+                    <td class="highlight">Rs. {{cost30Days}}</td>
+                </tr>
+            </table>
+
+            <p>Please note that this is an estimate. Our team will contact you shortly to confirm the details and provide a final quotation.</p>
+            <p>Thank you for choosing Tech Cargo Hub!</p>
+            <p>Best regards,<br>The Tech Cargo Hub Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Tech Cargo Hub. All Rights Reserved.</p>
+            <p><a href="https://techcargohub.com">Visit our website</a></p>
+        </div>
+    </div>
+</body>
+</html>

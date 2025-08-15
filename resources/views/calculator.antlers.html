@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="si">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Price Calculator - TCH</title>
+        <link
+            href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/app-45b68f9a.css" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="assets/images/favicon-32x32.png"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            greenheading: "#01A68C",
+                            navColor: "#3E3E3E",
+                            darkGreen: "#0D3832",
+                            lightText: "#7F7F7F",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+            body {
+                font-family: "Poppins", sans-serif;
+            }
+            @keyframes fade-in-up {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .animate-fade-in-up {
+                animation: fade-in-up 0.6s ease-out forwards;
+            }
+
+            .step-indicator .step-circle {
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 9999px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 1.125rem;
+                background-color: #f3f4f6;
+                color: #6b7280;
+                transition: all 0.4s ease-in-out;
+                border: 2px solid #e5e7eb;
+            }
+            .step-indicator.active .step-circle {
+                background-color: #01a68c;
+                color: white;
+                border-color: #01a68c;
+                transform: scale(1.1);
+            }
+            .step-indicator.active .step-title {
+                color: #0d3832;
+                font-weight: 700;
+            }
+            .step-indicator.active .step-subtitle {
+                color: #01a68c;
+            }
+            .step-connector {
+                transition: background-color 0.4s ease-in-out;
+            }
+
+            .notes-box {
+                background-color: #f8fafc;
+                border-left: 4px solid #01a68c;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                transition: all 0.3s ease-in-out;
+            }
+
+            .step-indicator.active {
+                background-color: transparent !important;
+            }
+        </style>
+    </head>
+    <body
+        class="antialiased flex flex-col min-h-svh mx-auto"
+        style="
+            background-image: url('assets/images/bg.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        "
+    >
+        <!-- HEADER -->
+        <nav
+            id="navbar"
+            class="p-4 w-full bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50"
+        >
+            <div
+                class="container flex flex-wrap items-center justify-between mx-auto"
+            >
+                <a
+                    href="/"
+                    class="flex items-center space-x-3 rtl:space-x-reverse"
+                    ><img
+                        src="assets/images/tchLogo.png"
+                        alt="tch"
+                        class="logo w-20 md:w-[159px] transition-all duration-300"
+                /></a>
+                <button
+                    data-collapse-toggle="navbar-dropdown"
+                    type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    aria-controls="navbar-dropdown"
+                    aria-expanded="false"
+                >
+                    <span class="sr-only">Open main menu</span
+                    ><svg
+                        class="w-5 h-5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 17 14"
+                    >
+                        <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15"
+                        />
+                    </svg>
+                </button>
+                <div
+                    class="hidden w-full md:block md:w-auto"
+                    id="navbar-dropdown"
+                >
+                    <ul
+                        class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-2 rtl:space-x-reverse md:flex-row md:items-center md:mt-0"
+                    >
+                        <li>
+                            <a
+                                href="/"
+                                class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                                >Home</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/about"
+                                class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                                >About Us</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/techsolutions"
+                                class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                                >Tech Solutions</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/servicesector"
+                                class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                                >Service Sector</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/calculator"
+                                class="block py-2 px-3 text-lg font-semibold text-greenheading"
+                                >Price Calculator</a
+                            >
+                        </li>
+                        <li class="gradient-border">
+                            <a
+                                href="/contact"
+                                class="block py-2 px-3 text-lg text-greenheading font-semibold text-navColor"
+                                >Contact Us</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="flex-grow container mx-auto py-10 md:py-16">
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-5"
+            >
+                <div class="animate-fade-in-up">
+                    <h1
+                        class="text-4xl lg:text-5xl font-[900] text-darkGreen capitalize leading-tight"
+                    >
+                        Get an Instant Quote for
+                        <span class="text-greenheading"
+                            >Warehousing Solutions.</span
+                        >
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600">
+                        Our services are powered by cutting-edge technology. Use
+                        our calculator to get a quick estimate and plan your
+                        logistics with confidence.
+                    </p>
+
+                    <div id="important-notes-container" class="mt-8">
+                        <!-- Notes will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <div
+                    class="w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200/50 animate-fade-in-up"
+                    style="animation-delay: 0.2s"
+                >
+                    <div class="p-4 sm:p-6 border-b border-gray-200">
+                        <div class="hidden sm:flex items-center">
+                            <div
+                                id="step-indicator-1"
+                                class="step-indicator active flex-1 flex items-center space-x-3"
+                            >
+                                <div class="step-circle">1</div>
+                                <div>
+                                    <p
+                                        class="text-sm text-gray-500 step-subtitle"
+                                    >
+                                        Step 1
+                                    </p>
+                                    <p
+                                        class="font-semibold text-gray-800 step-title"
+                                    >
+                                        Shipment Details
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                id="step-connector"
+                                class="flex-shrink-0 w-12 h-1 bg-gray-200 rounded-full mx-4 step-connector"
+                            ></div>
+                            <div
+                                id="step-indicator-2"
+                                class="step-indicator flex-1 flex items-center space-x-3"
+                            >
+                                <div class="step-circle">2</div>
+                                <div>
+                                    <p
+                                        class="text-sm text-gray-500 step-subtitle"
+                                    >
+                                        Step 2
+                                    </p>
+                                    <p
+                                        class="font-semibold text-gray-800 step-title"
+                                    >
+                                        Your Information
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sm:hidden text-center">
+                            <p
+                                id="mobile-step-text"
+                                class="font-bold text-lg text-darkGreen"
+                            >
+                                Step 1 of 2: Shipment Details
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 sm:p-10">
+                        <div id="step-1-form">
+                            <form
+                                id="shipmentForm"
+                                class="space-y-6"
+                                novalidate
+                            >
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                >
+                                    <div class="relative">
+                                        <label
+                                            for="typeCargo"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Packing Type</label
+                                        ><select
+                                            required
+                                            id="typeCargo"
+                                            name="typeCargo"
+                                            class="hidden"
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                            ></option>
+                                            <option value="pallet">
+                                                Pallet
+                                            </option>
+                                            <option value="carton">
+                                                Carton
+                                            </option></select
+                                        ><button
+                                            id="typeCargoButton"
+                                            data-dropdown-toggle="typeCargoDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="typeCargoButtonText"
+                                                >Select a packing type</span
+                                            ><svg
+                                                class="w-4 h-4"
+                                                aria-hidden="true"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <div
+                                            id="typeCargoDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="pallet"
+                                                        >Pallet</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="carton"
+                                                        >Carton</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="relative">
+                                        <label
+                                            for="containerType"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Container Type</label
+                                        ><select
+                                            required
+                                            id="containerType"
+                                            name="containerType"
+                                            class="hidden"
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                            ></option>
+                                            <option value="40">
+                                                40" Container
+                                            </option>
+                                            <option value="20">
+                                                20" Container
+                                            </option>
+                                            <option value="LCL">
+                                                LCL
+                                            </option></select
+                                        ><button
+                                            id="containerTypeButton"
+                                            data-dropdown-toggle="containerTypeDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="containerTypeButtonText"
+                                                >Select a container type</span
+                                            ><svg
+                                                class="w-4 h-4"
+                                                aria-hidden="true"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <div
+                                            id="containerTypeDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="40"
+                                                        >40" Container</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="20"
+                                                        >20" Container</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="LCL"
+                                                        >LCL</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="units"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Number of Units</label
+                                        ><input
+                                            required
+                                            type="number"
+                                            id="units"
+                                            name="units"
+                                            placeholder="e.g., 100"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="approxCBM"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Approximate CBM</label
+                                        ><input
+                                            readonly
+                                            type="text"
+                                            id="approxCBM"
+                                            name="approxCBM"
+                                            placeholder="Calculated after entering units"
+                                            class="w-full px-4 py-3 bg-gray-200 border border-gray-300 rounded-xl cursor-not-allowed"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="text-center pt-4">
+                                    <label
+                                        class="block mb-3 text-sm font-bold text-gray-600"
+                                        >Goods Type</label
+                                    >
+                                    <div
+                                        class="bg-gray-100 p-4 rounded-xl border border-dashed"
+                                    >
+                                        <p class="text-gray-800 font-semibold">
+                                            General Goods / Non DG / Non
+                                            Perishables / Non Pharma
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="text-center pt-6">
+                                    <button
+                                        type="submit"
+                                        class="w-full md:w-auto text-white font-bold text-lg px-20 py-3.5 rounded-xl transition-all transform hover:scale-105"
+                                        style="
+                                            background: linear-gradient(
+                                                93.3deg,
+                                                #01a68c -3.43%,
+                                                #50a454 100%
+                                            );
+                                        "
+                                    >
+                                        Next
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="step-2-form" class="hidden">
+                            <form id="userForm" class="space-y-6" novalidate>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                >
+                                    <div>
+                                        <label
+                                            for="organization"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Organization Name
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        ><input
+                                            type="text"
+                                            id="organization"
+                                            name="organization"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="yourName"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Your Name
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        ><input
+                                            type="text"
+                                            id="yourName"
+                                            name="yourName"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="email"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Your Email
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        ><input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="phone"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Your Number
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        ><input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="relative">
+                                        <label
+                                            for="productType"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Product Type
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        ><select
+                                            id="productType"
+                                            name="productType"
+                                            class="hidden"
+                                            required
+                                        >
+                                            <option value=""></option>
+                                            <option>apparel</option>
+                                            <option>
+                                                Automobile Spare Parts
+                                            </option>
+                                            <option>Computer Hardware</option>
+                                            <option>
+                                                Consumer Electronics
+                                            </option>
+                                            <option>
+                                                Electronic Components
+                                            </option>
+                                            <option>Fabrics/Textiles</option>
+                                            <option>Home Appliances</option>
+                                            <option>Machinery Parts</option>
+                                            <option>Others</option></select
+                                        ><button
+                                            id="productTypeButton"
+                                            data-dropdown-toggle="productTypeDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="productTypeButtonText"
+                                                >Select Product Type</span
+                                            ><svg
+                                                class="w-4 h-4"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <div
+                                            id="productTypeDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Apparel"
+                                                        >Apparel</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Automobile Spare Parts"
+                                                        >Automobile Spare
+                                                        Parts</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Computer Hardware"
+                                                        >Computer Hardware</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Consumer Electronics"
+                                                        >Consumer Electronics</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Electronic Components"
+                                                        >Electronic
+                                                        Components</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Fabrics/Textiles"
+                                                        >Fabrics/Textiles</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Home Appliances"
+                                                        >Home Appliances</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Machinery Parts"
+                                                        >Machinery Parts</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Others"
+                                                        >Others</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="relative">
+                                        <label
+                                            for="serviceTime"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >How soon do you need our
+                                            services?</label
+                                        ><select
+                                            id="serviceTime"
+                                            name="serviceTime"
+                                            class="hidden"
+                                        >
+                                            <option value=""></option>
+                                            <option>Immediately</option>
+                                            <option>2 weeks</option>
+                                            <option>1 month</option>
+                                            <option>> 1 month</option></select
+                                        ><button
+                                            id="serviceTimeButton"
+                                            data-dropdown-toggle="serviceTimeDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="serviceTimeButtonText"
+                                                >Select timing</span
+                                            ><svg
+                                                class="w-4 h-4"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <div
+                                            id="serviceTimeDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Immediately"
+                                                        >Immediately</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="2 weeks"
+                                                        >2 weeks</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="1 month"
+                                                        >1 month</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="> 1 month"
+                                                        >> 1 month</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="text-center pt-6 flex flex-col md:flex-row items-center justify-center gap-4"
+                                >
+                                    <button
+                                        type="button"
+                                        id="backButton"
+                                        class="w-full md:w-auto text-darkGreen bg-white border-2 border-gray-300 font-bold text-lg px-16 py-3 rounded-xl transition-all transform hover:bg-gray-100"
+                                    >
+                                        Back
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        class="w-full md:w-auto text-white font-bold text-lg px-16 py-3.5 rounded-xl transition-all transform hover:scale-105"
+                                        style="
+                                            background: linear-gradient(
+                                                93.3deg,
+                                                #01a68c -3.43%,
+                                                #50a454 100%
+                                            );
+                                        "
+                                    >
+                                        Get Estimate
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FINAL ESTIMATE POPUP -->
+        <div
+            id="estimate-popup"
+            class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+        >
+            <div
+                class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-greenheading animate-fade-in-up"
+            >
+                <div id="popup-content-view">
+                    <h3 class="text-2xl font-extrabold text-greenheading mb-2">
+                        Congratulations!
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                        You are eligible for a discount on your 1st shipment.
+                    </p>
+                    <div
+                        class="text-left bg-gray-50 p-4 rounded-lg space-y-2 border"
+                    >
+                        <p>
+                            <strong>Packing Type:</strong>
+                            <span
+                                id="popupPacking"
+                                class="font-semibold float-right"
+                            ></span>
+                        </p>
+                        <p>
+                            <strong>Container Type:</strong>
+                            <span
+                                id="popupContainer"
+                                class="font-semibold float-right"
+                            ></span>
+                        </p>
+                        <p>
+                            <strong>Number of Units:</strong>
+                            <span
+                                id="popupUnits"
+                                class="font-semibold float-right"
+                            ></span>
+                        </p>
+                        <p>
+                            <strong>Approx. CBM:</strong>
+                            <span
+                                id="popupCBM"
+                                class="font-semibold float-right"
+                            ></span>
+                        </p>
+                        <hr class="my-2" />
+                        <p>
+                            <strong>Est. Charge (15 Days):</strong>
+                            <span
+                                class="font-bold text-lg text-greenheading float-right"
+                                >Rs. <span id="popup15"></span
+                            ></span>
+                        </p>
+                        <p>
+                            <strong>Est. Charge (30 Days):</strong>
+                            <span
+                                class="font-bold text-lg text-greenheading float-right"
+                                >Rs. <span id="popup30"></span
+                            ></span>
+                        </p>
+                    </div>
+                    <p
+                        class="text-yellow-700 bg-yellow-100 text-xs mt-4 p-2 rounded-md"
+                    >
+                        A copy of this quotation will be sent to your email.
+                    </p>
+                    <div class="mt-8">
+                        <button
+                            id="close-popup"
+                            class="bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+                <div id="popup-status-view" class="hidden text-center">
+                    <div
+                        id="spinner-icon"
+                        class="flex justify-center items-center mb-4"
+                    >
+                        <svg
+                            class="animate-spin h-8 w-8 text-greenheading"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <circle
+                                class="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                stroke-width="4"
+                            ></circle>
+                            <path
+                                class="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <div
+                        id="success-icon"
+                        class="hidden justify-center items-center mb-4"
+                    >
+                        <svg
+                            class="h-12 w-12 text-green-500"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                    </div>
+                    <div
+                        id="failure-icon"
+                        class="hidden justify-center items-center mb-4"
+                    >
+                        <svg
+                            class="h-12 w-12 text-red-500"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                            />
+                        </svg>
+                    </div>
+                    <p id="status-message" class="text-gray-600 text-lg">
+                        Sending your quotation...
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {{ partial:footer }}
+
+        <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                function setupCustomDropdown(
+                    buttonId,
+                    dropdownId,
+                    hiddenSelectId,
+                    buttonTextId
+                ) {
+                    const button = document.getElementById(buttonId);
+                    const buttonText = document.getElementById(buttonTextId);
+                    const dropdownEl = document.getElementById(dropdownId);
+                    const hiddenSelect =
+                        document.getElementById(hiddenSelectId);
+                    const options = dropdownEl.querySelectorAll("a");
+                    const dropdownInstance = new Dropdown(dropdownEl, button);
+                    options.forEach((option) => {
+                        option.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            const selectedValue =
+                                option.getAttribute("data-value");
+                            const selectedText = option.textContent;
+                            hiddenSelect.value = selectedValue;
+                            buttonText.textContent = selectedText;
+                            const event = new Event("change", {
+                                bubbles: true,
+                            });
+                            hiddenSelect.dispatchEvent(event);
+                            dropdownInstance.hide();
+                        });
+                    });
+                }
+
+                setupCustomDropdown(
+                    "typeCargoButton",
+                    "typeCargoDropdown",
+                    "typeCargo",
+                    "typeCargoButtonText"
+                );
+                setupCustomDropdown(
+                    "containerTypeButton",
+                    "containerTypeDropdown",
+                    "containerType",
+                    "containerTypeButtonText"
+                );
+                setupCustomDropdown(
+                    "productTypeButton",
+                    "productTypeDropdown",
+                    "productType",
+                    "productTypeButtonText"
+                );
+                setupCustomDropdown(
+                    "serviceTimeButton",
+                    "serviceTimeDropdown",
+                    "serviceTime",
+                    "serviceTimeButtonText"
+                );
+
+                const step1FormDiv = document.getElementById("step-1-form");
+                const step2FormDiv = document.getElementById("step-2-form");
+                const stepIndicator1 =
+                    document.getElementById("step-indicator-1");
+                const stepIndicator2 =
+                    document.getElementById("step-indicator-2");
+                const backButton = document.getElementById("backButton");
+                const mobileStepText =
+                    document.getElementById("mobile-step-text");
+                const shipmentForm = document.getElementById("shipmentForm");
+                const typeCargo = document.getElementById("typeCargo");
+                const units = document.getElementById("units");
+                const containerType = document.getElementById("containerType");
+                const approxCBM = document.getElementById("approxCBM");
+                const userForm = document.getElementById("userForm");
+                const estimatePopup = document.getElementById("estimate-popup");
+                const closePopupButton = document.getElementById("close-popup");
+                const notesContainer = document.getElementById(
+                    "important-notes-container"
+                );
+                const stepConnector = document.getElementById("step-connector");
+
+                const notes = {
+                    step1: `
+                    <div class="notes-box animate-fade-in-up">
+                        <p class="font-bold text-lg text-darkGreen mb-2">Important Notes:</p>
+                        <ul class="list-disc ml-5 text-sm text-gray-700 space-y-2">
+                            <li>A minimum storage period of 15 days is applicable.</li>
+                            <li>Handling charges for Loading/Unloading are included in the price.</li>
+                            <li>Services include Inventory Control via Cargowise WMS and Tier 1 Business Insights via Microsoft Power BI.</li>
+                        </ul>
+                    </div>`,
+                    step2: `
+                    <div class="notes-box animate-fade-in-up">
+                        <p class="font-bold text-lg text-darkGreen mb-2">Disclaimer:</p>
+                        <ul class="list-disc ml-5 text-sm text-gray-700 space-y-2">
+                            <li>We adhere to a strict code of confidentiality; all information shared will not be disclosed.</li>
+                            <li>Our services are available exclusively for registered businesses.</li>
+                            <li>Please double-check your contact details before submitting to ensure accuracy.</li>
+                        </ul>
+                    </div>`,
+                };
+
+                function updateNotes(step) {
+                    if (notesContainer) {
+                        notesContainer.innerHTML = notes[step];
+                    }
+                }
+
+                function goToStep(stepNumber) {
+                    if (stepNumber === 1) {
+                        step1FormDiv.style.display = "block";
+                        step2FormDiv.style.display = "none";
+                        stepIndicator1.classList.add("active");
+                        stepIndicator2.classList.remove("active");
+                        mobileStepText.textContent =
+                            "Step 1 of 2: Shipment Details";
+                        if (stepConnector) {
+                            stepConnector.style.backgroundColor = "#e5e7eb";
+                        }
+                        updateNotes("step1");
+                    } else if (stepNumber === 2) {
+                        step1FormDiv.style.display = "none";
+                        step2FormDiv.style.display = "block";
+                        stepIndicator1.classList.add("active");
+                        stepIndicator2.classList.add("active");
+                        mobileStepText.textContent =
+                            "Step 2 of 2: Your Information";
+                        if (stepConnector) {
+                            stepConnector.style.backgroundColor = "#01A68C";
+                        }
+                        updateNotes("step2");
+                    }
+                }
+                function getCBM() {
+                    const unitCount = parseInt(units.value, 10);
+                    if (isNaN(unitCount) || unitCount <= 0) return 0;
+                    return typeCargo.value === "pallet"
+                        ? Math.max(unitCount, 5)
+                        : Math.max(Math.ceil(unitCount / 75) * 5, 5);
+                }
+                function getHandlingFee(type) {
+                    if (type === "40") return 70000;
+                    if (type === "20") return 60000;
+                    if (type === "LCL")
+                        return typeCargo.value === "pallet" ? 7500 : 5625;
+                    return 0;
+                }
+                function updateCBMDisplay() {
+                    if (
+                        units.value &&
+                        parseInt(units.value, 10) > 0 &&
+                        typeCargo.value
+                    ) {
+                        const cbm = getCBM();
+                        approxCBM.value =
+                            cbm > 0 ? cbm.toFixed(2) + " CBM" : "";
+                    } else {
+                        approxCBM.value = "Calculated after entering units";
+                    }
+                }
+
+                typeCargo.addEventListener("change", updateCBMDisplay);
+                units.addEventListener("input", updateCBMDisplay);
+
+                shipmentForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    if (!shipmentForm.checkValidity()) {
+                        shipmentForm.reportValidity();
+                        return;
+                    }
+                    const cbm = getCBM();
+                    const handlingFee = getHandlingFee(containerType.value);
+                    const storageRate = 35;
+                    const estimate15 = Math.round(
+                        cbm * storageRate * 15 + handlingFee
+                    );
+                    const estimate30 = Math.round(
+                        cbm * storageRate * 30 + handlingFee
+                    );
+                    const data = {
+                        packingType: typeCargo.value,
+                        containerType: containerType.value,
+                        numberOfUnits: parseInt(units.value, 10),
+                        calculatedCBM: cbm.toFixed(2),
+                        cost15Days: estimate15,
+                        cost30Days: estimate30,
+                    };
+                    localStorage.setItem("estimateData", JSON.stringify(data));
+                    goToStep(2);
+                });
+
+                backButton.addEventListener("click", () => {
+                    goToStep(1);
+                });
+
+                userForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    if (!userForm.checkValidity()) {
+                        userForm.reportValidity();
+                        return;
+                    }
+                    showEstimatePopup();
+                });
+
+                if (closePopupButton) {
+                    closePopupButton.addEventListener("click", () => {
+                        estimatePopup.style.display = "none";
+                    });
+                }
+
+                async function showEstimatePopup() {
+                    const estimateData =
+                        JSON.parse(localStorage.getItem("estimateData")) || {};
+                    const userData = {
+                        organization:
+                            document.getElementById("organization").value,
+                        name: document.getElementById("yourName").value,
+                        email: document.getElementById("email").value,
+                        phone: document.getElementById("phone").value,
+                        productType:
+                            document.getElementById("productType").value,
+                        serviceTime:
+                            document.getElementById("serviceTime").value,
+                    };
+                    const fullPayload = { ...estimateData, ...userData };
+
+                    const popupContentView =
+                        document.getElementById("popup-content-view");
+                    const popupStatusView =
+                        document.getElementById("popup-status-view");
+                    const statusMessage =
+                        document.getElementById("status-message");
+
+                    const spinnerIcon = document.getElementById("spinner-icon");
+                    const successIcon = document.getElementById("success-icon");
+                    const failureIcon = document.getElementById("failure-icon");
+
+                    const containerNames = {
+                        40: '40" Container',
+                        20: '20" Container',
+                        LCL: "LCL",
+                    };
+                    document.getElementById("popupPacking").innerText =
+                        fullPayload.packingType
+                            ? fullPayload.packingType.charAt(0).toUpperCase() +
+                              fullPayload.packingType.slice(1)
+                            : "-";
+                    document.getElementById("popupContainer").innerText =
+                        containerNames[fullPayload.containerType] || "-";
+                    document.getElementById("popupUnits").innerText =
+                        fullPayload.numberOfUnits || "-";
+                    document.getElementById("popupCBM").innerText =
+                        fullPayload.calculatedCBM
+                            ? fullPayload.calculatedCBM + " CBM"
+                            : "-";
+                    document.getElementById("popup15").innerText =
+                        fullPayload.cost15Days?.toLocaleString() || "0";
+                    document.getElementById("popup30").innerText =
+                        fullPayload.cost30Days?.toLocaleString() || "0";
+
+                    estimatePopup.style.display = "flex";
+
+
+                    popupContentView.style.display = "none";
+                    popupStatusView.style.display = "block";
+
+                    spinnerIcon.style.display = "flex"; 
+                    successIcon.style.display = "none";
+                    failureIcon.style.display = "none";
+                    statusMessage.textContent = "Sending your quotation...";
+
+                    try {
+                        const csrfToken = document.querySelector(
+                            'meta[name="csrf-token"]'
+                        )
+                            ? document
+                                  .querySelector('meta[name="csrf-token"]')
+                                  .getAttribute("content")
+                            : "";
+                        const response = await fetch("/api/send-quotation", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRF-TOKEN": csrfToken,
+                                Accept: "application/json",
+                            },
+                            body: JSON.stringify({
+                                email: fullPayload.email,
+                                fullPayload: fullPayload,
+                            }),
+                        });
+                        const result = await response.json();
+                        if (!response.ok) {
+                            throw new Error(
+                                result.message || "API request failed"
+                            );
+                        }
+
+                        spinnerIcon.style.display = "none";
+                        successIcon.style.display = "flex";
+                        statusMessage.innerHTML = `Quotation sent successfully to <br><strong>${fullPayload.email}</strong>!`;
+                    } catch (error) {
+                        console.error("Email sending failed:", error);
+
+                        spinnerIcon.style.display = "none";
+                        failureIcon.style.display = "flex";
+                        statusMessage.textContent =
+                            "Failed to send quotation. Please try again.";
+                    } finally {
+                        setTimeout(() => {
+                            popupContentView.style.display = "block";
+                            popupStatusView.style.display = "none";
+                        }, 4000);
+                    }
+                }
+
+                goToStep(1);
+            });
+        </script>
+    </body>
+</html>
