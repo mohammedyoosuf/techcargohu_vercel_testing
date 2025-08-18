@@ -1,0 +1,26 @@
+routes:
+  /:
+    template: home
+    slug: home
+
+  /about:
+    template: about
+    slug: about
+
+  /techsolutions:
+    template: techsolutions
+    slug: techsolutions
+
+     /servicesector:
+    template: servicesector
+    slug: servicesector
+
+
+
+   
+
+ 
+       /contact:
+    template: contact
+    slug: contact
+

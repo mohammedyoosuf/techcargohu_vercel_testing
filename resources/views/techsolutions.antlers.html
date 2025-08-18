@@ -1,0 +1,286 @@
+{{ partial:header }}
+<div class="flex-grow container mx-auto">
+    <div class="container mx-auto pb-10 md:pb-28">
+        <div class="flex flex-col md:flex-row gap-5 justify-start items-start w-full px-5 md:px-0 h-full md:h-[500px]">
+            <div
+                class="flex-1 p-10 bg-heroBg rounded-[1.5rem] w-full flex flex-col justify-center items-start h-full md:h-[500px] text-left">
+                <h6 class="font-[600] text-lg md:text-xl"> {{tech_solution_sub_title}}</h6>
+                <h1 class="text-3xl lg:text-7xl font-[900] text-left capitalize md:w-9/12 aboutcss"
+                    style="letter-spacing: -0.20rem">
+                    {{tech_solution_title}}
+                </h1>
+            </div>
+            <div
+                class="flex-1 rounded-[2.9rem] overflow-hidden h-full md:h-[500px] flex items-center justify-center w-full">
+                <img src="{{tech_solution_banner_image}}" alt="contactbg" class="w-full h-96 md:h-full object-fill" />
+            </div>
+        </div>
+    </div>
+
+    <div class="p-10">
+        <div class="fullfillmentCenter mb-20">
+            <div class="flex flex-col justify-center items-center gap-5">
+
+                <div class="text-3xl md:text-6xl font-extrabold text-center boldTexts gap-0">
+                    <p>{{fulfillment_center_title}}<span class="text-highlightGreen">.</span></p>
+                </div>
+
+                <div class="text-lightgtext flex flex-col justify-center items-center text-center w-full">
+                    <div class="">
+                        {{fulfillment_center_description}}
+                    </div>
+
+                </div>
+
+                <div class="relative">
+                    <div class="flex flex-col justify-center items-center md:gap-10 py-10 relative">
+                        <div class="flex flex-wrap justify-center gap-10">
+                            {{ if fulfillment_card}}
+                 
+                            {{ fulfillment_card }}
+        
+                                     <div class="flex flex-col justify-start items-center md:w-80 w-full gap-2 py-10 px-5
+    bg-white rounded-2xl h-full md:h-[24rem] cursor-pointer group hover:bg-[#F6FFF6]
+    hover:border-highlightGreen hover:border-[1px]" style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;">
+                                    
+                                    {{ if icon}}
+                                    <div class="bg-iconBg p-4 rounded-xl items-center w-fit">
+                                        <img src="{{ icon }}" alt="facebook"  class="h-8" />
+                                    </div>
+                                    {{ /if }}
+                                       <div class="font-[550] text-xl text-heroText text-center
+    group-hover:text-darkGreen w-full">
+                                        {{ title'}}
+                                    </div>
+                                     <div
+                                        class="font-[400] text-md text-center text-lightGray px-4 md:px-8 flex-1 flex mt-auto">
+                                     {{discription}}
+                                     </div>
+                                </div>
+                            {{ /fulfillment_card }}
+                            
+                    {{ else }}
+                        <p>No locations available.</p>
+                    {{ /if }}
+                           
+                           
+                        </div>
+                     
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container mx-auto">
+            <div class="text-3xl md:text-6xl font-extrabold capitalize boldTexts">
+               <p class="custom-text">{{speak_volumes_title}} <span class="text-highlightGreen">!</span></p> 
+            </div>
+            <script>
+                document.querySelectorAll('.custom-text').forEach(paragraph => {
+                    const words = paragraph.textContent.split(' ');
+                    if (words.length > 1) {
+                        words[1] = `<span class="text-highlightGreen">${words[1]}</span>`;
+                        paragraph.innerHTML = words.join(' ');
+                    }
+                });
+            </script>
+
+            <p class="text-lightText text-xl md:text-2xl py-5 font-[550]">
+                {{speak_volumes_discription}}
+                
+            </p>
+           
+
+            <div class="pb-10 my-4">
+                <div class="flex md:flex-row flex-col justify-start items-start gap-10">
+                  <!-- Accordion Section -->
+                  <div class="flex-1 flex flex-col gap-0 bg-lightgreen p-4 md:p-10 rounded-[20px]">
+                    {{ accordion_items }}
+                    <div class="accordion-item border-b border-[#D9D9D9]">
+                      <h2 id="accordion-heading-{{ id }}">
+                        <button
+                          type="button"
+                          class="accordion-button flex items-center justify-between w-full p-5 font-semibold text-xl text-[#3E3E3E] bg-transparent gap-3"
+                          data-accordion-id="{{ id }}"
+                        >
+                          <span class="flex items-center">{{ title }}</span>
+                          <svg
+                            data-icon
+                            class="w-3 h-3 transition-transform duration-300"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 10 6"
+                          >
+                            <path
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M9 5 5 1 1 5"
+                            />
+                          </svg>
+                        </button>
+                      </h2>
+                      <div
+                        id="accordion-body-{{ id }}"
+                        class="accordion-body px-5 pb-5 hidden font-semibold text-lg"
+                      >
+                        <ul class="list-disc ml-6 mb-2 text-[#818181]">
+                          {{ list_field }}
+                          <li>{{ value }}</li>
+                          {{ /list_field }}
+                        </ul>
+                      </div>
+                    </div>
+                    {{ /accordion_items }}
+                  </div>
+              
+                  <!-- Image and CTA Section -->
+                  <div
+                    class="flex-1 flex justify-center items-center w-full md:w-fit object-fill relative md:h-[57svh] lg:h-[60svh] rounded-[20px]"
+                    style="background-image: url('{{speak_volumes_image}}'); background-position: center; background-repeat: no-repeat; background-size: cover;"
+                  >
+                    <div class="h-40 md:h-[85svh] top-0 relative flex flex-col justify-center items-center">
+                      <a
+                        href="/contact"
+                        target="_blank"
+                        class="scroll-to"
+                        style="margin-top: 500px;"
+                      >
+                        <div
+                          class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                          style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);"
+                        >
+                          <img src="assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+                          {{speak_volumes_button}}
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  const buttons = document.querySelectorAll(".accordion-button");
+              
+                  buttons.forEach((btn, idx) => {
+                    const id = btn.getAttribute("data-accordion-id");
+                    const content = document.getElementById(`accordion-body-${id}`);
+                    const icon = btn.querySelector("[data-icon]");
+              
+                    // Open first by default
+                    if (idx === 0) {
+                      content.classList.remove("hidden");
+                      icon.classList.add("rotate-180");
+                      btn.setAttribute("aria-expanded", "true");
+                    } else {
+                      btn.setAttribute("aria-expanded", "false");
+                    }
+              
+                    btn.addEventListener("click", () => {
+                      // Close all
+                      buttons.forEach(b => {
+                        const otherId = b.getAttribute("data-accordion-id");
+                        const otherContent = document.getElementById(`accordion-body-${otherId}`);
+                        const otherIcon = b.querySelector("[data-icon]");
+                        if (b !== btn) {
+                          otherContent.classList.add("hidden");
+                          otherIcon.classList.remove("rotate-180");
+                          b.setAttribute("aria-expanded", "false");
+                        }
+                      });
+              
+                      // Toggle clicked one
+                      const isOpen = !content.classList.contains("hidden");
+                      if (isOpen) {
+                        content.classList.add("hidden");
+                        icon.classList.remove("rotate-180");
+                        btn.setAttribute("aria-expanded", "false");
+                      } else {
+                        content.classList.remove("hidden");
+                        icon.classList.add("rotate-180");
+                        btn.setAttribute("aria-expanded", "true");
+                      }
+                    });
+                  });
+                });
+              </script>
+            
+
+            <div class="justify-center flex flex-col items-center my-10 min-h-96 md:py-20">
+                <div class="text-3xl md:text-5xl font-extrabold text-center boldTexts">
+                   
+                    <p>{{warehousing_solutions}} <span class="text-highlightGreen"> {{warehousing_solutions_green_text}}</span>!</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-10 py-10">
+
+             
+                    {{ if warehousing_solutions_card }}
+                 
+                        {{ warehousing_solutions_card }}
+    
+                         	  <div class="flex flex-col justify-start items-center md:w-80 w-full gap-2 py-10 px-5
+bg-white rounded-2xl h-full md:h-[24rem] cursor-pointer group hover:bg-[#F6FFF6]
+hover:border-highlightGreen hover:border-[1px]" style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;">
+                                
+                                {{ if icon}}
+                                <div class="bg-iconBg p-4 rounded-xl items-center w-fit">
+                                    <img src="{{ icon }}" alt="facebook"  class="h-8" />
+								</div>
+                                {{ /if }}
+                                   <div class="font-[550] text-xl text-heroText text-center
+group-hover:text-darkGreen w-full">
+                                    {{ title'}}
+                                </div>
+								 <div
+                                    class="font-[400] text-md text-center text-lightGray px-4 md:px-8 flex-1 flex mt-auto">
+								 {{discription}}
+								 </div>
+                            </div>
+                        {{ /warehousing_solutions_card }}
+                        
+                {{ else }}
+                    <p>No locations available.</p>
+                {{ /if }}
+				
+                  
+                   
+                   
+                 
+
+
+                </div>
+
+              
+            </div>
+
+            <div class="justify-center flex flex-col items-center my-10 py-10 gap-3">
+                <div class="text-3xl md:text-6xl font-extrabold text-center boldTexts">
+                    <p>{{future_of_warehousing_black_text}} <span class="text-highlightGreen">{{future_of_warehousing_green_text}}</span></p>
+                    <p>{{future_of_warehousing_black_1_text}}<span class="text-highlightGreen">.</span></p>
+                </div>
+
+                <p class="text-lightgtext md:text-lg py-5 text-center md:w-7/12">
+                    {{future_of_warehousing_discription_text}}
+                </p>
+
+                <a href="/contact" target="_blank" class="scroll-to">
+                    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                        <img src="assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+                        {{future_of_warehousing_button_text}}
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+    
+
+{{ partial:footer }}

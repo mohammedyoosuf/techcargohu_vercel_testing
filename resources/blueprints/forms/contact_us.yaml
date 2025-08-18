@@ -1,0 +1,80 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: name
+        field:
+          input_type: text
+          antlers: false
+          display: Name
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          validate:
+            - required
+      -
+        handle: email
+        field:
+          input_type: email
+          antlers: false
+          display: Email
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          validate:
+            - required
+      -
+        handle: country_code
+        field:
+          options:
+            '🇦🇫 AF  (  +93 )': null
+            '🇦🇽 AX  (  +358 )': null
+            '🇦🇱 AL  (  +355 )': null
+            ' 🇩🇿 DZ  (  +213 )': null
+            ' 🇦🇸 AS  (  +1684 )': null
+            '🇦🇩 AD  (  +376 )': null
+            '🇦🇴 AO  (  +244 )': null
+            ' 🇦🇮 AI  (  +1264 )': null
+            '  🇦🇶 AQ  (  +672 )': null
+            ' 🇦🇬 AG  (  +1268 )': null
+            '🇦🇷 AR  (  +54 )': null
+          multiple: false
+          clearable: false
+          searchable: true
+          taggable: false
+          push_tags: false
+          cast_booleans: false
+          display: 'Country Code'
+          type: select
+          icon: select
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+      -
+        handle: mobile_number
+        field:
+          input_type: tel
+          antlers: false
+          display: 'Mobile Number'
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          validate:
+            - required
+      -
+        handle: message
+        field:
+          antlers: false
+          display: Message
+          type: textarea
+          icon: textarea
+          listable: hidden
+          instructions_position: above
+          visibility: visible

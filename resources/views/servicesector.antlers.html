@@ -1,0 +1,356 @@
+   <!-- Include the Header Partial -->
+   {{ partial:header }}
+   <div class="flex-grow container mx-auto">
+        
+    <div class="md:space-y-20">
+
+        <div class="container mx-auto pb-20">
+            <div class="flex flex-col md:flex-row gap-5 justify-start items-start w-full px-5 md:px-0 h-full md:h-[500px]">
+                <div
+                    class="flex-1 p-10 bg-heroBg rounded-[2.9rem] flex flex-col justify-center items-start h-full md:h-[500px] text-left">
+                    <h1 class="md:text-3xl lg:text-5xl text-2xl font-[900] text-left gap-2 capitalize aboutcss"
+                        style="letter-spacing: -0.15rem">
+                      {{service_sector_title}}
+                    </h1>
+                </div>
+                <div class="flex-1 rounded-[2.9rem] overflow-hidden h-full md:h-[500px] flex items-center justify-center">
+                    <img src="{{service_sector_image}}" alt="serviceSectorHero" class="w-full h-full object-fill" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="relative" id="general-cargo">
+            <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
+    style="background-image: url('{{general_cargo_image}}');">
+    <div class="container space-y-10 flex flex-row">
+        <div class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+            <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
+                {{general_cargo_title}}
+            </h2>
+            <p class="text-white md:text-lg">
+                {{general_cargo_discription}}
+            </p>
+        </div>
+        <div class="hidden md:flex flex-1">
+        </div>
+    </div>
+</div>
+
+            <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
+                <div class="grid gird-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
+                    {{ if general_cargo_card }}
+                 
+                    {{ general_cargo_card }}
+  <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
+style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
+">
+                            
+                            {{ if icon}}
+                             <div class="bg-iconBg p-4 rounded-xl">
+                                    <img src="{{icon}}" alt="icon"
+                                        class="w-7 h-7" />
+                                </div>
+                          
+                            {{ /if }}
+                              <div class="font-[550] text-xl group-hover:text-darkGreen">
+                                    {{title}}
+                                </div>
+                              <div class="text-left font-[400] text-sm">
+                                    {{discription}}
+                                </div>
+                                
+                        
+                        </div>
+                    {{ /general_cargo_card }}
+                    
+            {{ else }}
+                <p>No locations available.</p>
+            {{ /if }}                  
+                                            
+                                         
+                                          
+                                           
+                    
+                    <div class="flex justify-center items-center">
+                        <a href="/contact" target="_blank" class="scroll-to">
+    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+        <img src="assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+       {{general_cargo_button}}
+    </div>
+</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="relative" id="pharmaceutical">
+            <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
+    style="background-image: url('{{pharmaceutical_image}}');">
+    <div class="container space-y-10 flex flex-row">
+        <div class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+            <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
+               {{pharmaceutical_title}}
+            </h2>
+            <p class="text-white md:text-lg">
+               {{pharmaceutical_discription}}
+            </p>
+        </div>
+        <div class="hidden md:flex flex-1">
+        </div>
+    </div>
+</div>
+
+            <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
+                <div class="grid gird-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
+                                           
+                                         
+                    {{ if pharmaceutical_card }}
+                 
+                    {{ pharmaceutical_card }}
+  <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
+style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
+">
+                            
+                            {{ if image}}
+                             <div class="bg-iconBg p-4 rounded-xl">
+                                    <img src="{{image}}" alt="icon"
+                                        class="w-7 h-7" />
+                                </div>
+                          
+                            {{ /if }}
+                              <div class="font-[550] text-xl group-hover:text-darkGreen">
+                                    {{title}}
+                                </div>
+                              <div class="text-left font-[400] text-sm">
+                                    {{discription}}
+                                </div>
+                                
+                        
+                        </div>
+                    {{ /pharmaceutical_card }}
+                    
+            {{ else }}
+                <p>No locations available.</p>
+            {{ /if }}                         
+                                            
+                                            
+                    
+                    <div class="flex justify-center items-center">
+                        <a href="/contact" target="_blank" class="scroll-to">
+    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+        <img src="assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+        {{pharmaceutical_button}}
+    </div>
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="relative" id="fcmg">
+            <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
+    style="background-image: url('{{fmcg_image}}');">
+    <div class="container space-y-10 flex flex-row">
+        <div class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+            <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
+                {{fmcg_title}}
+            </h2>
+            <p class="text-white md:text-lg">
+               {{fmcg_discription}}
+            </p>
+        </div>
+        <div class="hidden md:flex flex-1">
+        </div>
+    </div>
+</div>
+            <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
+                <div class="grid gird-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
+                    {{ if fmcg_card }}
+                 
+                    {{ fmcg_card }}
+  <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
+style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
+">
+                            
+                            {{ if image}}
+                             <div class="bg-iconBg p-4 rounded-xl">
+                                    <img src="{{image}}" alt="icon"
+                                        class="w-7 h-7" />
+                                </div>
+                          
+                            {{ /if }}
+                              <div class="font-[550] text-xl group-hover:text-darkGreen">
+                                    {{title}}
+                                </div>
+                              <div class="text-left font-[400] text-sm">
+                                    {{discription}}
+                                </div>
+                                
+                        
+                        </div>
+                    {{ /fmcg_card }}
+                    
+            {{ else }}
+                <p>No locations available.</p>
+            {{ /if }}                   
+                                          
+                    
+                    <div class="flex justify-center items-center">
+                        <a href="/contact" target="_blank" class="scroll-to">
+    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+        <img src="assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+       {{fmcg_button}}
+    </div>
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="relative" id="consumer-electronics">
+            <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
+    style="background-image: url('{{consumer_electronics_image}}');">
+    <div class="container space-y-10 flex flex-row">
+        <div class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+            <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
+                {{consumer_electronics_title}}.
+            </h2>
+            <p class="text-white md:text-lg">
+               {{consumer_electronics_discriptions}}
+            </p>
+        </div>
+        <div class="hidden md:flex flex-1">
+        </div>
+    </div>
+</div>
+
+
+            <div class="relative">
+                <img src="assets/images/shadow.png" alt="shadow" class="h-full z-2 absolute left-0 top-10" />
+                <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20 mb-20">
+                    <div class="grid gird-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
+                                                  
+                                                  
+                                              
+                                                  
+                        {{ if consumer_electronics_card }}
+                 
+                        {{ consumer_electronics_card }}
+      <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
+    style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
+">
+                                
+                                {{ if image}}
+								 <div class="bg-iconBg p-4 rounded-xl">
+                                        <img src="{{image}}" alt="icon"
+                                            class="w-7 h-7" />
+                                    </div>
+                              
+                                {{ /if }}
+                                  <div class="font-[550] text-xl group-hover:text-darkGreen">
+                                        {{title}}
+                                    </div>
+								  <div class="text-left font-[400] text-sm">
+                                        {{discription}}
+                                    </div>
+									
+							
+                            </div>
+                        {{ /consumer_electronics_card }}
+                        
+                {{ else }}
+                    <p>No locations available.</p>
+                {{ /if }}                   
+                        
+                        <div class="flex justify-center items-center">
+                            <a href="/contact" target="_blank" class="scroll-to">
+    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+        <img src="assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+       {{consumer_electronics_button}}
+    </div>
+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="mt-auto bg-cover bg-center bg-no-repeat text-white  flex flex-col justify-center items-center mb-10 rounded-[20px] mx-2 md:mx-0"
+        style="background-image: url('{{warehousing_image}}');">
+
+        <div class="bg-[#0D0D0D80] w-full py-20 flex flex-col justify-center items-center space-y-5 opacity-[8] rounded-[20px] px-5">
+
+            <div class="text-2xl md:text-4xl font-bold text-center">
+               {{warehousing_title}}
+            </div>
+
+            <div class="flex justify-center items-center px-10 py-4 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold"
+                style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+     <a href="/contact">
+               {{warehousing_button}}
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.querySelector('.general-cargo').addEventListener('click', function(event) {
+            event.preventDefault();
+            const target = document.querySelector('#general-cargo');
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        document.querySelector('.pharmaceutical').addEventListener('click', function(event) {
+            event.preventDefault();
+            const target = document.querySelector('#pharmaceutical');
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        document.querySelector('.fcmg').addEventListener('click', function(event) {
+            event.preventDefault();
+            const target = document.querySelector('#fcmg');
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        document.querySelector('.consumer-electronics').addEventListener('click', function(event) {
+            event.preventDefault();
+            const target = document.querySelector('#consumer-electronics');
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        
+    </script>
+
+    </div>
+
+    <!-- Include the Footer Partial -->
+    {{ partial:footer }}
