@@ -4,7 +4,36 @@
     background-color: #01a68c;
     color: #fff !important;
 }
+ @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes popIn {
+        from { transform: scale(0.95); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+    #price-calculator-popup.flex #popup-card {
+        animation: popIn 0.4s ease-out forwards;
+    }
+        .popup-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: #9ca3af;
+        z-index: 10;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .popup-close-btn:hover {
+        color: #374151;
+    }
+
 </style>
+
 <div class="flex-grow container mx-auto">
     <!-- Banner Section -->
     <div class="md:h-[85svh] top-0 relative flex flex-col justify-center items-center rounded-[30px] mx-5"
@@ -470,6 +499,31 @@
     </div>
 </div>
 
+<div id="price-calculator-popup" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-[#01A68C] relative transform transition-all duration-300 scale-95 opacity-0" id="popup-card">
+        
+        <button id="close-popup-btn" class="popup-close-btn">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="mx-auto mb-4 bg-[#F6FFF6] rounded-full flex items-center justify-center">
+            <img src="assets/images/tchLogo.png" alt="calculator icon" class="w-13"/>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-[900] text-[#0D3832] mb-3">
+            Get a Quick Price Estimate!
+        </h2>
+        <p class="mb-6 text-lightText text-lg">
+            Use our new Pricing Calculator to get an instant quote for your warehousing needs.
+        </p>
+        
+        <a href="/calculator" class="w-full flex justify-center items-center px-10 py-3 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold transform hover:scale-105 transition-transform"
+           style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+            Go to Calculator
+        </a>
+    </div>
+</div>
+
 <script>
     // Accordion Functionality (unchanged from your original code, with first item always open)
     document.addEventListener("DOMContentLoaded", function () {
@@ -627,6 +681,29 @@
         // Initialize first solution
         showSolution(0);
         startSolutionAutoCycle();
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const popup = document.getElementById('price-calculator-popup');
+        const closeBtn = document.getElementById('close-popup-btn');
+        
+        let popupHasBeenClosed = false;
+
+        const showPopup = () => {
+            if (!popupHasBeenClosed) {
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
+            }
+        };
+
+        const closePopup = () => {
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+            popupHasBeenClosed = true;
+        };
+
+        setTimeout(showPopup, 7000);
+        closeBtn.addEventListener('click', closePopup);
+        
     });
 </script>
 
