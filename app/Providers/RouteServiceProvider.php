@@ -35,8 +35,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+<<<<<<< HEAD
         $this->loadRoutesFrom(base_path('routes/estimates.php'));
 
+=======
+>>>>>>> origin/main
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -50,7 +53,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/main
     /**
      * Configure the rate limiters for the application.
      *
