@@ -35,6 +35,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Keep the estimates route
+        $this->loadRoutesFrom(base_path('routes/estimates.php'));
+
+        // Keep the rate limiting and default routes
         $this->configureRateLimiting();
 
         $this->routes(function () {

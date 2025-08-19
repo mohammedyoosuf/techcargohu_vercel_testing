@@ -2,9 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EstimateController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
+
+Route::post('/submit-estimate', [EstimateController::class, 'store']);
+Route::get('/estimates', [EstimateController::class, 'index']); // Added for history retrieval
+Route::get('/estimates/{id}', [EstimateController::class, 'show']);
+
+
+
 
 /*
 |--------------------------------------------------------------------------
