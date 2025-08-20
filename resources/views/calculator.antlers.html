@@ -982,8 +982,15 @@
                     const dropdownEl = document.getElementById(dropdownId);
                     const hiddenSelect =
                         document.getElementById(hiddenSelectId);
-                    const options = dropdownEl.querySelectorAll("a");
+                    if (!button || !dropdownEl || !hiddenSelect) return;
+                    if (typeof Dropdown === "undefined") {
+                        console.error(
+                            "Flowbite's Dropdown component is not loaded."
+                        );
+                        return;
+                    }
                     const dropdownInstance = new Dropdown(dropdownEl, button);
+                    const options = dropdownEl.querySelectorAll("a");
                     options.forEach((option) => {
                         option.addEventListener("click", (e) => {
                             e.preventDefault();
@@ -991,7 +998,8 @@
                                 option.getAttribute("data-value");
                             const selectedText = option.textContent;
                             hiddenSelect.value = selectedValue;
-                            buttonText.textContent = selectedText;
+                            if (buttonText)
+                                buttonText.textContent = selectedText;
                             const event = new Event("change", {
                                 bubbles: true,
                             });
@@ -1000,7 +1008,6 @@
                         });
                     });
                 }
-
                 setupCustomDropdown(
                     "typeCargoButton",
                     "typeCargoDropdown",
@@ -1049,54 +1056,34 @@
                 const stepConnector = document.getElementById("step-connector");
 
                 const notes = {
-                    step1: `
-                    <div class="notes-box animate-fade-in-up">
-                        <p class="font-bold text-lg text-darkGreen mb-2">Important Notes:</p>
-                        <ul class="list-disc ml-5 text-sm text-gray-700 space-y-2">
-                            <li>A minimum storage period of 15 days is applicable.</li>
-                            <li>Handling charges for Loading/Unloading are included in the price.</li>
-                            <li>Services include Inventory Control via Cargowise WMS and Tier 1 Business Insights via Microsoft Power BI.</li>
-                        </ul>
-                    </div>`,
-                    step2: `
-                    <div class="notes-box animate-fade-in-up">
-                        <p class="font-bold text-lg text-darkGreen mb-2">Disclaimer:</p>
-                        <ul class="list-disc ml-5 text-sm text-gray-700 space-y-2">
-                            <li>We adhere to a strict code of confidentiality; all information shared will not be disclosed.</li>
-                            <li>Our services are available exclusively for registered businesses.</li>
-                            <li>Please double-check your contact details before submitting to ensure accuracy.</li>
-                        </ul>
-                    </div>`,
+                    step1: `<div class="notes-box animate-fade-in-up"><p class="font-bold text-lg text-darkGreen mb-2">Important Notes:</p><ul class="list-disc ml-5 text-sm text-gray-700 space-y-2"><li>A minimum storage period of 15 days is applicable.</li><li>Handling charges for Loading/Unloading are included in the price.</li><li>Services include Inventory Control via Cargowise WMS and Tier 1 Business Insights via Microsoft Power BI.</li></ul></div>`,
+                    step2: `<div class="notes-box animate-fade-in-up"><p class="font-bold text-lg text-darkGreen mb-2">Disclaimer:</p><ul class="list-disc ml-5 text-sm text-gray-700 space-y-2"><li>We adhere to a strict code of confidentiality; all information shared will not be disclosed.</li><li>Our services are available exclusively for registered businesses.</li><li>Please double-check your contact details before submitting to ensure accuracy.</li></ul></div>`,
                 };
-
                 function updateNotes(step) {
-                    if (notesContainer) {
-                        notesContainer.innerHTML = notes[step];
-                    }
+                    if (notesContainer) notesContainer.innerHTML = notes[step];
                 }
-
                 function goToStep(stepNumber) {
                     if (stepNumber === 1) {
                         step1FormDiv.style.display = "block";
                         step2FormDiv.style.display = "none";
                         stepIndicator1.classList.add("active");
                         stepIndicator2.classList.remove("active");
-                        mobileStepText.textContent =
-                            "Step 1 of 2: Shipment Details";
-                        if (stepConnector) {
+                        if (mobileStepText)
+                            mobileStepText.textContent =
+                                "Step 1 of 2: Shipment Details";
+                        if (stepConnector)
                             stepConnector.style.backgroundColor = "#e5e7eb";
-                        }
                         updateNotes("step1");
                     } else if (stepNumber === 2) {
                         step1FormDiv.style.display = "none";
                         step2FormDiv.style.display = "block";
                         stepIndicator1.classList.add("active");
                         stepIndicator2.classList.add("active");
-                        mobileStepText.textContent =
-                            "Step 2 of 2: Your Information";
-                        if (stepConnector) {
+                        if (mobileStepText)
+                            mobileStepText.textContent =
+                                "Step 2 of 2: Your Information";
+                        if (stepConnector)
                             stepConnector.style.backgroundColor = "#01A68C";
-                        }
                         updateNotes("step2");
                     }
                 }
@@ -1128,70 +1115,71 @@
                     }
                 }
 
-                typeCargo.addEventListener("change", updateCBMDisplay);
-                units.addEventListener("input", updateCBMDisplay);
+                if (typeCargo)
+                    typeCargo.addEventListener("change", updateCBMDisplay);
+                if (units) units.addEventListener("input", updateCBMDisplay);
 
-                shipmentForm.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    if (!shipmentForm.checkValidity()) {
-                        shipmentForm.reportValidity();
-                        return;
-                    }
-                    const cbm = getCBM();
-                    const handlingFee = getHandlingFee(containerType.value);
-                    const storageRate = 35;
-                    const estimate15 = Math.round(
-                        cbm * storageRate * 15 + handlingFee
-                    );
-                    const estimate30 = Math.round(
-                        cbm * storageRate * 30 + handlingFee
-                    );
-                    const data = {
-                        packingType: typeCargo.value,
-                        containerType: containerType.value,
-                        numberOfUnits: parseInt(units.value, 10),
-                        calculatedCBM: cbm.toFixed(2),
-                        cost15Days: estimate15,
-                        cost30Days: estimate30,
-                    };
-                    localStorage.setItem("estimateData", JSON.stringify(data));
-                    goToStep(2);
-                });
-
-                backButton.addEventListener("click", () => {
-                    goToStep(1);
-                });
-
-                userForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    if (!userForm.checkValidity()) {
-                        userForm.reportValidity();
-                        return;
-                    }
-                    showEstimatePopup();
-                });
-
-                if (closePopupButton) {
-                    closePopupButton.addEventListener("click", () => {
-                        estimatePopup.style.display = "none";
+                if (shipmentForm)
+                    shipmentForm.addEventListener("submit", (e) => {
+                        e.preventDefault();
+                        if (!shipmentForm.checkValidity()) {
+                            shipmentForm.reportValidity();
+                            return;
+                        }
+                        const cbm = getCBM();
+                        const handlingFee = getHandlingFee(containerType.value);
+                        const storageRate = 35;
+                        const estimate15 = Math.round(
+                            cbm * storageRate * 15 + handlingFee
+                        );
+                        const estimate30 = Math.round(
+                            cbm * storageRate * 30 + handlingFee
+                        );
+                        const data = {
+                            packingType: typeCargo.value,
+                            containerType: containerType.value,
+                            numberOfUnits: parseInt(units.value, 10),
+                            calculatedCBM: cbm.toFixed(2),
+                            cost15Days: estimate15,
+                            cost30Days: estimate30,
+                        };
+                        localStorage.setItem(
+                            "estimateData",
+                            JSON.stringify(data)
+                        );
+                        goToStep(2);
                     });
-                }
 
-                async function showEstimatePopup() {
+                if (backButton)
+                    backButton.addEventListener("click", () => {
+                        goToStep(1);
+                    });
+
+                if (userForm)
+                    userForm.addEventListener("submit", async (e) => {
+                        e.preventDefault();
+                        if (!userForm.checkValidity()) {
+                            userForm.reportValidity();
+                            return;
+                        }
+                        await handleDualApiSubmit();
+                    });
+
+                async function handleDualApiSubmit() {
                     const estimateData =
                         JSON.parse(localStorage.getItem("estimateData")) || {};
                     const userData = {
-                        organization:
+                        organization_name:
                             document.getElementById("organization").value,
-                        name: document.getElementById("yourName").value,
+                        user_name: document.getElementById("yourName").value,
                         email: document.getElementById("email").value,
                         phone: document.getElementById("phone").value,
-                        productType:
+                        product_type:
                             document.getElementById("productType").value,
-                        serviceTime:
-                            document.getElementById("serviceTime").value,
+                        service_time:
+                            document.getElementById("serviceTime").value ||
+                            "Not Specified",
                     };
-                    const fullPayload = { ...estimateData, ...userData };
 
                     const popupContentView =
                         document.getElementById("popup-content-view");
@@ -1199,54 +1187,27 @@
                         document.getElementById("popup-status-view");
                     const statusMessage =
                         document.getElementById("status-message");
-
                     const spinnerIcon = document.getElementById("spinner-icon");
                     const successIcon = document.getElementById("success-icon");
                     const failureIcon = document.getElementById("failure-icon");
-
-                    const containerNames = {
-                        40: '40" Container',
-                        20: '20" Container',
-                        LCL: "LCL",
-                    };
-                    document.getElementById("popupPacking").innerText =
-                        fullPayload.packingType
-                            ? fullPayload.packingType.charAt(0).toUpperCase() +
-                              fullPayload.packingType.slice(1)
-                            : "-";
-                    document.getElementById("popupContainer").innerText =
-                        containerNames[fullPayload.containerType] || "-";
-                    document.getElementById("popupUnits").innerText =
-                        fullPayload.numberOfUnits || "-";
-                    document.getElementById("popupCBM").innerText =
-                        fullPayload.calculatedCBM
-                            ? fullPayload.calculatedCBM + " CBM"
-                            : "-";
-                    document.getElementById("popup15").innerText =
-                        fullPayload.cost15Days?.toLocaleString() || "0";
-                    document.getElementById("popup30").innerText =
-                        fullPayload.cost30Days?.toLocaleString() || "0";
+                    const csrfToken = document.querySelector(
+                        'meta[name="csrf-token"]'
+                    )
+                        ? document
+                              .querySelector('meta[name="csrf-token"]')
+                              .getAttribute("content")
+                        : "";
 
                     estimatePopup.style.display = "flex";
-
-
                     popupContentView.style.display = "none";
                     popupStatusView.style.display = "block";
-
-                    spinnerIcon.style.display = "flex"; 
+                    spinnerIcon.style.display = "flex";
                     successIcon.style.display = "none";
                     failureIcon.style.display = "none";
-                    statusMessage.textContent = "Sending your quotation...";
+                    statusMessage.textContent = "Processing your request...";
 
                     try {
-                        const csrfToken = document.querySelector(
-                            'meta[name="csrf-token"]'
-                        )
-                            ? document
-                                  .querySelector('meta[name="csrf-token"]')
-                                  .getAttribute("content")
-                            : "";
-                        const response = await fetch("/api/send-quotation", {
+                        const saveToDbPromise = fetch("/submit-estimate", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -1254,33 +1215,100 @@
                                 Accept: "application/json",
                             },
                             body: JSON.stringify({
-                                email: fullPayload.email,
-                                fullPayload: fullPayload,
+                                ...estimateData,
+                                ...userData,
+                                packing_type: estimateData.packingType,
+                                container_type: estimateData.containerType,
+                                units: estimateData.numberOfUnits,
                             }),
                         });
-                        const result = await response.json();
-                        if (!response.ok) {
+
+                        const sendEmailPromise = fetch("/api/send-quotation", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRF-TOKEN": csrfToken,
+                                Accept: "application/json",
+                            },
+                            body: JSON.stringify({
+                                email: userData.email,
+                                fullPayload: {
+                                    ...estimateData,
+                                    ...userData,
+                                    name: userData.user_name,
+                                    organization: userData.organization_name,
+                                },
+                            }),
+                        });
+
+                        const [dbResponse, emailResponse] = await Promise.all([
+                            saveToDbPromise,
+                            sendEmailPromise,
+                        ]);
+                        const dbResult = await dbResponse.json();
+                        const emailResult = await emailResponse.json();
+
+                        if (!dbResponse.ok || !emailResponse.ok) {
                             throw new Error(
-                                result.message || "API request failed"
+                                `DB Status: ${dbResponse.status}, Email Status: ${emailResponse.status}`
                             );
                         }
 
                         spinnerIcon.style.display = "none";
                         successIcon.style.display = "flex";
-                        statusMessage.innerHTML = `Quotation sent successfully to <br><strong>${fullPayload.email}</strong>!`;
-                    } catch (error) {
-                        console.error("Email sending failed:", error);
+                        statusMessage.innerHTML = `Quotation sent successfully to <br><strong>${userData.email}</strong>!`;
 
+                        showFinalEstimatePopup(dbResult.estimate);
+                    } catch (error) {
+                        console.error("❌ Dual API Error:", error);
                         spinnerIcon.style.display = "none";
                         failureIcon.style.display = "flex";
                         statusMessage.textContent =
-                            "Failed to send quotation. Please try again.";
-                    } finally {
+                            "An error occurred. Please try again.";
+
                         setTimeout(() => {
-                            popupContentView.style.display = "block";
+                            estimatePopup.style.display = "none";
                             popupStatusView.style.display = "none";
                         }, 4000);
                     }
+                }
+
+                function showFinalEstimatePopup(estimate) {
+                    const containerNames = {
+                        40: '40" Container',
+                        20: '20" Container',
+                        LCL: "LCL",
+                    };
+                    document.getElementById("popupPacking").innerText =
+                        estimate.packing_type
+                            ? estimate.packing_type.charAt(0).toUpperCase() +
+                              estimate.packing_type.slice(1)
+                            : "-";
+                    document.getElementById("popupContainer").innerText =
+                        containerNames[estimate.container_type] || "-";
+                    document.getElementById("popupUnits").innerText =
+                        estimate.units || "-";
+                    document.getElementById("popupCBM").innerText = estimate.cbm
+                        ? parseFloat(estimate.cbm).toFixed(2) + " CBM"
+                        : "-";
+                    document.getElementById("popup15").innerText =
+                        estimate.price_15_days?.toLocaleString() || "0";
+                    document.getElementById("popup30").innerText =
+                        estimate.price_30_days?.toLocaleString() || "0";
+                    setTimeout(() => {
+                        document.getElementById(
+                            "popup-status-view"
+                        ).style.display = "none";
+                        document.getElementById(
+                            "popup-content-view"
+                        ).style.display = "block";
+                    }, 2000);
+                }
+
+                if (closePopupButton) {
+                    closePopupButton.addEventListener("click", () => {
+                        estimatePopup.style.display = "none";
+                    });
                 }
 
                 goToStep(1);
