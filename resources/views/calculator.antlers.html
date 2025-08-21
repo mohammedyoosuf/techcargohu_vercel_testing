@@ -1087,27 +1087,20 @@
                         updateNotes("step2");
                     }
                 }
-                function getCBM() {
-                    const unitCount = parseInt(units.value, 10);
-                    if (isNaN(unitCount) || unitCount <= 0) return 0;
-                    return typeCargo.value === "pallet"
-                        ? Math.max(unitCount, 5)
-                        : Math.max(Math.ceil(unitCount / 75) * 5, 5);
-                }
-                function getHandlingFee(type) {
-                    if (type === "40") return 70000;
-                    if (type === "20") return 60000;
-                    if (type === "LCL")
-                        return typeCargo.value === "pallet" ? 7500 : 5625;
-                    return 0;
-                }
-                function updateCBMDisplay() {
+
+                function calculateAndDisplayCBM() {
                     if (
                         units.value &&
                         parseInt(units.value, 10) > 0 &&
                         typeCargo.value
                     ) {
-                        const cbm = getCBM();
+                        const unitCount = parseInt(units.value, 10);
+                        let cbm = 0;
+                        if (typeCargo.value === "pallet") {
+                            cbm = Math.max(unitCount, 5);
+                        } else if (typeCargo.value === "carton") {
+                            cbm = Math.max(Math.ceil(unitCount / 75) * 5, 5);
+                        }
                         approxCBM.value =
                             cbm > 0 ? cbm.toFixed(2) + " CBM" : "";
                     } else {
@@ -1116,8 +1109,12 @@
                 }
 
                 if (typeCargo)
-                    typeCargo.addEventListener("change", updateCBMDisplay);
-                if (units) units.addEventListener("input", updateCBMDisplay);
+                    typeCargo.addEventListener(
+                        "change",
+                        calculateAndDisplayCBM
+                    );
+                if (units)
+                    units.addEventListener("input", calculateAndDisplayCBM);
 
                 if (shipmentForm)
                     shipmentForm.addEventListener("submit", (e) => {
@@ -1126,26 +1123,15 @@
                             shipmentForm.reportValidity();
                             return;
                         }
-                        const cbm = getCBM();
-                        const handlingFee = getHandlingFee(containerType.value);
-                        const storageRate = 35;
-                        const estimate15 = Math.round(
-                            cbm * storageRate * 15 + handlingFee
-                        );
-                        const estimate30 = Math.round(
-                            cbm * storageRate * 30 + handlingFee
-                        );
-                        const data = {
-                            packingType: typeCargo.value,
-                            containerType: containerType.value,
-                            numberOfUnits: parseInt(units.value, 10),
-                            calculatedCBM: cbm.toFixed(2),
-                            cost15Days: estimate15,
-                            cost30Days: estimate30,
+
+                        const shipmentData = {
+                            packing_type: typeCargo.value,
+                            container_type: containerType.value,
+                            units: parseInt(units.value, 10),
                         };
                         localStorage.setItem(
-                            "estimateData",
-                            JSON.stringify(data)
+                            "shipmentData",
+                            JSON.stringify(shipmentData)
                         );
                         goToStep(2);
                     });
@@ -1162,12 +1148,12 @@
                             userForm.reportValidity();
                             return;
                         }
-                        await handleDualApiSubmit();
+                        await handleApiSubmit();
                     });
 
-                async function handleDualApiSubmit() {
-                    const estimateData =
-                        JSON.parse(localStorage.getItem("estimateData")) || {};
+                async function handleApiSubmit() {
+                    const shipmentData =
+                        JSON.parse(localStorage.getItem("shipmentData")) || {};
                     const userData = {
                         organization_name:
                             document.getElementById("organization").value,
@@ -1181,6 +1167,7 @@
                             "Not Specified",
                     };
 
+                    const payloadForApi = { ...shipmentData, ...userData };
                     const popupContentView =
                         document.getElementById("popup-content-view");
                     const popupStatusView =
@@ -1206,24 +1193,31 @@
                     failureIcon.style.display = "none";
                     statusMessage.textContent = "Processing your request...";
 
+                    let dbEstimateResult = null;
+
                     try {
-                        const saveToDbPromise = fetch("/submit-estimate", {
+                        const dbResponse = await fetch("/submit-estimate", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
                                 "X-CSRF-TOKEN": csrfToken,
                                 Accept: "application/json",
                             },
-                            body: JSON.stringify({
-                                ...estimateData,
-                                ...userData,
-                                packing_type: estimateData.packingType,
-                                container_type: estimateData.containerType,
-                                units: estimateData.numberOfUnits,
-                            }),
+                            body: JSON.stringify(payloadForApi),
                         });
 
-                        const sendEmailPromise = fetch("/api/send-quotation", {
+                        const dbResult = await dbResponse.json();
+
+                        if (!dbResponse.ok) {
+                            throw new Error(
+                                dbResult.message ||
+                                    "Failed to save your estimate."
+                            );
+                        }
+
+                        dbEstimateResult = dbResult.estimate;
+
+                        await fetch("/api/send-quotation", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -1233,34 +1227,30 @@
                             body: JSON.stringify({
                                 email: userData.email,
                                 fullPayload: {
-                                    ...estimateData,
-                                    ...userData,
-                                    name: userData.user_name,
-                                    organization: userData.organization_name,
+                                    ...dbEstimateResult,
+                                    name: dbEstimateResult.user_name,
+                                    organization:
+                                        dbEstimateResult.organization_name,
+                                    packingType: dbEstimateResult.packing_type,
+                                    containerType:
+                                        dbEstimateResult.container_type,
+                                    numberOfUnits: dbEstimateResult.units,
+                                    calculatedCBM: dbEstimateResult.cbm,
+                                    cost15Days: dbEstimateResult.price_15_days,
+                                    cost30Days: dbEstimateResult.price_30_days,
+                                    productType: dbEstimateResult.product_type,
+                                    serviceTime: dbEstimateResult.service_time,
                                 },
                             }),
                         });
 
-                        const [dbResponse, emailResponse] = await Promise.all([
-                            saveToDbPromise,
-                            sendEmailPromise,
-                        ]);
-                        const dbResult = await dbResponse.json();
-                        const emailResult = await emailResponse.json();
-
-                        if (!dbResponse.ok || !emailResponse.ok) {
-                            throw new Error(
-                                `DB Status: ${dbResponse.status}, Email Status: ${emailResponse.status}`
-                            );
-                        }
-
                         spinnerIcon.style.display = "none";
                         successIcon.style.display = "flex";
-                        statusMessage.innerHTML = `Quotation sent successfully to <br><strong>${userData.email}</strong>!`;
+                        statusMessage.innerHTML = `Your estimate is ready!`;
 
-                        showFinalEstimatePopup(dbResult.estimate);
+                        showFinalEstimatePopup(dbEstimateResult);
                     } catch (error) {
-                        console.error("❌ Dual API Error:", error);
+                        console.error("❌ API Error:", error);
                         spinnerIcon.style.display = "none";
                         failureIcon.style.display = "flex";
                         statusMessage.textContent =
