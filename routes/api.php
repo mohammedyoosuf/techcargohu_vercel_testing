@@ -51,8 +51,8 @@ Route::post('/send-quotation', function (Request $request) {
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ])->post('https://api.resend.com/emails', [
-            'from' => 'onboarding@resend.dev',
-            'to' => ['wpslakshitha@gmail.com'],
+            'from' => 'service@techcargohub.com',
+            'to' => [$validatedData['email']], 
             'subject' => 'Warehousing Quotation from Tech Cargo Hub',
             'html' => $htmlContent,
         ]);
@@ -61,13 +61,13 @@ Route::post('/send-quotation', function (Request $request) {
             throw new \Exception('Resend API returned an error: ' . $response->body());
         }
 
-        return response()->json(['success' => true, 'message' => 'Test email sent successfully!']);
+        return response()->json(['success' => true, 'message' => 'Quotation sent successfully!']);
 
     } catch (\Exception $e) {
         \Log::error('Resend HTTP Error: ' . $e->getMessage());
         return response()->json([
             'success' => false, 
-            'message' => 'Failed to send test email. Server error: ' . $e->getMessage()
+            'message' => 'Failed to send quotation. Server error: ' . $e->getMessage()
         ], 500);
     }
 });
