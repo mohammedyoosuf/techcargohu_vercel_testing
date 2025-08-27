@@ -151,183 +151,672 @@
                     <ul
                         class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-2 rtl:space-x-reverse md:flex-row md:items-center md:mt-0"
                     >
-                        <li><a href="/" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Home</a></li>
-                        <li><a href="/about" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">About Us</a></li>
-                        <li><a href="/techsolutions" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Tech Solutions</a></li>
-                        <li><a href="/servicesector" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Service Sector</a></li>
-                        <li><a href="/calculator" class="block py-2 px-3 text-lg font-semibold text-greenheading">Price Calculator</a></li>
-                        <li class="gradient-border"><a href="/contact" class="block py-2 px-3 text-lg text-greenheading font-semibold text-navColor">Contact Us</a></li>
+                        <li>
+                            <a
+                                href="/"
+                                class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                                >Home</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/about"
+                                class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                                >About Us</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/techsolutions"
+                                class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                                >Tech Solutions</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/servicesector"
+                                class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                                >Service Sector</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/calculator"
+                                class="block py-2 px-3 text-lg font-semibold text-greenheading"
+                                >Price Calculator</a
+                            >
+                        </li>
+                        <li class="gradient-border">
+                            <a
+                                href="/contact"
+                                class="block py-2 px-3 text-lg text-greenheading font-semibold text-navColor"
+                                >Contact Us</a
+                            >
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
         <main class="flex-grow container mx-auto py-10 md:py-16">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-5">
-
-                <div class="w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200/50 animate-fade-in-up lg:order-2" style="animation-delay: 0.2s">
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-5"
+            >
+                <div
+                    class="w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200/50 animate-fade-in-up lg:order-2"
+                    style="animation-delay: 0.2s"
+                >
                     <div class="p-4 sm:p-6 border-b border-gray-200">
                         <div class="hidden sm:flex items-center">
-                            <div id="step-indicator-1" class="step-indicator active flex-1 flex items-center space-x-3">
+                            <div
+                                id="step-indicator-1"
+                                class="step-indicator active flex-1 flex items-center space-x-3"
+                            >
                                 <div class="step-circle">1</div>
                                 <div>
-                                    <p class="text-sm text-gray-500 step-subtitle">Step 1</p>
-                                    <p class="font-semibold text-gray-800 step-title">Shipment Details</p>
+                                    <p
+                                        class="text-sm text-gray-500 step-subtitle"
+                                    >
+                                        Step 1
+                                    </p>
+                                    <p
+                                        class="font-semibold text-gray-800 step-title"
+                                    >
+                                        Shipment Details
+                                    </p>
                                 </div>
                             </div>
-                            <div id="step-connector" class="flex-shrink-0 w-12 h-1 bg-gray-200 rounded-full mx-4 step-connector"></div>
-                            <div id="step-indicator-2" class="step-indicator flex-1 flex items-center space-x-3">
+                            <div
+                                id="step-connector"
+                                class="flex-shrink-0 w-12 h-1 bg-gray-200 rounded-full mx-4 step-connector"
+                            ></div>
+                            <div
+                                id="step-indicator-2"
+                                class="step-indicator flex-1 flex items-center space-x-3"
+                            >
                                 <div class="step-circle">2</div>
                                 <div>
-                                    <p class="text-sm text-gray-500 step-subtitle">Step 2</p>
-                                    <p class="font-semibold text-gray-800 step-title">Your Information</p>
+                                    <p
+                                        class="text-sm text-gray-500 step-subtitle"
+                                    >
+                                        Step 2
+                                    </p>
+                                    <p
+                                        class="font-semibold text-gray-800 step-title"
+                                    >
+                                        Your Information
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="sm:hidden text-center">
-                            <p id="mobile-step-text" class="font-bold text-lg text-darkGreen">Step 1 of 2: Shipment Details</p>
+                            <p
+                                id="mobile-step-text"
+                                class="font-bold text-lg text-darkGreen"
+                            >
+                                Step 1 of 2: Shipment Details
+                            </p>
                         </div>
                     </div>
 
                     <div class="p-4 sm:p-10">
                         <div id="step-1-form">
-                            <form id="shipmentForm" class="space-y-6" novalidate>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <form
+                                id="shipmentForm"
+                                class="space-y-6"
+                                novalidate
+                            >
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                >
                                     <div class="relative">
-                                        <label for="typeCargo" class="block mb-2 text-sm font-bold text-gray-600">Packing Type</label>
-                                        <select required id="typeCargo" name="typeCargo" class="hidden">
-                                            <option value="" disabled selected></option>
-                                            <option value="pallet">Pallet</option>
-                                            <option value="carton">Carton</option>
+                                        <label
+                                            for="containerType"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Container Type</label
+                                        >
+                                        <select
+                                            required
+                                            id="containerType"
+                                            name="containerType"
+                                            class="hidden"
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                            ></option>
+                                            <option value="40">
+                                                40 Footer
+                                            </option>
+                                            <option value="20">
+                                                20 Footer
+                                            </option>
                                         </select>
-                                        <button id="typeCargoButton" data-dropdown-toggle="typeCargoDropdown" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center" type="button">
-                                            <span id="typeCargoButtonText">Select a packing type</span>
-                                            <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        <button
+                                            id="containerTypeButton"
+                                            data-dropdown-toggle="containerTypeDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="containerTypeButtonText"
+                                                >Select a container type</span
+                                            >
+                                            <svg
+                                                class="w-4 h-4"
+                                                aria-hidden="true"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
                                         </button>
-                                        <div id="typeCargoDropdown" class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1">
-                                            <ul class="py-2 text-sm text-gray-700">
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="pallet">Pallet</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="carton">Carton</a></li>
+                                        <div
+                                            id="containerTypeDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="40"
+                                                        title="Approx. 60 CBM"
+                                                        >40 Footer</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="20"
+                                                        title="Approx. 30 CBM"
+                                                        >20 Footer</a
+                                                    >
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
+
                                     <div class="relative">
-                                        <label for="containerType" class="block mb-2 text-sm font-bold text-gray-600">Container Type</label>
-                                        <select required id="containerType" name="containerType" class="hidden">
-                                            <option value="" disabled selected></option>
-                                            <option value="40">40" Container</option>
-                                            <option value="20">20" Container</option>
-                                            <option value="LCL">LCL</option>
+                                        <label
+                                            for="numContainers"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >No. of containers/month</label
+                                        >
+                                        <select
+                                            required
+                                            id="numContainers"
+                                            name="numContainers"
+                                            class="hidden"
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                            ></option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
                                         </select>
-                                        <button id="containerTypeButton" data-dropdown-toggle="containerTypeDropdown" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center" type="button">
-                                            <span id="containerTypeButtonText">Select a container type</span>
-                                            <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        <button
+                                            id="numContainersButton"
+                                            data-dropdown-toggle="numContainersDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="numContainersButtonText"
+                                                >Select number of
+                                                containers</span
+                                            >
+                                            <svg
+                                                class="w-4 h-4"
+                                                aria-hidden="true"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
                                         </button>
-                                        <div id="containerTypeDropdown" class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1">
-                                            <ul class="py-2 text-sm text-gray-700">
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="40">40" Container</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="20">20" Container</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="LCL">LCL</a></li>
+                                        <div
+                                            id="numContainersDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="1"
+                                                        >1</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="2"
+                                                        >2</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="3"
+                                                        >3</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="4"
+                                                        >4</a
+                                                    >
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
+
                                     <div>
-                                        <label for="units" class="block mb-2 text-sm font-bold text-gray-600">Number of Units</label>
-                                        <input required type="number" id="units" name="units" placeholder="e.g., 100" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading" />
+                                        <label
+                                            for="singleContainerCBM"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Approx. CBM (per container)</label
+                                        >
+                                        <input
+                                            readonly
+                                            type="text"
+                                            id="singleContainerCBM"
+                                            placeholder="Select container type"
+                                            class="w-full px-4 py-3 bg-gray-200 border border-gray-300 rounded-xl cursor-not-allowed"
+                                        />
                                     </div>
+
                                     <div>
-                                        <label for="approxCBM" class="block mb-2 text-sm font-bold text-gray-600">Approximate CBM</label>
-                                        <input readonly type="text" id="approxCBM" name="approxCBM" placeholder="Calculated after entering units" class="w-full px-4 py-3 bg-gray-200 border border-gray-300 rounded-xl cursor-not-allowed" />
+                                        <label
+                                            for="approxCBM"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Total Approximate CBM</label
+                                        >
+                                        <input
+                                            readonly
+                                            type="text"
+                                            id="approxCBM"
+                                            name="approxCBM"
+                                            placeholder="Calculated automatically"
+                                            class="w-full px-4 py-3 bg-gray-200 border border-gray-300 rounded-xl cursor-not-allowed"
+                                        />
                                     </div>
                                 </div>
                                 <div class="text-center pt-4">
-                                    <label class="block mb-3 text-sm font-bold text-gray-600">Goods Type</label>
-                                    <div class="bg-gray-100 p-4 rounded-xl border border-dashed">
-                                        <p class="text-gray-800 font-semibold">General Goods / Non DG / Non Perishables / Non Pharma</p>
+                                    <label
+                                        class="block mb-3 text-sm font-bold text-gray-600"
+                                        >Goods Type</label
+                                    >
+                                    <div
+                                        class="bg-gray-100 p-4 rounded-xl border border-dashed"
+                                    >
+                                        <p class="text-gray-800 font-semibold">
+                                            General Goods / Non DG / Non
+                                            Perishables / Non Pharma
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="text-center pt-6">
-                                    <button type="submit" class="w-full md:w-auto text-white font-bold text-lg px-20 py-3.5 rounded-xl transition-all transform hover:scale-105" style="background: linear-gradient(93.3deg, #01a68c -3.43%, #50a454 100%);">Next</button>
+                                    <button
+                                        type="submit"
+                                        class="w-full md:w-auto text-white font-bold text-lg px-20 py-3.5 rounded-xl transition-all transform hover:scale-105"
+                                        style="
+                                            background: linear-gradient(
+                                                93.3deg,
+                                                #01a68c -3.43%,
+                                                #50a454 100%
+                                            );
+                                        "
+                                    >
+                                        Next
+                                    </button>
                                 </div>
                             </form>
                         </div>
                         <div id="step-2-form" class="hidden">
                             <form id="userForm" class="space-y-6" novalidate>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                >
                                     <div>
-                                        <label for="organization" class="block mb-2 text-sm font-bold text-gray-600">Organization Name <span class="text-red-500">*</span></label>
-                                        <input type="text" id="organization" name="organization" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading" required />
+                                        <label
+                                            for="organization"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Organization Name
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        >
+                                        <input
+                                            type="text"
+                                            id="organization"
+                                            name="organization"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                            required
+                                        />
                                     </div>
                                     <div>
-                                        <label for="yourName" class="block mb-2 text-sm font-bold text-gray-600">Your Name <span class="text-red-500">*</span></label>
-                                        <input type="text" id="yourName" name="yourName" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading" required />
+                                        <label
+                                            for="yourName"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Your Name
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        >
+                                        <input
+                                            type="text"
+                                            id="yourName"
+                                            name="yourName"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                            required
+                                        />
                                     </div>
                                     <div>
-                                        <label for="email" class="block mb-2 text-sm font-bold text-gray-600">Your Email <span class="text-red-500">*</span></label>
-                                        <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading" required />
+                                        <label
+                                            for="email"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Your Email
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        >
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                            required
+                                        />
                                     </div>
                                     <div>
-                                        <label for="phone" class="block mb-2 text-sm font-bold text-gray-600">Your Number <span class="text-red-500">*</span></label>
-                                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading" required />
+                                        <label
+                                            for="phone"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Your Number
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        >
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
+                                            required
+                                        />
                                     </div>
                                     <div class="relative">
-                                        <label for="productType" class="block mb-2 text-sm font-bold text-gray-600">Product Type <span class="text-red-500">*</span></label>
-                                        <select id="productType" name="productType" class="hidden" required>
+                                        <label
+                                            for="productType"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >Product Type
+                                            <span class="text-red-500"
+                                                >*</span
+                                            ></label
+                                        >
+                                        <select
+                                            id="productType"
+                                            name="productType"
+                                            class="hidden"
+                                            required
+                                        >
                                             <option value=""></option>
                                             <option>apparel</option>
-                                            <option>Automobile Spare Parts</option>
+                                            <option>
+                                                Automobile Spare Parts
+                                            </option>
                                             <option>Computer Hardware</option>
-                                            <option>Consumer Electronics</option>
-                                            <option>Electronic Components</option>
+                                            <option>
+                                                Consumer Electronics
+                                            </option>
+                                            <option>
+                                                Electronic Components
+                                            </option>
                                             <option>Fabrics/Textiles</option>
                                             <option>Home Appliances</option>
                                             <option>Machinery Parts</option>
                                             <option>Others</option>
                                         </select>
-                                        <button id="productTypeButton" data-dropdown-toggle="productTypeDropdown" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center" type="button">
-                                            <span id="productTypeButtonText">Select Product Type</span>
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        <button
+                                            id="productTypeButton"
+                                            data-dropdown-toggle="productTypeDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="productTypeButtonText"
+                                                >Select Product Type</span
+                                            >
+                                            <svg
+                                                class="w-4 h-4"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
                                         </button>
-                                        <div id="productTypeDropdown" class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1">
-                                            <ul class="py-2 text-sm text-gray-700">
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Apparel">Apparel</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Automobile Spare Parts">Automobile Spare Parts</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Computer Hardware">Computer Hardware</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Consumer Electronics">Consumer Electronics</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Electronic Components">Electronic Components</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Fabrics/Textiles">Fabrics/Textiles</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Home Appliances">Home Appliances</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Machinery Parts">Machinery Parts</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Others">Others</a></li>
+                                        <div
+                                            id="productTypeDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Apparel"
+                                                        >Apparel</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Automobile Spare Parts"
+                                                        >Automobile Spare
+                                                        Parts</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Computer Hardware"
+                                                        >Computer Hardware</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Consumer Electronics"
+                                                        >Consumer Electronics</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Electronic Components"
+                                                        >Electronic
+                                                        Components</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Fabrics/Textiles"
+                                                        >Fabrics/Textiles</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Home Appliances"
+                                                        >Home Appliances</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Machinery Parts"
+                                                        >Machinery Parts</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Others"
+                                                        >Others</a
+                                                    >
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="relative">
-                                        <label for="serviceTime" class="block mb-2 text-sm font-bold text-gray-600">How soon do you need our services?</label>
-                                        <select id="serviceTime" name="serviceTime" class="hidden">
+                                        <label
+                                            for="serviceTime"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >How soon do you need our
+                                            services?</label
+                                        >
+                                        <select
+                                            id="serviceTime"
+                                            name="serviceTime"
+                                            class="hidden"
+                                        >
                                             <option value=""></option>
                                             <option>Immediately</option>
                                             <option>2 weeks</option>
                                             <option>1 month</option>
                                             <option>> 1 month</option>
                                         </select>
-                                        <button id="serviceTimeButton" data-dropdown-toggle="serviceTimeDropdown" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center" type="button">
-                                            <span id="serviceTimeButtonText">Select timing</span>
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        <button
+                                            id="serviceTimeButton"
+                                            data-dropdown-toggle="serviceTimeDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="serviceTimeButtonText"
+                                                >Select timing</span
+                                            >
+                                            <svg
+                                                class="w-4 h-4"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
                                         </button>
-                                        <div id="serviceTimeDropdown" class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1">
-                                            <ul class="py-2 text-sm text-gray-700">
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="Immediately">Immediately</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="2 weeks">2 weeks</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="1 month">1 month</a></li>
-                                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100" data-value="> 1 month">> 1 month</a></li>
+                                        <div
+                                            id="serviceTimeDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="Immediately"
+                                                        >Immediately</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="2 weeks"
+                                                        >2 weeks</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="1 month"
+                                                        >1 month</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="> 1 month"
+                                                        >> 1 month</a
+                                                    >
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center pt-6 flex flex-col md:flex-row items-center justify-center gap-4">
-                                    <button type="button" id="backButton" class="w-full md:w-auto text-darkGreen bg-white border-2 border-gray-300 font-bold text-lg px-16 py-3 rounded-xl transition-all transform hover:bg-gray-100">Back</button>
-                                    <button type="submit" class="w-full md:w-auto text-white font-bold text-lg px-16 py-3.5 rounded-xl transition-all transform hover:scale-105" style="background: linear-gradient(93.3deg, #01a68c -3.43%, #50a454 100%);">Get Estimate</button>
+                                <div
+                                    class="text-center pt-6 flex flex-col md:flex-row items-center justify-center gap-4"
+                                >
+                                    <button
+                                        type="button"
+                                        id="backButton"
+                                        class="w-full md:w-auto text-darkGreen bg-white border-2 border-gray-300 font-bold text-lg px-16 py-3 rounded-xl transition-all transform hover:bg-gray-100"
+                                    >
+                                        Back
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        class="w-full md:w-auto text-white font-bold text-lg px-16 py-3.5 rounded-xl transition-all transform hover:scale-105"
+                                        style="
+                                            background: linear-gradient(
+                                                93.3deg,
+                                                #01a68c -3.43%,
+                                                #50a454 100%
+                                            );
+                                        "
+                                    >
+                                        Get Estimate
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -335,9 +824,13 @@
                 </div>
 
                 <div class="animate-fade-in-up lg:order-1">
-                    <h1 class="text-4xl lg:text-5xl font-[900] text-darkGreen capitalize leading-tight">
+                    <h1
+                        class="text-4xl lg:text-5xl font-[900] text-darkGreen capitalize leading-tight"
+                    >
                         Get an Instant Quote for
-                        <span class="text-greenheading">Warehousing Solutions.</span>
+                        <span class="text-greenheading"
+                            >Warehousing Solutions.</span
+                        >
                     </h1>
                     <p class="mt-6 text-lg text-gray-600">
                         Our services are powered by cutting-edge technology. Use
@@ -348,7 +841,6 @@
                         <!-- Notes will be injected here by JavaScript -->
                     </div>
                 </div>
-
             </div>
         </main>
 
@@ -365,18 +857,11 @@
                         Congratulations!
                     </h3>
                     <p class="text-gray-600 mb-6">
-                        You are eligible for a discount on your 1st shipment.
+                        You are eligible for upto 30% discount!
                     </p>
                     <div
                         class="text-left bg-gray-50 p-4 rounded-lg space-y-2 border"
                     >
-                        <p>
-                            <strong>Packing Type:</strong>
-                            <span
-                                id="popupPacking"
-                                class="font-semibold float-right"
-                            ></span>
-                        </p>
                         <p>
                             <strong>Container Type:</strong>
                             <span
@@ -384,13 +869,15 @@
                                 class="font-semibold float-right"
                             ></span>
                         </p>
+
                         <p>
-                            <strong>Number of Units:</strong>
+                            <strong>No. of Containers/Month:</strong>
                             <span
-                                id="popupUnits"
+                                id="popupNumContainers"
                                 class="font-semibold float-right"
                             ></span>
                         </p>
+
                         <p>
                             <strong>Approx. CBM:</strong>
                             <span
@@ -398,6 +885,7 @@
                                 class="font-semibold float-right"
                             ></span>
                         </p>
+
                         <hr class="my-2" />
                         <p>
                             <strong>Est. Charge (15 Days):</strong>
@@ -417,7 +905,7 @@
                     <p
                         class="text-yellow-700 bg-yellow-100 text-xs mt-4 p-2 rounded-md"
                     >
-                        A copy of this quotation will be sent to your email.
+                        A copy of this quote has been sent to your email.
                     </p>
                     <div class="mt-8">
                         <button
@@ -428,6 +916,7 @@
                         </button>
                     </div>
                 </div>
+
                 <div id="popup-status-view" class="hidden text-center">
                     <div
                         id="spinner-icon"
@@ -542,10 +1031,10 @@
                     });
                 }
                 setupCustomDropdown(
-                    "typeCargoButton",
-                    "typeCargoDropdown",
-                    "typeCargo",
-                    "typeCargoButtonText"
+                    "numContainersButton",
+                    "numContainersDropdown",
+                    "numContainers",
+                    "numContainersButtonText"
                 );
                 setupCustomDropdown(
                     "containerTypeButton",
@@ -576,9 +1065,12 @@
                 const mobileStepText =
                     document.getElementById("mobile-step-text");
                 const shipmentForm = document.getElementById("shipmentForm");
-                const typeCargo = document.getElementById("typeCargo");
-                const units = document.getElementById("units");
+                // const typeCargo = document.getElementById("typeCargo");
+                // const units = document.getElementById("units");
                 const containerType = document.getElementById("containerType");
+                const numContainers = document.getElementById("numContainers"); // ADD
+                const singleContainerCBM =
+                    document.getElementById("singleContainerCBM");
                 const approxCBM = document.getElementById("approxCBM");
                 const userForm = document.getElementById("userForm");
                 const estimatePopup = document.getElementById("estimate-popup");
@@ -590,7 +1082,7 @@
 
                 const notes = {
                     step1: `<div class="notes-box animate-fade-in-up"><p class="font-bold text-lg text-darkGreen mb-2">Important Notes:</p><ul class="list-disc ml-5 text-sm text-gray-700 space-y-2"><li>A minimum storage period of 15 days is applicable.</li><li>Handling charges for Loading/Unloading are included in the price.</li><li>Services include Inventory Control via Cargowise WMS and Tier 1 Business Insights via Microsoft Power BI.</li></ul></div>`,
-                    step2: `<div class="notes-box animate-fade-in-up"><p class="font-bold text-lg text-darkGreen mb-2">Disclaimer:</p><ul class="list-disc ml-5 text-sm text-gray-700 space-y-2"><li>We adhere to a strict code of confidentiality; all information shared will not be disclosed.</li><li>Our services are available exclusively for registered businesses.</li><li>Please double-check your contact details before submitting to ensure accuracy.</li></ul></div>`,
+                    step2: `<div class="notes-box animate-fade-in-up"><p class="font-bold text-lg text-darkGreen mb-2">Disclaimer:</p><ul class="list-disc ml-5 text-sm text-gray-700 space-y-2"><li>We adhere to a strict code of confidentiality; all information shared will not be disclosed.</li><li>Please double-check your contact details before submitting to ensure accuracy.</li></ul></div>`,
                 };
                 function updateNotes(step) {
                     if (notesContainer) notesContainer.innerHTML = notes[step];
@@ -622,32 +1114,53 @@
                 }
 
                 function calculateAndDisplayCBM() {
-                    if (
-                        units.value &&
-                        parseInt(units.value, 10) > 0 &&
-                        typeCargo.value
-                    ) {
-                        const unitCount = parseInt(units.value, 10);
-                        let cbm = 0;
-                        if (typeCargo.value === "pallet") {
-                            cbm = Math.max(unitCount, 5);
-                        } else if (typeCargo.value === "carton") {
-                            cbm = Math.max(Math.ceil(unitCount / 75) * 5, 5);
-                        }
-                        approxCBM.value =
-                            cbm > 0 ? cbm.toFixed(2) + " CBM" : "";
+                    const selectedContainerType = containerType.value;
+                    const numberOfContainers = parseInt(
+                        numContainers.value,
+                        10
+                    );
+                    const singleContainerCBM =
+                        document.getElementById("singleContainerCBM");
+
+                    // 1. අලුත් field එක update කරන කොටස
+                    if (selectedContainerType === "40") {
+                        singleContainerCBM.value = "Approx. 60 CBM";
+                    } else if (selectedContainerType === "20") {
+                        singleContainerCBM.value = "Approx. 30 CBM";
                     } else {
-                        approxCBM.value = "Calculated after entering units";
+                        singleContainerCBM.value = "Select container type";
+                    }
+
+                    if (selectedContainerType && numberOfContainers > 0) {
+                        let baseCBM = 0;
+                        if (selectedContainerType === "40") {
+                            baseCBM = 60;
+                        } else if (selectedContainerType === "20") {
+                            baseCBM = 30;
+                        }
+
+                        const totalCBM = baseCBM * numberOfContainers;
+                        approxCBM.value = totalCBM.toFixed(2) + " CBM";
+                    } else {
+                        approxCBM.value = "Calculated automatically";
                     }
                 }
 
-                if (typeCargo)
-                    typeCargo.addEventListener(
+                if (containerType)
+                    containerType.addEventListener(
                         "change",
                         calculateAndDisplayCBM
                     );
-                if (units)
-                    units.addEventListener("input", calculateAndDisplayCBM);
+                if (numContainers)
+                    numContainers.addEventListener(
+                        "input",
+                        calculateAndDisplayCBM
+                    ); // Use input for broader compatibility
+                if (numContainers)
+                    numContainers.addEventListener(
+                        "change",
+                        calculateAndDisplayCBM
+                    );
 
                 if (shipmentForm)
                     shipmentForm.addEventListener("submit", (e) => {
@@ -657,10 +1170,11 @@
                             return;
                         }
 
+                        // UPDATE the data saved to localStorage
                         const shipmentData = {
-                            packing_type: typeCargo.value,
                             container_type: containerType.value,
-                            units: parseInt(units.value, 10),
+                            num_containers: parseInt(numContainers.value, 10),
+                            cbm: approxCBM.value.replace(" CBM", ""), // Also save calculated CBM
                         };
                         localStorage.setItem(
                             "shipmentData",
@@ -764,10 +1278,8 @@
                                     name: dbEstimateResult.user_name,
                                     organization:
                                         dbEstimateResult.organization_name,
-                                    packingType: dbEstimateResult.packing_type,
                                     containerType:
                                         dbEstimateResult.container_type,
-                                    numberOfUnits: dbEstimateResult.units,
                                     calculatedCBM: dbEstimateResult.cbm,
                                     cost15Days: dbEstimateResult.price_15_days,
                                     cost30Days: dbEstimateResult.price_30_days,
@@ -800,17 +1312,13 @@
                     const containerNames = {
                         40: '40" Container',
                         20: '20" Container',
-                        LCL: "LCL",
                     };
-                    document.getElementById("popupPacking").innerText =
-                        estimate.packing_type
-                            ? estimate.packing_type.charAt(0).toUpperCase() +
-                              estimate.packing_type.slice(1)
-                            : "-";
+
                     document.getElementById("popupContainer").innerText =
                         containerNames[estimate.container_type] || "-";
-                    document.getElementById("popupUnits").innerText =
-                        estimate.units || "-";
+                    document.getElementById("popupNumContainers").innerText =
+                        estimate.num_containers || "-";
+
                     document.getElementById("popupCBM").innerText = estimate.cbm
                         ? parseFloat(estimate.cbm).toFixed(2) + " CBM"
                         : "-";
@@ -818,6 +1326,7 @@
                         estimate.price_15_days?.toLocaleString() || "0";
                     document.getElementById("popup30").innerText =
                         estimate.price_30_days?.toLocaleString() || "0";
+
                     setTimeout(() => {
                         document.getElementById(
                             "popup-status-view"
