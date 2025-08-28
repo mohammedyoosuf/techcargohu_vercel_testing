@@ -69,10 +69,10 @@
                 <tr>
                     <th colspan="2" style="padding-top: 20px;">Estimated Charges</th>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>Est. Charge for 15 Days</td>
                     <td class="highlight">Rs. {{ number_format($data['cost15Days'], 2) }}</td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td>Est. Charge for 30 Days</td>
                     <td class="highlight">Rs. {{ number_format($data['cost30Days'], 2) }}</td>
