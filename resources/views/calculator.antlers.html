@@ -1246,7 +1246,7 @@
 
                         dbEstimateResult = dbResult.estimate;
 
-                        await fetch("/api/send-quotation", {
+                        const emailResponse = await fetch("/api/send-quotation", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -1270,6 +1270,13 @@
                                 },
                             }),
                         });
+                        
+                        if (!emailResponse.ok) {
+                            const emailErrorResult = await emailResponse.json();
+                            throw new Error(
+                                emailErrorResult.message || "Failed to send the quotation email."
+                            );
+                        }
 
                         spinnerIcon.style.display = "none";
                         successIcon.style.display = "flex";
@@ -1304,8 +1311,8 @@
                     document.getElementById("popupCBM").innerText = estimate.cbm
                         ? parseFloat(estimate.cbm).toFixed(2) + " CBM"
                         : "-";
-                    document.getElementById("popup15").innerText =
-                        estimate.price_15_days?.toLocaleString() || "0";
+                    // document.getElementById("popup15").innerText =
+                    //     estimate.price_15_days?.toLocaleString() || "0";
                     document.getElementById("popup30").innerText =
                         estimate.price_30_days?.toLocaleString() || "0";
 
