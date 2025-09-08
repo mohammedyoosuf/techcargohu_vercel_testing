@@ -7,7 +7,12 @@
     <style>
         body { margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; -webkit-font-smoothing: antialiased; }
         .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #01A68C; }
-        .header { background-color: #0D3832; padding: 20px; text-align: center; }
+        .header { 
+            background-color: #ffffff;
+            padding: 20px; 
+            text-align: center; 
+            border-bottom: 1px solid #eeeeee;
+        }
         .header img { max-width: 150px; }
         .content { padding: 30px; color: #555555; line-height: 1.6; font-size: 16px; }
         .content h1 { color: #0D3832; font-size: 22px; margin-top: 0; margin-bottom: 20px; }
@@ -24,7 +29,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://www.techcargohub.com/assets/images/tchLogo.png" alt="Tech Cargo Hub Logo">
+            <img src="https://www.techcargohub.com/assets/images/Logo-1.png" alt="Tech Cargo Hub Logo">
         </div>
         <div class="content">
             <h1>Welcome to Tech Cargo Hub!!</h1>
