@@ -13,7 +13,7 @@
             text-align: center; 
             border-bottom: 5px solid #01A68C;
         }
-        .header img { max-width: 200px; }
+        .header img { max-width: 300px; }
         .content { padding: 30px; color: #555555; line-height: 1.6; font-size: 16px; }
         .content h1 { color: #0D3832; font-size: 22px; margin-top: 0; margin-bottom: 20px; }
         .content p { margin: 0 0 15px; }
