@@ -11,7 +11,7 @@
             background-color: #ffffff;
             padding: 20px; 
             text-align: center; 
-            border-bottom: 1px solid #eeeeee;
+            border-bottom: 5px solid #01A68C;
         }
         .header img { max-width: 200px; }
         .content { padding: 30px; color: #555555; line-height: 1.6; font-size: 16px; }
