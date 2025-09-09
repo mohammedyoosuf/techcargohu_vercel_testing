@@ -13,7 +13,7 @@
             text-align: center; 
             border-bottom: 1px solid #eeeeee;
         }
-        .header img { max-width: 150px; }
+        .header img { max-width: 200px; }
         .content { padding: 30px; color: #555555; line-height: 1.6; font-size: 16px; }
         .content h1 { color: #0D3832; font-size: 22px; margin-top: 0; margin-bottom: 20px; }
         .content p { margin: 0 0 15px; }
@@ -29,7 +29,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://www.techcargohub.com/assets/images/Logo-1.png" alt="Tech Cargo Hub Logo">
+            <img src="https://www.techcargohub.com/assets/images/second-logo.png" alt="Tech Cargo Hub Logo">
         </div>
         <div class="content">
             <h1>Welcome to Tech Cargo Hub!!</h1>
