@@ -9,18 +9,17 @@ class Estimate extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'packing_type',
-        'container_type',
-        'units',
-        'cbm',
-        'price_15_days',
-        'price_30_days',
-        'organization_name',
-        'user_name',
-        'email',
-        'phone',
-        'product_type',
-        'service_time',
-    ];
+protected $fillable = [
+    'container_type',
+    'num_containers',
+    'cbm',
+    'price_15_days',
+    'price_30_days',
+    'organization_name',
+    'user_name',
+    'email',
+    'phone',
+    'product_type',
+    'service_time',
+];
 }

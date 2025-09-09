@@ -202,28 +202,8 @@
             <div
                 class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-5"
             >
-                <div class="animate-fade-in-up">
-                    <h1
-                        class="text-4xl lg:text-5xl font-[900] text-darkGreen capitalize leading-tight"
-                    >
-                        Get an Instant Quote for
-                        <span class="text-greenheading"
-                            >Warehousing Solutions.</span
-                        >
-                    </h1>
-                    <p class="mt-6 text-lg text-gray-600">
-                        Our services are powered by cutting-edge technology. Use
-                        our calculator to get a quick estimate and plan your
-                        logistics with confidence.
-                    </p>
-
-                    <div id="important-notes-container" class="mt-8">
-                        <!-- Notes will be injected here by JavaScript -->
-                    </div>
-                </div>
-
                 <div
-                    class="w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200/50 animate-fade-in-up"
+                    class="w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200/50 animate-fade-in-up lg:order-2"
                     style="animation-delay: 0.2s"
                 >
                     <div class="p-4 sm:p-6 border-b border-gray-200">
@@ -291,81 +271,11 @@
                                 >
                                     <div class="relative">
                                         <label
-                                            for="typeCargo"
-                                            class="block mb-2 text-sm font-bold text-gray-600"
-                                            >Packing Type</label
-                                        ><select
-                                            required
-                                            id="typeCargo"
-                                            name="typeCargo"
-                                            class="hidden"
-                                        >
-                                            <option
-                                                value=""
-                                                disabled
-                                                selected
-                                            ></option>
-                                            <option value="pallet">
-                                                Pallet
-                                            </option>
-                                            <option value="carton">
-                                                Carton
-                                            </option></select
-                                        ><button
-                                            id="typeCargoButton"
-                                            data-dropdown-toggle="typeCargoDropdown"
-                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
-                                            type="button"
-                                        >
-                                            <span id="typeCargoButtonText"
-                                                >Select a packing type</span
-                                            ><svg
-                                                class="w-4 h-4"
-                                                aria-hidden="true"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M19 9l-7 7-7-7"
-                                                ></path>
-                                            </svg>
-                                        </button>
-                                        <div
-                                            id="typeCargoDropdown"
-                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
-                                        >
-                                            <ul
-                                                class="py-2 text-sm text-gray-700"
-                                            >
-                                                <li>
-                                                    <a
-                                                        href="#"
-                                                        class="block px-4 py-2 hover:bg-gray-100"
-                                                        data-value="pallet"
-                                                        >Pallet</a
-                                                    >
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        href="#"
-                                                        class="block px-4 py-2 hover:bg-gray-100"
-                                                        data-value="carton"
-                                                        >Carton</a
-                                                    >
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="relative">
-                                        <label
                                             for="containerType"
                                             class="block mb-2 text-sm font-bold text-gray-600"
                                             >Container Type</label
-                                        ><select
+                                        >
+                                        <select
                                             required
                                             id="containerType"
                                             name="containerType"
@@ -377,15 +287,13 @@
                                                 selected
                                             ></option>
                                             <option value="40">
-                                                40" Container
+                                                40 Footer
                                             </option>
                                             <option value="20">
-                                                20" Container
+                                                20 Footer
                                             </option>
-                                            <option value="LCL">
-                                                LCL
-                                            </option></select
-                                        ><button
+                                        </select>
+                                        <button
                                             id="containerTypeButton"
                                             data-dropdown-toggle="containerTypeDropdown"
                                             class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
@@ -393,7 +301,8 @@
                                         >
                                             <span id="containerTypeButtonText"
                                                 >Select a container type</span
-                                            ><svg
+                                            >
+                                            <svg
                                                 class="w-4 h-4"
                                                 aria-hidden="true"
                                                 fill="none"
@@ -420,7 +329,8 @@
                                                         href="#"
                                                         class="block px-4 py-2 hover:bg-gray-100"
                                                         data-value="40"
-                                                        >40" Container</a
+                                                        title="Approx. 60 CBM"
+                                                        >40 Footer</a
                                                     >
                                                 </li>
                                                 <li>
@@ -428,47 +338,124 @@
                                                         href="#"
                                                         class="block px-4 py-2 hover:bg-gray-100"
                                                         data-value="20"
-                                                        >20" Container</a
+                                                        title="Approx. 30 CBM"
+                                                        >20 Footer</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative">
+                                        <label
+                                            for="numContainers"
+                                            class="block mb-2 text-sm font-bold text-gray-600"
+                                            >No. of containers/month</label
+                                        >
+                                        <select
+                                            required
+                                            id="numContainers"
+                                            name="numContainers"
+                                            class="hidden"
+                                        >
+                                            <option
+                                                value=""
+                                                disabled
+                                                selected
+                                            ></option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                        <button
+                                            id="numContainersButton"
+                                            data-dropdown-toggle="numContainersDropdown"
+                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
+                                            type="button"
+                                        >
+                                            <span id="numContainersButtonText"
+                                                >Select number of
+                                                containers</span
+                                            >
+                                            <svg
+                                                class="w-4 h-4"
+                                                aria-hidden="true"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <div
+                                            id="numContainersDropdown"
+                                            class="hidden z-10 bg-white rounded-lg shadow w-full border mt-1"
+                                        >
+                                            <ul
+                                                class="py-2 text-sm text-gray-700"
+                                            >
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="1"
+                                                        >1</a
                                                     >
                                                 </li>
                                                 <li>
                                                     <a
                                                         href="#"
                                                         class="block px-4 py-2 hover:bg-gray-100"
-                                                        data-value="LCL"
-                                                        >LCL</a
+                                                        data-value="2"
+                                                        >2</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="3"
+                                                        >3</a
+                                                    >
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="#"
+                                                        class="block px-4 py-2 hover:bg-gray-100"
+                                                        data-value="4"
+                                                        >4</a
                                                     >
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div>
-                                        <label
-                                            for="units"
-                                            class="block mb-2 text-sm font-bold text-gray-600"
-                                            >Number of Units</label
-                                        ><input
-                                            required
-                                            type="number"
-                                            id="units"
-                                            name="units"
-                                            placeholder="e.g., 100"
-                                            class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-greenheading"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            for="approxCBM"
-                                            class="block mb-2 text-sm font-bold text-gray-600"
-                                            >Approximate CBM</label
-                                        ><input
-                                            readonly
-                                            type="text"
-                                            id="approxCBM"
-                                            name="approxCBM"
-                                            placeholder="Calculated after entering units"
-                                            class="w-full px-4 py-3 bg-gray-200 border border-gray-300 rounded-xl cursor-not-allowed"
-                                        />
+
+                                    <div
+                                        class="md:col-span-2 flex justify-center"
+                                    >
+                                        <div
+                                            class="w-full md:w-1/2 text-center"
+                                        >
+                                            <label
+                                                for="approxCBM"
+                                                class="block mb-2 text-sm font-bold text-gray-600"
+                                                >Total Approximate CBM</label
+                                            >
+                                            <input
+                                                readonly
+                                                type="text"
+                                                id="approxCBM"
+                                                name="approxCBM"
+                                                placeholder="Calculated automatically"
+                                                class="w-full px-4 py-3 bg-gray-200 border border-gray-300 rounded-xl cursor-not-allowed text-center"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="text-center pt-4">
@@ -515,7 +502,8 @@
                                             <span class="text-red-500"
                                                 >*</span
                                             ></label
-                                        ><input
+                                        >
+                                        <input
                                             type="text"
                                             id="organization"
                                             name="organization"
@@ -531,7 +519,8 @@
                                             <span class="text-red-500"
                                                 >*</span
                                             ></label
-                                        ><input
+                                        >
+                                        <input
                                             type="text"
                                             id="yourName"
                                             name="yourName"
@@ -547,7 +536,8 @@
                                             <span class="text-red-500"
                                                 >*</span
                                             ></label
-                                        ><input
+                                        >
+                                        <input
                                             type="email"
                                             id="email"
                                             name="email"
@@ -563,7 +553,8 @@
                                             <span class="text-red-500"
                                                 >*</span
                                             ></label
-                                        ><input
+                                        >
+                                        <input
                                             type="tel"
                                             id="phone"
                                             name="phone"
@@ -579,7 +570,8 @@
                                             <span class="text-red-500"
                                                 >*</span
                                             ></label
-                                        ><select
+                                        >
+                                        <select
                                             id="productType"
                                             name="productType"
                                             class="hidden"
@@ -600,8 +592,9 @@
                                             <option>Fabrics/Textiles</option>
                                             <option>Home Appliances</option>
                                             <option>Machinery Parts</option>
-                                            <option>Others</option></select
-                                        ><button
+                                            <option>Others</option>
+                                        </select>
+                                        <button
                                             id="productTypeButton"
                                             data-dropdown-toggle="productTypeDropdown"
                                             class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
@@ -609,7 +602,8 @@
                                         >
                                             <span id="productTypeButtonText"
                                                 >Select Product Type</span
-                                            ><svg
+                                            >
+                                            <svg
                                                 class="w-4 h-4"
                                                 fill="none"
                                                 stroke="currentColor"
@@ -713,7 +707,8 @@
                                             class="block mb-2 text-sm font-bold text-gray-600"
                                             >How soon do you need our
                                             services?</label
-                                        ><select
+                                        >
+                                        <select
                                             id="serviceTime"
                                             name="serviceTime"
                                             class="hidden"
@@ -722,8 +717,9 @@
                                             <option>Immediately</option>
                                             <option>2 weeks</option>
                                             <option>1 month</option>
-                                            <option>> 1 month</option></select
-                                        ><button
+                                            <option>> 1 month</option>
+                                        </select>
+                                        <button
                                             id="serviceTimeButton"
                                             data-dropdown-toggle="serviceTimeDropdown"
                                             class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-left text-gray-800 focus:ring-2 focus:ring-greenheading flex justify-between items-center"
@@ -731,7 +727,8 @@
                                         >
                                             <span id="serviceTimeButtonText"
                                                 >Select timing</span
-                                            ><svg
+                                            >
+                                            <svg
                                                 class="w-4 h-4"
                                                 fill="none"
                                                 stroke="currentColor"
@@ -816,6 +813,25 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="animate-fade-in-up lg:order-1">
+                    <h1
+                        class="text-4xl lg:text-5xl font-[900] text-darkGreen capitalize leading-tight"
+                    >
+                        Get an Instant Quote for
+                        <span class="text-greenheading"
+                            >Warehousing Solutions.</span
+                        >
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-600">
+                        Our services are powered by cutting-edge technology. Use
+                        our calculator to get a quick estimate and plan your
+                        logistics with confidence.
+                    </p>
+                    <div id="important-notes-container" class="mt-8">
+                        <!-- Notes will be injected here by JavaScript -->
+                    </div>
+                </div>
             </div>
         </main>
 
@@ -829,21 +845,14 @@
             >
                 <div id="popup-content-view">
                     <h3 class="text-2xl font-extrabold text-greenheading mb-2">
-                        Congratulations!
+                        Congratulations!!
                     </h3>
                     <p class="text-gray-600 mb-6">
-                        You are eligible for a discount on your 1st shipment.
+                        You are eligible for upto 30% discount!
                     </p>
                     <div
                         class="text-left bg-gray-50 p-4 rounded-lg space-y-2 border"
                     >
-                        <p>
-                            <strong>Packing Type:</strong>
-                            <span
-                                id="popupPacking"
-                                class="font-semibold float-right"
-                            ></span>
-                        </p>
                         <p>
                             <strong>Container Type:</strong>
                             <span
@@ -851,13 +860,15 @@
                                 class="font-semibold float-right"
                             ></span>
                         </p>
+
                         <p>
-                            <strong>Number of Units:</strong>
+                            <strong>No. of Containers/Month:</strong>
                             <span
-                                id="popupUnits"
+                                id="popupNumContainers"
                                 class="font-semibold float-right"
                             ></span>
                         </p>
+
                         <p>
                             <strong>Approx. CBM:</strong>
                             <span
@@ -865,14 +876,15 @@
                                 class="font-semibold float-right"
                             ></span>
                         </p>
+
                         <hr class="my-2" />
-                        <p>
+                        <!-- <p>
                             <strong>Est. Charge (15 Days):</strong>
                             <span
                                 class="font-bold text-lg text-greenheading float-right"
                                 >Rs. <span id="popup15"></span
                             ></span>
-                        </p>
+                        </p> -->
                         <p>
                             <strong>Est. Charge (30 Days):</strong>
                             <span
@@ -882,9 +894,9 @@
                         </p>
                     </div>
                     <p
-                        class="text-yellow-700 bg-yellow-100 text-xs mt-4 p-2 rounded-md"
+                        class="text-green-700 bg-green-100 text-xs mt-4 p-2 rounded-md"
                     >
-                        A copy of this quotation will be sent to your email.
+                        A copy of this quote has been sent to your email.
                     </p>
                     <div class="mt-8">
                         <button
@@ -895,6 +907,7 @@
                         </button>
                     </div>
                 </div>
+
                 <div id="popup-status-view" class="hidden text-center">
                     <div
                         id="spinner-icon"
@@ -982,8 +995,15 @@
                     const dropdownEl = document.getElementById(dropdownId);
                     const hiddenSelect =
                         document.getElementById(hiddenSelectId);
-                    const options = dropdownEl.querySelectorAll("a");
+                    if (!button || !dropdownEl || !hiddenSelect) return;
+                    if (typeof Dropdown === "undefined") {
+                        console.error(
+                            "Flowbite's Dropdown component is not loaded."
+                        );
+                        return;
+                    }
                     const dropdownInstance = new Dropdown(dropdownEl, button);
+                    const options = dropdownEl.querySelectorAll("a");
                     options.forEach((option) => {
                         option.addEventListener("click", (e) => {
                             e.preventDefault();
@@ -991,7 +1011,8 @@
                                 option.getAttribute("data-value");
                             const selectedText = option.textContent;
                             hiddenSelect.value = selectedValue;
-                            buttonText.textContent = selectedText;
+                            if (buttonText)
+                                buttonText.textContent = selectedText;
                             const event = new Event("change", {
                                 bubbles: true,
                             });
@@ -1000,12 +1021,11 @@
                         });
                     });
                 }
-
                 setupCustomDropdown(
-                    "typeCargoButton",
-                    "typeCargoDropdown",
-                    "typeCargo",
-                    "typeCargoButtonText"
+                    "numContainersButton",
+                    "numContainersDropdown",
+                    "numContainers",
+                    "numContainersButtonText"
                 );
                 setupCustomDropdown(
                     "containerTypeButton",
@@ -1036,9 +1056,12 @@
                 const mobileStepText =
                     document.getElementById("mobile-step-text");
                 const shipmentForm = document.getElementById("shipmentForm");
-                const typeCargo = document.getElementById("typeCargo");
-                const units = document.getElementById("units");
+                // const typeCargo = document.getElementById("typeCargo");
+                // const units = document.getElementById("units");
                 const containerType = document.getElementById("containerType");
+                const numContainers = document.getElementById("numContainers"); // ADD
+                const singleContainerCBM =
+                    document.getElementById("singleContainerCBM");
                 const approxCBM = document.getElementById("approxCBM");
                 const userForm = document.getElementById("userForm");
                 const estimatePopup = document.getElementById("estimate-popup");
@@ -1049,204 +1072,181 @@
                 const stepConnector = document.getElementById("step-connector");
 
                 const notes = {
-                    step1: `
-                    <div class="notes-box animate-fade-in-up">
-                        <p class="font-bold text-lg text-darkGreen mb-2">Important Notes:</p>
-                        <ul class="list-disc ml-5 text-sm text-gray-700 space-y-2">
-                            <li>A minimum storage period of 15 days is applicable.</li>
-                            <li>Handling charges for Loading/Unloading are included in the price.</li>
-                            <li>Services include Inventory Control via Cargowise WMS and Tier 1 Business Insights via Microsoft Power BI.</li>
-                        </ul>
-                    </div>`,
-                    step2: `
-                    <div class="notes-box animate-fade-in-up">
-                        <p class="font-bold text-lg text-darkGreen mb-2">Disclaimer:</p>
-                        <ul class="list-disc ml-5 text-sm text-gray-700 space-y-2">
-                            <li>We adhere to a strict code of confidentiality; all information shared will not be disclosed.</li>
-                            <li>Our services are available exclusively for registered businesses.</li>
-                            <li>Please double-check your contact details before submitting to ensure accuracy.</li>
-                        </ul>
-                    </div>`,
+                    step1: `<div class="notes-box animate-fade-in-up"><p class="font-bold text-lg text-darkGreen mb-2">Important Notes:</p><ul class="list-disc ml-5 text-sm text-gray-700 space-y-2"><li>A minimum storage period of 15 days is applicable.</li><li>Handling charges for Loading/Unloading are included in the price.</li><li>Services include Inventory Control via Cargowise WMS and Tier 1 Business Insights via Microsoft Power BI.</li></ul></div>`,
+                    step2: `<div class="notes-box animate-fade-in-up"><p class="font-bold text-lg text-darkGreen mb-2">Disclaimer:</p><ul class="list-disc ml-5 text-sm text-gray-700 space-y-2"><li>We adhere to a strict code of confidentiality; all information shared will not be disclosed.</li><li>Please double-check your contact details before submitting to ensure accuracy.</li></ul></div>`,
                 };
-
                 function updateNotes(step) {
-                    if (notesContainer) {
-                        notesContainer.innerHTML = notes[step];
-                    }
+                    if (notesContainer) notesContainer.innerHTML = notes[step];
                 }
-
                 function goToStep(stepNumber) {
                     if (stepNumber === 1) {
                         step1FormDiv.style.display = "block";
                         step2FormDiv.style.display = "none";
                         stepIndicator1.classList.add("active");
                         stepIndicator2.classList.remove("active");
-                        mobileStepText.textContent =
-                            "Step 1 of 2: Shipment Details";
-                        if (stepConnector) {
+                        if (mobileStepText)
+                            mobileStepText.textContent =
+                                "Step 1 of 2: Shipment Details";
+                        if (stepConnector)
                             stepConnector.style.backgroundColor = "#e5e7eb";
-                        }
                         updateNotes("step1");
                     } else if (stepNumber === 2) {
                         step1FormDiv.style.display = "none";
                         step2FormDiv.style.display = "block";
                         stepIndicator1.classList.add("active");
                         stepIndicator2.classList.add("active");
-                        mobileStepText.textContent =
-                            "Step 2 of 2: Your Information";
-                        if (stepConnector) {
+                        if (mobileStepText)
+                            mobileStepText.textContent =
+                                "Step 2 of 2: Your Information";
+                        if (stepConnector)
                             stepConnector.style.backgroundColor = "#01A68C";
-                        }
                         updateNotes("step2");
                     }
                 }
-                function getCBM() {
-                    const unitCount = parseInt(units.value, 10);
-                    if (isNaN(unitCount) || unitCount <= 0) return 0;
-                    return typeCargo.value === "pallet"
-                        ? Math.max(unitCount, 5)
-                        : Math.max(Math.ceil(unitCount / 75) * 5, 5);
-                }
-                function getHandlingFee(type) {
-                    if (type === "40") return 70000;
-                    if (type === "20") return 60000;
-                    if (type === "LCL")
-                        return typeCargo.value === "pallet" ? 7500 : 5625;
-                    return 0;
-                }
-                function updateCBMDisplay() {
-                    if (
-                        units.value &&
-                        parseInt(units.value, 10) > 0 &&
-                        typeCargo.value
-                    ) {
-                        const cbm = getCBM();
-                        approxCBM.value =
-                            cbm > 0 ? cbm.toFixed(2) + " CBM" : "";
+
+                function calculateAndDisplayCBM() {
+                    const selectedContainerType = containerType.value;
+                    const numberOfContainers = parseInt(
+                        numContainers.value,
+                        10
+                    );
+                    // singleContainerCBM field එක HTML එකෙන් ඉවත් කර ඇති නිසා, එම JS කොටසද ඉවත් කළ හැක.
+                    // const singleContainerCBM = document.getElementById("singleContainerCBM");
+
+                    if (selectedContainerType && numberOfContainers > 0) {
+                        let baseCBM = 0;
+                        if (selectedContainerType === "40") {
+                            baseCBM = 60;
+                        } else if (selectedContainerType === "20") {
+                            baseCBM = 30;
+                        }
+
+                        const totalCBM = baseCBM * numberOfContainers;
+                        approxCBM.value = totalCBM.toFixed(2) + " CBM";
                     } else {
-                        approxCBM.value = "Calculated after entering units";
+                        approxCBM.value = ""; // Clear the value to show the placeholder
                     }
                 }
 
-                typeCargo.addEventListener("change", updateCBMDisplay);
-                units.addEventListener("input", updateCBMDisplay);
-
-                shipmentForm.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    if (!shipmentForm.checkValidity()) {
-                        shipmentForm.reportValidity();
-                        return;
-                    }
-                    const cbm = getCBM();
-                    const handlingFee = getHandlingFee(containerType.value);
-                    const storageRate = 35;
-                    const estimate15 = Math.round(
-                        cbm * storageRate * 15 + handlingFee
+                if (containerType)
+                    containerType.addEventListener(
+                        "change",
+                        calculateAndDisplayCBM
                     );
-                    const estimate30 = Math.round(
-                        cbm * storageRate * 30 + handlingFee
+                if (numContainers)
+                    numContainers.addEventListener(
+                        "input",
+                        calculateAndDisplayCBM
+                    ); // Use input for broader compatibility
+                if (numContainers)
+                    numContainers.addEventListener(
+                        "change",
+                        calculateAndDisplayCBM
                     );
-                    const data = {
-                        packingType: typeCargo.value,
-                        containerType: containerType.value,
-                        numberOfUnits: parseInt(units.value, 10),
-                        calculatedCBM: cbm.toFixed(2),
-                        cost15Days: estimate15,
-                        cost30Days: estimate30,
-                    };
-                    localStorage.setItem("estimateData", JSON.stringify(data));
-                    goToStep(2);
-                });
 
-                backButton.addEventListener("click", () => {
-                    goToStep(1);
-                });
+                if (shipmentForm)
+                    shipmentForm.addEventListener("submit", (e) => {
+                        e.preventDefault();
+                        if (!shipmentForm.checkValidity()) {
+                            shipmentForm.reportValidity();
+                            return;
+                        }
 
-                userForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    if (!userForm.checkValidity()) {
-                        userForm.reportValidity();
-                        return;
-                    }
-                    showEstimatePopup();
-                });
-
-                if (closePopupButton) {
-                    closePopupButton.addEventListener("click", () => {
-                        estimatePopup.style.display = "none";
+                        // UPDATE the data saved to localStorage
+                        const shipmentData = {
+                            container_type: containerType.value,
+                            num_containers: parseInt(numContainers.value, 10),
+                            cbm: approxCBM.value.replace(" CBM", ""), // Also save calculated CBM
+                        };
+                        localStorage.setItem(
+                            "shipmentData",
+                            JSON.stringify(shipmentData)
+                        );
+                        goToStep(2);
                     });
-                }
 
-                async function showEstimatePopup() {
-                    const estimateData =
-                        JSON.parse(localStorage.getItem("estimateData")) || {};
+                if (backButton)
+                    backButton.addEventListener("click", () => {
+                        goToStep(1);
+                    });
+
+                if (userForm)
+                    userForm.addEventListener("submit", async (e) => {
+                        e.preventDefault();
+                        if (!userForm.checkValidity()) {
+                            userForm.reportValidity();
+                            return;
+                        }
+                        await handleApiSubmit();
+                    });
+
+                async function handleApiSubmit() {
+                    const shipmentData =
+                        JSON.parse(localStorage.getItem("shipmentData")) || {};
                     const userData = {
-                        organization:
+                        organization_name:
                             document.getElementById("organization").value,
-                        name: document.getElementById("yourName").value,
+                        user_name: document.getElementById("yourName").value,
                         email: document.getElementById("email").value,
                         phone: document.getElementById("phone").value,
-                        productType:
+                        product_type:
                             document.getElementById("productType").value,
-                        serviceTime:
-                            document.getElementById("serviceTime").value,
+                        service_time:
+                            document.getElementById("serviceTime").value ||
+                            "Not Specified",
                     };
-                    const fullPayload = { ...estimateData, ...userData };
 
+                    const payloadForApi = { ...shipmentData, ...userData };
                     const popupContentView =
                         document.getElementById("popup-content-view");
                     const popupStatusView =
                         document.getElementById("popup-status-view");
                     const statusMessage =
                         document.getElementById("status-message");
-
                     const spinnerIcon = document.getElementById("spinner-icon");
                     const successIcon = document.getElementById("success-icon");
                     const failureIcon = document.getElementById("failure-icon");
-
-                    const containerNames = {
-                        40: '40" Container',
-                        20: '20" Container',
-                        LCL: "LCL",
-                    };
-                    document.getElementById("popupPacking").innerText =
-                        fullPayload.packingType
-                            ? fullPayload.packingType.charAt(0).toUpperCase() +
-                              fullPayload.packingType.slice(1)
-                            : "-";
-                    document.getElementById("popupContainer").innerText =
-                        containerNames[fullPayload.containerType] || "-";
-                    document.getElementById("popupUnits").innerText =
-                        fullPayload.numberOfUnits || "-";
-                    document.getElementById("popupCBM").innerText =
-                        fullPayload.calculatedCBM
-                            ? fullPayload.calculatedCBM + " CBM"
-                            : "-";
-                    document.getElementById("popup15").innerText =
-                        fullPayload.cost15Days?.toLocaleString() || "0";
-                    document.getElementById("popup30").innerText =
-                        fullPayload.cost30Days?.toLocaleString() || "0";
+                    const csrfToken = document.querySelector(
+                        'meta[name="csrf-token"]'
+                    )
+                        ? document
+                              .querySelector('meta[name="csrf-token"]')
+                              .getAttribute("content")
+                        : "";
 
                     estimatePopup.style.display = "flex";
-
-
                     popupContentView.style.display = "none";
                     popupStatusView.style.display = "block";
-
-                    spinnerIcon.style.display = "flex"; 
+                    spinnerIcon.style.display = "flex";
                     successIcon.style.display = "none";
                     failureIcon.style.display = "none";
-                    statusMessage.textContent = "Sending your quotation...";
+                    statusMessage.textContent = "Processing your request...";
+
+                    let dbEstimateResult = null;
 
                     try {
-                        const csrfToken = document.querySelector(
-                            'meta[name="csrf-token"]'
-                        )
-                            ? document
-                                  .querySelector('meta[name="csrf-token"]')
-                                  .getAttribute("content")
-                            : "";
-                        const response = await fetch("/api/send-quotation", {
+                        const dbResponse = await fetch("/submit-estimate", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRF-TOKEN": csrfToken,
+                                Accept: "application/json",
+                            },
+                            body: JSON.stringify(payloadForApi),
+                        });
+
+                        const dbResult = await dbResponse.json();
+
+                        if (!dbResponse.ok) {
+                            throw new Error(
+                                dbResult.message ||
+                                    "Failed to save your estimate."
+                            );
+                        }
+
+                        dbEstimateResult = dbResult.estimate;
+
+                        const emailResponse = await fetch("/api/send-quotation", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -1254,33 +1254,82 @@
                                 Accept: "application/json",
                             },
                             body: JSON.stringify({
-                                email: fullPayload.email,
-                                fullPayload: fullPayload,
+                                email: userData.email,
+                                fullPayload: {
+                                    ...dbEstimateResult,
+                                    name: dbEstimateResult.user_name,
+                                    organization:
+                                        dbEstimateResult.organization_name,
+                                    containerType:
+                                        dbEstimateResult.container_type,
+                                    calculatedCBM: dbEstimateResult.cbm,
+                                    cost15Days: dbEstimateResult.price_15_days,
+                                    cost30Days: dbEstimateResult.price_30_days,
+                                    productType: dbEstimateResult.product_type,
+                                    serviceTime: dbEstimateResult.service_time,
+                                },
                             }),
                         });
-                        const result = await response.json();
-                        if (!response.ok) {
+                        
+                        if (!emailResponse.ok) {
+                            const emailErrorResult = await emailResponse.json();
                             throw new Error(
-                                result.message || "API request failed"
+                                emailErrorResult.message || "Failed to send the quotation email."
                             );
                         }
 
                         spinnerIcon.style.display = "none";
                         successIcon.style.display = "flex";
-                        statusMessage.innerHTML = `Quotation sent successfully to <br><strong>${fullPayload.email}</strong>!`;
-                    } catch (error) {
-                        console.error("Email sending failed:", error);
+                        statusMessage.innerHTML = `Your estimate is ready!`;
 
+                        showFinalEstimatePopup(dbEstimateResult);
+                    } catch (error) {
+                        console.error("❌ API Error:", error);
                         spinnerIcon.style.display = "none";
                         failureIcon.style.display = "flex";
                         statusMessage.textContent =
-                            "Failed to send quotation. Please try again.";
-                    } finally {
+                            "An error occurred. Please try again.";
+
                         setTimeout(() => {
-                            popupContentView.style.display = "block";
+                            estimatePopup.style.display = "none";
                             popupStatusView.style.display = "none";
                         }, 4000);
                     }
+                }
+
+                function showFinalEstimatePopup(estimate) {
+                    const containerNames = {
+                        40: '40" Container',
+                        20: '20" Container',
+                    };
+
+                    document.getElementById("popupContainer").innerText =
+                        containerNames[estimate.container_type] || "-";
+                    document.getElementById("popupNumContainers").innerText =
+                        estimate.num_containers || "-";
+
+                    document.getElementById("popupCBM").innerText = estimate.cbm
+                        ? parseFloat(estimate.cbm).toFixed(2) + " CBM"
+                        : "-";
+                    // document.getElementById("popup15").innerText =
+                    //     estimate.price_15_days?.toLocaleString() || "0";
+                    document.getElementById("popup30").innerText =
+                        estimate.price_30_days?.toLocaleString() || "0";
+
+                    setTimeout(() => {
+                        document.getElementById(
+                            "popup-status-view"
+                        ).style.display = "none";
+                        document.getElementById(
+                            "popup-content-view"
+                        ).style.display = "block";
+                    }, 2000);
+                }
+
+                if (closePopupButton) {
+                    closePopupButton.addEventListener("click", () => {
+                        estimatePopup.style.display = "none";
+                    });
                 }
 
                 goToStep(1);
