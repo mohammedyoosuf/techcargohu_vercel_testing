@@ -38,9 +38,9 @@ class EstimateController extends Controller
     $price_15_days = $cbm * $pricePerCBMPerDay * 15;
     $price_30_days = $cbm * $pricePerCBMPerDay * 30;
 
-
-    // 4. Save to database with new fields
-    $estimate = Estimate::create([
+        // 4. Prepare data without saving to the database
+    // The Estimate::create() call is disabled. Instead, an array is created manually.
+    $estimate = [
         'container_type'    => $validated['container_type'],
         'num_containers'    => $validated['num_containers'],
         'cbm'               => $cbm,
@@ -52,7 +52,22 @@ class EstimateController extends Controller
         'phone'             => $validated['phone'],
         'product_type'      => $validated['product_type'],
         'service_time'      => $validated['service_time'],
-    ]);
+    ];
+
+
+    // $estimate = Estimate::create([
+    //     'container_type'    => $validated['container_type'],
+    //     'num_containers'    => $validated['num_containers'],
+    //     'cbm'               => $cbm,
+    //     'price_15_days'     => $price_15_days,
+    //     'price_30_days'     => $price_30_days,
+    //     'organization_name' => $validated['organization_name'],
+    //     'user_name'         => $validated['user_name'],
+    //     'email'             => $validated['email'],
+    //     'phone'             => $validated['phone'],
+    //     'product_type'      => $validated['product_type'],
+    //     'service_time'      => $validated['service_time'],
+    // ]);
 
     // 5. Return response
     return response()->json([
