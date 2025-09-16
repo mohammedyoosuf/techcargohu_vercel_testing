@@ -1170,7 +1170,7 @@
                         goToStep(1);
                     });
 
-                if (userForm)
+if (userForm)
                     userForm.addEventListener("submit", async (e) => {
                         e.preventDefault();
                         if (!userForm.checkValidity()) {
@@ -1196,23 +1196,17 @@
                             "Not Specified",
                     };
 
-                    const payloadForApi = { ...shipmentData, ...userData };
-                    const popupContentView =
-                        document.getElementById("popup-content-view");
-                    const popupStatusView =
-                        document.getElementById("popup-status-view");
-                    const statusMessage =
-                        document.getElementById("status-message");
+                    const fullPayload = { ...shipmentData, ...userData };
+                    
+                    const popupContentView = document.getElementById("popup-content-view");
+                    const popupStatusView = document.getElementById("popup-status-view");
+                    const statusMessage = document.getElementById("status-message");
                     const spinnerIcon = document.getElementById("spinner-icon");
                     const successIcon = document.getElementById("success-icon");
                     const failureIcon = document.getElementById("failure-icon");
-                    const csrfToken = document.querySelector(
-                        'meta[name="csrf-token"]'
-                    )
-                        ? document
-                              .querySelector('meta[name="csrf-token"]')
-                              .getAttribute("content")
-                        : "";
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                        ? document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+                        : "{{ csrf_token }}"; // Antlers/Blade fallback
 
                     estimatePopup.style.display = "flex";
                     popupContentView.style.display = "none";
@@ -1222,73 +1216,36 @@
                     failureIcon.style.display = "none";
                     statusMessage.textContent = "Processing your request...";
 
-                    let dbEstimateResult = null;
-
                     try {
-                        const dbResponse = await fetch("/submit-estimate", {
+                        // Single API call to the backend for all actions
+                        const response = await fetch("/submit-estimate", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
                                 "X-CSRF-TOKEN": csrfToken,
                                 Accept: "application/json",
                             },
-                            body: JSON.stringify(payloadForApi),
+                            body: JSON.stringify(fullPayload),
                         });
 
-                        const dbResult = await dbResponse.json();
+                        const result = await response.json();
 
-                        if (!dbResponse.ok) {
-                            throw new Error(
-                                dbResult.message ||
-                                    "Failed to save your estimate."
-                            );
+                        if (!response.ok || !result.success) {
+                            throw new Error(result.message || "An unknown error occurred.");
                         }
-
-                        dbEstimateResult = dbResult.estimate;
-
-                        const emailResponse = await fetch("/api/send-quotation", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "X-CSRF-TOKEN": csrfToken,
-                                Accept: "application/json",
-                            },
-                            body: JSON.stringify({
-                                email: userData.email,
-                                fullPayload: {
-                                    ...dbEstimateResult,
-                                    name: dbEstimateResult.user_name,
-                                    organization:
-                                        dbEstimateResult.organization_name,
-                                    containerType:
-                                        dbEstimateResult.container_type,
-                                    calculatedCBM: dbEstimateResult.cbm,
-                                    cost15Days: dbEstimateResult.price_15_days,
-                                    cost30Days: dbEstimateResult.price_30_days,
-                                    productType: dbEstimateResult.product_type,
-                                    serviceTime: dbEstimateResult.service_time,
-                                },
-                            }),
-                        });
                         
-                        if (!emailResponse.ok) {
-                            const emailErrorResult = await emailResponse.json();
-                            throw new Error(
-                                emailErrorResult.message || "Failed to send the quotation email."
-                            );
-                        }
-
+                        // Backend has already sent the emails. Now, display results.
                         spinnerIcon.style.display = "none";
                         successIcon.style.display = "flex";
                         statusMessage.innerHTML = `Your estimate is ready!`;
 
-                        showFinalEstimatePopup(dbEstimateResult);
+                        showFinalEstimatePopup(result.estimate);
+
                     } catch (error) {
                         console.error("❌ API Error:", error);
                         spinnerIcon.style.display = "none";
                         failureIcon.style.display = "flex";
-                        statusMessage.textContent =
-                            "An error occurred. Please try again.";
+                        statusMessage.textContent = error.message || "An error occurred. Please try again.";
 
                         setTimeout(() => {
                             estimatePopup.style.display = "none";
@@ -1302,27 +1259,14 @@
                         40: '40" Container',
                         20: '20" Container',
                     };
-
-                    document.getElementById("popupContainer").innerText =
-                        containerNames[estimate.container_type] || "-";
-                    document.getElementById("popupNumContainers").innerText =
-                        estimate.num_containers || "-";
-
-                    document.getElementById("popupCBM").innerText = estimate.cbm
-                        ? parseFloat(estimate.cbm).toFixed(2) + " CBM"
-                        : "-";
-                    // document.getElementById("popup15").innerText =
-                    //     estimate.price_15_days?.toLocaleString() || "0";
-                    document.getElementById("popup30").innerText =
-                        estimate.price_30_days?.toLocaleString() || "0";
+                    document.getElementById("popupContainer").innerText = containerNames[estimate.container_type] || "-";
+                    document.getElementById("popupNumContainers").innerText = estimate.num_containers || "-";
+                    document.getElementById("popupCBM").innerText = estimate.cbm ? parseFloat(estimate.cbm).toFixed(2) + " CBM" : "-";
+                    document.getElementById("popup30").innerText = estimate.price_30_days?.toLocaleString() || "0";
 
                     setTimeout(() => {
-                        document.getElementById(
-                            "popup-status-view"
-                        ).style.display = "none";
-                        document.getElementById(
-                            "popup-content-view"
-                        ).style.display = "block";
+                        document.getElementById("popup-status-view").style.display = "none";
+                        document.getElementById("popup-content-view").style.display = "block";
                     }, 2000);
                 }
 
