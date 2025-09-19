@@ -22,6 +22,8 @@
         .quote-table th { background-color: #f9f9f9; color: #333333; font-weight: bold; }
         .quote-table td { color: #333; }
         .quote-table .highlight { font-weight: bold; color: #01A68C; font-size: 1.1em; }
+        .services-list { margin: 20px 0; padding-left: 20px; color: #333; }
+        .services-list li { margin-bottom: 8px; }
         .footer { background-color: #f8f8f8; padding: 20px; text-align: center; font-size: 12px; color: #888888; border-top: 1px solid #eeeeee; }
         .footer a { color: #01A68C; text-decoration: none; }
     </style>
@@ -74,15 +76,26 @@
                 <tr>
                     <th colspan="2" style="padding-top: 20px;">Estimated Charges</th>
                 </tr>
-                <!-- <tr>
-                    <td>Est. Charge for 15 Days</td>
-                    <td class="highlight">Rs. {{ number_format($data['cost15Days'], 2) }}</td>
-                </tr> -->
                 <tr>
                     <td>Est. Charge for 30 Days</td>
                     <td class="highlight">Rs. {{ number_format($data['cost30Days'], 2) }}</td>
                 </tr>
             </table>
+
+            <!-- ✅ Services Included Section -->
+            <ul class="services-list">
+                <li>Services Included in Price</li>
+                <li>Inventory Control (Cargowise WMS + Stock reports)</li>
+                <li>BI Dashboards (Microsoft Power BI)</li>
+                <li>Handling - Loading &amp; Unloading</li>
+                <li>24/7 CCTV Camera Access</li>
+                <li>Fully Insured Facility</li>
+                <li>Storage/CBM/Day</li>
+                <li>Operations &amp; Labor Charges</li>
+                <li>Customer Service (WhatsApp, Email, Calls)</li>
+            </ul>
+
+<hr>
 
             <p>Please note that this is an estimate. Our team will contact you shortly to discuss your requirements.</p>
             <p>Thank you for choosing Tech Cargo Hub!</p>
