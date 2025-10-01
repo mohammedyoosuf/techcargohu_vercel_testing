@@ -571,29 +571,18 @@
                                                 >*</span
                                             ></label
                                         >
-                                        <select
-                                            id="productType"
-                                            name="productType"
-                                            class="hidden"
-                                            required
-                                        >
-                                            <option value=""></option>
-                                            <option>apparel</option>
-                                            <option>
-                                                Automobile Spare Parts
-                                            </option>
-                                            <option>Computer Hardware</option>
-                                            <option>
-                                                Consumer Electronics
-                                            </option>
-                                            <option>
-                                                Electronic Components
-                                            </option>
-                                            <option>Fabrics/Textiles</option>
-                                            <option>Home Appliances</option>
-                                            <option>Machinery Parts</option>
-                                            <option>Others</option>
-                                        </select>
+                                        <select id="productType" name="productType" class="hidden" required>
+                                <option value=""></option>
+                                  <option value="Apparel">Apparel</option>  <!-- ✅ Matches dropdown -->
+                                  <option value="Automobile Spare Parts">Automobile Spare Parts</option>
+                                  <option value="Computer Hardware">Computer Hardware</option>
+                                  <option value="Consumer Electronics">Consumer Electronics</option>
+                                  <option value="Electronic Components">Electronic Components</option>
+                                  <option value="Fabrics/Textiles">Fabrics/Textiles</option>
+                                  <option value="Home Appliances">Home Appliances</option>
+                                  <option value="Machinery Parts">Machinery Parts</option>
+                                  <option value="Others">Others</option>
+                                </select>
                                         <button
                                             id="productTypeButton"
                                             data-dropdown-toggle="productTypeDropdown"
