@@ -31,3 +31,8 @@ use Statamic\Facades\Entry;
 Route::get('/calculator', function () {
     return view('calculator');
 });
+
+
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+});
