@@ -62,11 +62,11 @@
     <p>While using Our Service, We may ask You to provide certain personally identifiable information that can be used to contact or identify You. This may include, but is not limited to:</p>
 
     <ul>
-      <li><strong>Email address</strong></li>
-      <li><strong>First name and last name</strong></li>
-      <li><strong>Phone number</strong></li>
-      <li><strong>Address, State, Province, ZIP/Postal code, City & Country</strong></li>
-      <li><strong>Usage Data</strong></li>
+      <li><strong>Email address.</strong></li>
+      <li><strong>First name and last name.</strong></li>
+      <li><strong>Phone number.</strong></li>
+      <li><strong>Address, State, Province, ZIP/Postal code, City & Country.</strong></li>
+      <li><strong>Usage Data.</strong></li>
     </ul>
 
     <h4 style="font-size: 1.2rem; font-weight: 600; margin-top: 1rem;">Usage Data</h4>
@@ -76,9 +76,9 @@
     <p>We use Cookies and similar tracking technologies to track activity on Our Service and store certain information. These technologies include:</p>
 
     <ul>
-      <li><strong>Cookies or Browser Cookies</strong></li>
-      <li><strong>Flash Cookies</strong></li>
-      <li><strong>Web Beacons</strong></li>
+      <li><strong>Cookies or Browser Cookies.</strong></li>
+      <li><strong>Flash Cookies.</strong></li>
+      <li><strong>Web Beacons.</strong></li>
     </ul>
 
     <p>Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain when you go offline; Session Cookies are deleted when you close your browser.</p>
@@ -87,35 +87,35 @@
     <p>The Company may use Personal Data for purposes such as:</p>
 
     <ul>
-      <li><strong>To provide and maintain our Service</strong></li>
-      <li><strong>To manage Your Account</strong></li>
-      <li><strong>For the performance of a contract</strong></li>
-      <li><strong>To contact You</strong></li>
-      <li><strong>To provide You with news</strong></li>
-      <li><strong>To manage Your requests</strong></li>
-      <li><strong>For business transfers</strong></li>
-      <li><strong>For other purposes</strong></li>
+      <li><strong>To provide and maintain our Service.</strong></li>
+      <li><strong>To manage Your Account.</strong></li>
+      <li><strong>For the performance of a contract.</strong></li>
+      <li><strong>To contact You.</strong></li>
+      <li><strong>To provide You with news.</strong></li>
+      <li><strong>To manage Your requests.</strong></li>
+      <li><strong>For business transfers.</strong></li>
+      <li><strong>For other purposes.</strong></li>
     </ul>
 
     <p>We may share Your information in the following situations:</p>
 
     <ul>
-      <li><strong>With Service Providers</strong></li>
-      <li><strong>For business transfers</strong></li>
-      <li><strong>With Affiliates</strong></li>
-      <li><strong>With business partners</strong></li>
-      <li><strong>With other users</strong></li>
-      <li><strong>With Your consent</strong></li>
+      <li><strong>With Service Providers.</strong></li>
+      <li><strong>For business transfers.</strong></li>
+      <li><strong>With Affiliates.</strong></li>
+      <li><strong>With business partners.</strong></li>
+      <li><strong>With other users.</strong></li>
+      <li><strong>With Your consent.</strong></li>
     </ul>
 
     <h2 style="font-size: 1.8rem; font-weight: 600; margin-top: 2rem;">Disclosure of Your Personal Data</h2>
 
     <h3 style="font-size: 1.4rem; font-weight: 600; margin-top: 1.5rem;">Other Legal Requirements</h3>
     <ul>
-      <li><strong>Comply with a legal obligation</strong></li>
-      <li><strong>Protect and defend the rights or property of the Company</strong></li>
-      <li><strong>Prevent or investigate possible wrongdoing in connection with the Service</strong></li>
-      <li><strong>Protect against legal liability</strong></li>
+      <li><strong>Comply with a legal obligation.</strong></li>
+      <li><strong>Protect and defend the rights or property of the Company.</strong></li>
+      <li><strong>Prevent or investigate possible wrongdoing in connection with the Service.</strong></li>
+      <li><strong>Protect against legal liability.</strong></li>
     </ul>
 
   </main>
