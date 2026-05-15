@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use App\Mail\QuotationMail;
 use App\Mail\InternalNotificationMail;
+use App\Mail\WarehouseQuotationMail;
+use App\Mail\WarehouseInternalNotificationMail;
 use Throwable;
 
 class EstimateController extends Controller
@@ -97,6 +99,64 @@ class EstimateController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'An unexpected error occurred. Please try again later.',
+            ], 500);
+        }
+    }
+
+    public function storeWarehouseEstimate(Request $request)
+    {
+        $validated = $request->validate([
+            'stepOne' => 'required|array',
+            'presentCosts' => 'required|array',
+            'businessDetails' => 'required|array',
+            'result' => 'required|array',
+            'productTypeLabel' => 'required|string',
+        ]);
+
+        try {
+            $data = [
+                'stepOne' => $validated['stepOne'],
+                'presentCosts' => $validated['presentCosts'],
+                'yourName' => $validated['businessDetails']['yourName'],
+                'organizationName' => $validated['businessDetails']['organizationName'],
+                'email' => $validated['businessDetails']['email'],
+                'phone' => $validated['businessDetails']['phone'],
+                'productTypeLabel' => $validated['productTypeLabel'],
+                'result' => $validated['result'],
+            ];
+
+            // Debugging Mail Configuration
+            Log::info('Attempting to send warehouse estimate emails.', [
+                'recipient' => $data['email'],
+                'mailer' => config('mail.default'),
+                'host' => config('mail.mailers.smtp.host'),
+                'port' => config('mail.mailers.smtp.port'),
+                'username' => config('mail.mailers.smtp.username'),
+                'encryption' => config('mail.mailers.smtp.encryption'),
+                'from_address' => config('mail.from.address'),
+            ]);
+
+            // Send to customer
+            Mail::to($data['email'])->send(new WarehouseQuotationMail($data));
+
+            // Send to company
+            $ownerEmail = env('COMPANY_OWNER_EMAIL', 'wpslakshiha@gmail.com');
+            Mail::to($ownerEmail)->send(new WarehouseInternalNotificationMail($data));
+
+            // Log success
+            Log::info('Warehouse estimate emails sent for: ' . $data['email']);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Warehouse estimate processed and emails sent successfully.',
+            ]);
+
+        } catch (Throwable $e) {
+            Log::error('Warehouse estimate processing failed: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to send emails, but your result is ready.',
+                'error' => $e->getMessage()
             ], 500);
         }
     }
