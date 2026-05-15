@@ -1,7 +1,7 @@
 
 
     <!-- Include the Header Partial -->
-    {{ partial:header }}
+    
    
     <div class="flex-grow container mx-auto">
       
@@ -159,7 +159,7 @@
                     <p>No locations available.</p>
                 {{ /if }}
                                               
-                                            <img src="assets/images/story1.png" alt="story1" class="object-fill w-full md:w-64" />
+                                            <img src="/assets/images/story1.png" alt="story1" class="object-fill w-full md:w-64" />
                     </div>
                     <div class="whatmakesunique mt-5">
                         <div class="md:text-5xl text-3xl capitalize font-bold  gap-2 boldTexts text-center">
@@ -182,7 +182,7 @@
                 {{ /if }}
                                                
                                         </div>
-                    <img src="assets/images/story2.png" alt="story2" class="object-fill w-full md:w-64 " />
+                    <img src="/assets/images/story2.png" alt="story2" class="object-fill w-full md:w-64 " />
                 </div>
             </div>
     
@@ -308,19 +308,19 @@
   </div>
 
   <div class="-mt-12 w-[100svw]"
-       style="background-image: url('assets/images/floorBg.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+       style="background-image: url('/assets/images/floorBg.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
     <div class="flex justify-center items-center" id="floor0">
-      <a href="{{ground_floor_image}}" data-lightbox="floor-assets/images" data-title="Ground Floor">
+      <a href="{{ground_floor_image}}" data-lightbox="floor-/assets/images" data-title="Ground Floor">
         <img src="{{ground_floor_image}}" alt="greenArrow1" class="w-[25svw] p-5 h-auto floorImage" />
       </a>
     </div>
     <div class="hidden justify-center items-center" id="floor1">
-      <a href="{{1st_floor_image}}" data-lightbox="floor-assets/images" data-title="1st Floor">
+      <a href="{{1st_floor_image}}" data-lightbox="floor-/assets/images" data-title="1st Floor">
         <img src="{{1st_floor_image}}" alt="greenArrow2" class="w-[25svw] p-5 h-auto floorImage" />
       </a>
     </div>
     <div class="hidden justify-center items-center" id="floor2">
-      <a href="{{2nd_floor_image}}" data-lightbox="floor-assets/images" data-title="2nd Floor">
+      <a href="{{2nd_floor_image}}" data-lightbox="floor-/assets/images" data-title="2nd Floor">
         <img src="{{2nd_floor_image}}" alt="greenArrow3" class="w-[25svw] p-5 h-auto floorImage" />
       </a>
     </div>
@@ -328,7 +328,7 @@
 </div>
 
 <div class="flex lg:hidden rounded-xl"
-     style="background-image: url('assets/images/floorBg.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+     style="background-image: url('/assets/images/floorBg.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
   <div class="flex flex-col gap-5 mt-5">
     <div class="flex flex-col justify-center items-center gap-4" id="floor0-mobile">
       <h3 class="text-xl text-[#01A68C] font-[900]">Ground Floor</h3>
@@ -468,7 +468,7 @@
                     <a href="/contact" target="_blank" class="scroll-to">
         <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
             style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-            <img src="assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+            <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
             {{quote_button_text}}
         </div>
     </a>
@@ -480,7 +480,7 @@
             <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 justify-center items-center hidden z-[1000]">
                 <div class="relative bg-white rounded-lg overflow-hidden max-w-full max-h-svh">
                     <div
-                        style="background-image: url('assets/images/floorBg.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+                        style="background-image: url('/assets/images/floorBg.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
                         <button
                             class="absolute top-2 right-2 text-black border-2 rounded-full flex justify-center items-center w-5 h-5 p-3 z-50 "
                             onclick="closeModal()">X</button>
@@ -577,6 +577,6 @@
     
 
     <!-- Include the Footer Partial -->
-    {{ partial:footer }}
+    
 
 

@@ -1,3 +1,155 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Statamic</title>
+
+        <!-- Legacy Styles from Header -->
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="assets/css/owl.theme.green.min.css" />
+        <link rel="stylesheet" href="assets/css/toastr.min.css">
+        <link rel="stylesheet" href="assets/css/app-45b68f9a.css" />
+        
+        <!-- Fonts -->
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&amp;display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+        <!-- React / Vite සඳහා -->
+        <script type="module">
+            import RefreshRuntime from 'http://127.0.0.1:5173/@react-refresh'
+            RefreshRuntime.injectIntoGlobalHook(window)
+            window.$RefreshReg$ = () => {}
+            window.$RefreshSig$ = () => (type) => type
+            window.__vite_plugin_react_preamble_installed__ = true
+        </script>
+
+        <script type="module" src="http://127.0.0.1:5173/@vite/client"></script><link rel="stylesheet" href="http://127.0.0.1:5173/resources/css/tailwind.css" /><script type="module" src="http://127.0.0.1:5173/resources/js/site.js"></script>
+
+        <!-- JQuery (Legacy) -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/toastr.min.js"></script>
+
+        <!-- Meta Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '656439483891293');
+            fbq('track', 'PageView');
+        </script>
+    </head>
+    <body class="antialiased flex flex-col min-h-svh mx-auto font-['Poppins']"
+        style="background-image: url('assets/images/bg.png'); 
+               background-position: center;
+               background-repeat: no-repeat;
+               background-size: cover;
+               position: relative;">
+        
+        <nav id="navbar" class="p-4 w-full sticky top-0 z-50 bg-white/80 backdrop-blur-md">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="assets/images/tchLogo.png" alt="tch" class="logo w-20 md:w-[159px] transition-all duration-300" />
+        </a>
+        <button data-collapse-toggle="navbar-dropdown" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-dropdown" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0">
+                <li>
+                    <a href="/" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                        aria-current="page">Home</a>
+                </li>
+                <li>
+                    <a href="/about" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">About Us</a>
+                </li>
+                <li>
+                    <a href="/techsolutions" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Tech Solutions</a>
+                </li>
+                <li>
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar-1"
+                        class="flex items-center justify-between w-full py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">
+                        <a href="/servicesector" class="block hover:text-greenheading font-semibold">Service Sector</a>
+                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <div id="dropdownNavbar-1"
+                        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-48">
+                        <ul class="py-2 text-sm" aria-labelledby="dropdownLargeButton">
+                            <li class="general-cargo">
+                                <a href="/servicesector#general-cargo"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">General Cargo</a>
+                            </li>
+                            <li class="pharmaceutical">
+                                <a href="/servicesector#pharmaceutical"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">Pharmaceutical</a>
+                            </li>
+                            <li class="fcmg">
+                                <a href="/servicesector#fcmg"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">FMCG</a>
+                            </li>
+                            <li class="consumer-electronics">
+                                <a href="/servicesector#consumer-electronics"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">Consumer Electronics</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="/calculator" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Pricing Calculator</a>
+                </li>
+                <li class="gradient-border">
+                    <a href="/contact" class="block py-2 px-3 text-lg text-greenheading font-semibold text-navColor">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('#navbar-dropdown a');
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPath || (href === '/' && currentPath === '')) {
+                link.classList.remove('text-navColor');
+                link.classList.add('text-greenheading');
+            }
+        });
+
+        // Handle Service Sector dropdown
+        const serviceSectorButton = document.querySelector('#dropdownNavbarLink');
+        if (currentPath === '/servicesector') {
+            serviceSectorButton.classList.remove('text-navColor');
+            serviceSectorButton.classList.add('text-greenheading');
+        }
+    });
+</script>
+
+
 
 <style>
     .active {
@@ -37,22 +189,22 @@
 <div class="flex-grow container mx-auto">
     <!-- Banner Section -->
     <div class="md:h-[85svh] top-0 relative flex flex-col justify-center items-center rounded-[30px] mx-5"
-        style="background-image: url('{{home_page_banner_image}}'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+        style="background-image: url(''); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
         <div class="bg-[#000000c1] w-full py-10 px-10 flex flex-col justify-center items-center md:h-[85svh] rounded-[30px] opacity-1">
             <div class="text-2xl md:text-7xl text-white font-[900] capitalize text-center">
                 <h1>
-                    <span class="text-[#C4FFC6]">{{home_page_green_color_title}} </span>
-                    {{home_page_white_color_title}}
+                    <span class="text-[#C4FFC6]"> </span>
+                    
                 </h1>
             </div>
             <div class="text-white text-center md:px-20 lg:text-[20px] font-[700] py-10 gap-3 flex flex-col">
-                <p>{{home_page_banner_discription}}</p>
+                <p></p>
             </div>
             <a href="/contact" target="_blank" class="scroll-to">
                 <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
                     style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-                    <img src="/assets/images/quote.png" alt="quote" class="w-7 h-7" />
-                    {{home_page_banner_button}}
+                    <img src="assets/images/quote.png" alt="quote" class="w-7 h-7" />
+                    
                 </div>
             </a>
         </div>
@@ -62,40 +214,27 @@
     <div class="container mx-auto space-y-10 py-10 px-10">
         <div class="processsteps flex flex-col justify-center items-center min-h-svh">
             <p class="text-lightText text-center font-[400] text-lg md:leading-10">
-                {{our_clients_have_witnessed_proven_results}}
+                
             </p>
             <div class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-center">
-                <p>{{enabling_heading}} <span class="text-highlightGreen">{{business_heading}}</span></p>
+                <p> <span class="text-highlightGreen"></span></p>
                 <div class="flex flex-row text-center justify-center items-center gap-0">
-                    <p>{{to_scale_heading}} <span class="text-highlightGreen">{{faster_heading}}</span>.</p>
+                    <p> <span class="text-highlightGreen"></span>.</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center items-center py-10 md:py-20">
-                {{ if percentage_box }}
-                    {{ percentage_box }}
-                        {{ if image }}
-                            <div class="rounded-[20px] w-72 h-72"
-                                style="background-image: url('{{image}}'); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
-                                <div class="columns-1 h-72 w-72 p-5 py-10 rounded-[15px] relative cursor-pointer group bg-[#040404A1] hover:bg-darkGreen hover:opacity-90 hover:border-highlightGreen hover:border-[1px]"
-                                    style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;">
-                                    <h2 class="text-white text-5xl font-[900] pt-7 pb-3">{{title}}</h2>
-                                    <p class="text-white font-extrabold mt-auto text-xl w-32">{{discription}}</p>
-                                </div>
-                            </div>
-                        {{ /if }}
-                    {{ /percentage_box }}
-                {{ else }}
+                
                     <p>No locations available.</p>
-                {{ /if }}
+                
             </div>
 
             <div class="w-80 justify-center flex items-center">
                 <a href="/contact" target="_blank" class="scroll-to">
                     <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
                         style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-                        <img src="/assets/images/quote.png" alt="quote" class="w-7 h-7" />
-                        {{get_quote_button}}
+                        <img src="assets/images/quote.png" alt="quote" class="w-7 h-7" />
+                        
                     </div>
                 </a>
             </div>
@@ -104,44 +243,21 @@
         <!-- Solutions Section -->
         <div class="solutions flex flex-col justify-center items-center min-h-svh">
             <p class="text-lightText text-center font-[400] text-lg leading-10">
-                {{your_comprehensive_solution}}
+                
             </p>
             <h2 class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-highlightGreen">
-                {{technology_driven}}
+                
             </h2>
             <h2 class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-center">
-                {{warehousing_services}}<span class="text-highlightGreen">.</span>
+                <span class="text-highlightGreen">.</span>
             </h2>
 
             <div class="relative pt-10">
                 <div class="flex flex-col justify-center items-center md:gap-10 py-10 relative">
                     <div class="flex flex-wrap justify-center gap-10">
-                        {{ if service_card }}
-                            {{ service_card }}
-                                <div class="flex flex-col justify-start items-center md:w-72 w-full group gap-2 py-5 px-5 bg-white rounded-2xl md:h-[25rem] border-[1px] border-[#66FF6C] cursor-pointer hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
-                                    style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;">
-                                    {{ if image }}
-                                        <div class="bg-iconBg p-4 rounded-xl">
-                                            <img src="{{image}}" alt="icon" class="w-7 h-7" />
-                                        </div>
-                                    {{ /if }}
-                                    <div class="font-[550] text-xl mb-4 text-center group-hover:text-darkGreen">
-                                        {{title}}
-                                    </div>
-                                    <div class="font-[400] text-[15.5px] text-center text-[#7F7F7F] flex flex-col justify-start">
-                                        {{discription}}
-                                    </div>
-                                    <div class="flex justify-center items-center mt-auto md:w-fit w-full rounded-lg cursor-pointer text-green1 text-lg font-semibold">
-                                        <a href="/servicesector" target="_blank" class="flex justify-center items-center w-full gap-5 cursor-pointer px-10 py-4">
-                                            Learn more
-                                            <img src="/assets/images/greenarrow.png" alt="greenArrow" class="w-5 h-auto" />
-                                        </a>
-                                    </div>
-                                </div>
-                            {{ /service_card }}
-                        {{ else }}
+                        
                             <p>No locations available.</p>
-                        {{ /if }}
+                        
                     </div>
                 </div>
             </div>
@@ -150,10 +266,10 @@
         <!-- 5 Step Process Section -->
         <div class="processsteps flex flex-col justify-center items-center min-h-svh pb-10">
             <div class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-center">
-                {{5_step_process_title}}<span class="text-highlightGreen">.</span>
+                <span class="text-highlightGreen">.</span>
             </div>
             <p class="text-lightText text-center text-[18px] font-[400] md:w-7/12 mt-3">
-                {{5_step_process_discription}}
+                
             </p>
 
             <div id="step-tabs" class="my-10 w-fit flex flex-row justify-center items-center bg-white rounded-[40px] shadow-xl p-2 gap-2">
@@ -196,47 +312,47 @@
             <div class="pb-5">
                 <div class="step-content flex" id="step0">
                     <div class="flex flex-col justify-center items-center gap-10">
-                        <div class="text-xl text-heroText font-[400]">{{step1}}</div>
+                        <div class="text-xl text-heroText font-[400]"></div>
                         <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
-                            <img src="{{step1_image}}" alt="Book your space." class="object-fill" />
+                            <img src="" alt="Book your space." class="object-fill" />
                         </div>
-                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center">{{step1_title}}</div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
                     </div>
                 </div>
                 <div class="step-content hidden" id="step1">
                     <div class="flex flex-col justify-center items-center gap-10">
-                        <div class="text-xl text-heroText font-[400]">{{step2}}</div>
+                        <div class="text-xl text-heroText font-[400]"></div>
                         <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
-                            <img src="{{step2_image}}" alt="Manage and view inventory." class="object-fill" />
+                            <img src="" alt="Manage and view inventory." class="object-fill" />
                         </div>
-                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center">{{step2_title}}</div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
                     </div>
                 </div>
                 <div class="step-content hidden" id="step2">
                     <div class="flex flex-col justify-center items-center gap-10">
-                        <div class="text-xl text-heroText font-[400]">{{step3}}</div>
+                        <div class="text-xl text-heroText font-[400]"></div>
                         <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
-                            <img src="{{step3_image}}" alt="Dispatch orders." class="object-fill" />
+                            <img src="" alt="Dispatch orders." class="object-fill" />
                         </div>
-                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center">{{step3_title}}</div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
                     </div>
                 </div>
                 <div class="step-content hidden" id="step3">
                     <div class="flex flex-col justify-center items-center gap-10">
-                        <div class="text-xl text-heroText font-[400]">{{step4}}</div>
+                        <div class="text-xl text-heroText font-[400]"></div>
                         <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
-                            <img src="{{step4_image}}" alt="Track shipments in real time." class="object-fill" />
+                            <img src="" alt="Track shipments in real time." class="object-fill" />
                         </div>
-                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center">{{step4_title}}</div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
                     </div>
                 </div>
                 <div class="step-content hidden" id="step4">
                     <div class="flex flex-col justify-center items-center gap-10">
-                        <div class="text-xl text-heroText font-[400]">{{step5}}</div>
+                        <div class="text-xl text-heroText font-[400]"></div>
                         <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
-                            <img src="{{step15_image}}" alt="Leverage analytics." class="object-fill" />
+                            <img src="" alt="Leverage analytics." class="object-fill" />
                         </div>
-                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center">{{step5_title}}</div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
                     </div>
                 </div>
             </div>
@@ -244,47 +360,30 @@
             <a href="service-sector.html">
                 <div class="text-green1 font-bold border-green1 border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
                     Learn more
-                    <img src="/assets/images/greenarrow.png" alt="arrow" class="w-5" />
+                    <img src="assets/images/greenarrow.png" alt="arrow" class="w-5" />
                 </div>
             </a>
         </div>
 
         <!-- Why Choose Us Section -->
         <div class="text-3xl md:text-6xl font-extrabold capitalize boldTexts">
-            <p><span class="text-highlightGreen">{{why_choose_green_text}}</span> {{why_choose_black_text}}</p>
+            <p><span class="text-highlightGreen"></span> </p>
         </div>
 
         <div class="my-10 pb-10">
             <div class="flex lg:flex-row flex-col justify-start items-start gap-10">
                 <div class="flex-1 flex flex-col gap-5 bg-lightgreen p-4 md:p-10 rounded-[20px]">
-                    {{ accordion_items_home }}
-                        <div class="accordion-item border-b border-[#D9D9D9]">
-                            <h2>
-                                <button type="button" style="text-align: left;"
-                                    class="accordion-button flex items-center justify-between w-full p-5 font-semibold text-xl text-[#3E3E3E] bg-transparent"
-                                    data-id="{{id}}">
-                                    <span>{{ title }}</span>
-                                    <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2"
-                                        viewBox="0 0 24 24">
-                                        <path d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </button>
-                            </h2>
-                            <div class="accordion-body hidden p-5 font-semibold text-lg text-[#818181]">
-                                <p>{{ discription }}</p>
-                            </div>
-                        </div>
-                    {{ /accordion_items_home }}
+                    
                 </div>
 
                 <div class="flex-1 flex justify-center items-center w-full md:w-fit object-fill relative md:h-[57svh] lg:h-[75svh] rounded-[20px]"
-                    style="background-image: url('{{accordion_image}}'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                    style="background-image: url(''); background-position: center; background-repeat: no-repeat; background-size: cover;">
                     <div class="h-24 md:h-[85svh] top-0 relative flex flex-col justify-center items-center">
                         <a href="/contact" target="_blank" class="scroll-to" style="margin-top: 600px;">
                             <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
                                 style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-                                <img src="/assets/images/quote.png" alt="quote" class="w-7 h-7" />
-                                {{accordion_button}}
+                                <img src="assets/images/quote.png" alt="quote" class="w-7 h-7" />
+                                
                             </div>
                         </a>
                     </div>
@@ -295,10 +394,10 @@
         <!-- Tailored Solutions Section -->
         <div class="processsteps flex flex-col justify-center items-center md:min-h-svh">
             <p class="text-lightText text-center font-[400]">
-                {{who_we_serve}}
+                
             </p>
             <div class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-center gap-1">
-                {{tailored_solutions_for_key_sectors}}<span class="text-highlightGreen">.</span>
+                <span class="text-highlightGreen">.</span>
             </div>
 
             <!-- Desktop Tabs -->
@@ -327,10 +426,10 @@
                 </div>
 
                 <div class="w-full md:min-w-[80svw] flex flex-col justify-center items-center gap-10 p-2 relative bg-cover bg-no-repeat">
-                    <img src="/assets/images/Solutions1.png" alt="solutions" class="w-full  object-cover rounded-[40px]" id="/assets/imagessolutions0" />
-                    <img src="/assets/images/Solutions2.png" alt="solutions" class="w-full  object-cover rounded-[40px] hidden" id="/assets/imagessolutions1" />
-                    <img src="/assets/images/Solutions3.png" alt="solutions" class="w-full object-cover rounded-[40px] hidden" id="/assets/imagessolutions2" />
-                    <img src="/assets/images/Solutions4.png" alt="solutions" class="w-full object-cover rounded-[40px] hidden" id="/assets/imagessolutions3"  />
+                    <img src="assets/images/Solutions1.png" alt="solutions" class="w-full  object-cover rounded-[40px]" id="assets/imagessolutions0" />
+                    <img src="assets/images/Solutions2.png" alt="solutions" class="w-full  object-cover rounded-[40px] hidden" id="assets/imagessolutions1" />
+                    <img src="assets/images/Solutions3.png" alt="solutions" class="w-full object-cover rounded-[40px] hidden" id="assets/imagessolutions2" />
+                    <img src="assets/images/Solutions4.png" alt="solutions" class="w-full object-cover rounded-[40px] hidden" id="assets/imagessolutions3"  />
 
                     <div id="solutions0" class="solution-content absolute flex flex-col justify-center items-center gap-5 text-xl">
                         <div class="text-white text-center md:w-9/12 p-2 gap-5 flex flex-col">
@@ -340,7 +439,7 @@
                         <a href="service-sectorceba.html?gscroll=true#general-cargo">
                             <div class="text-white border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
                                 Learn more
-                                <img src="/assets/images/whiteArrow.png" alt="arrow" class="w-5" />
+                                <img src="assets/images/whiteArrow.png" alt="arrow" class="w-5" />
                             </div>
                         </a>
                     </div>
@@ -352,7 +451,7 @@
                         <a href="service-sectorb9cb.html?pscroll=true#pharmaceutical">
                             <div class="text-white border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
                                 Learn more
-                                <img src="/assets/images/whiteArrow.png" alt="arrow" class="w-5" />
+                                <img src="assets/images/whiteArrow.png" alt="arrow" class="w-5" />
                             </div>
                         </a>
                     </div>
@@ -364,7 +463,7 @@
                         <a href="service-sectordc72.html?fcmgscroll=true#fcmg">
                             <div class="text-white border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
                                 Learn more
-                                <img src="/assets/images/whiteArrow.png" alt="arrow" class="w-5" />
+                                <img src="assets/images/whiteArrow.png" alt="arrow" class="w-5" />
                             </div>
                         </a>
                     </div>
@@ -377,7 +476,7 @@
                         <a href="service-sector58cd.html?cscroll=true#consumer-electronics">
                             <div class="text-white border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
                                 Learn more
-                                <img src="/assets/images/whiteArrow.png" alt="arrow" class="w-5" />
+                                <img src="assets/images/whiteArrow.png" alt="arrow" class="w-5" />
                             </div>
                         </a>
                     </div>
@@ -490,7 +589,7 @@
                 <a href="/contact" target="_blank" class="scroll-to">
                     <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
                         style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-                        <img src="/assets/images/quote.png" alt="quote" class="w-7 h-7" />
+                        <img src="assets/images/quote.png" alt="quote" class="w-7 h-7" />
                         Get a Quote
                     </div>
                 </a>
@@ -500,14 +599,14 @@
 </div>
 
 <div id="price-calculator-popup" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
-    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full text-center relative transform transition-all duration-300 scale-95 opacity-0" id="popup-card">
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-[#01A68C] relative transform transition-all duration-300 scale-95 opacity-0" id="popup-card">
         
         <button id="close-popup-btn" class="popup-close-btn">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         
         <div class="mx-auto mb-4 bg-[#F6FFF6] rounded-full flex items-center justify-center">
-            <img src="/assets/images/tchLogo.png" alt="calculator icon" class="w-13"/>
+            <img src="assets/images/tchLogo.png" alt="calculator icon" class="w-13"/>
         </div>
 
         <h2 class="text-2xl md:text-3xl font-[900] text-[#0D3832] mb-3">
@@ -641,7 +740,7 @@
         // Tailored Solutions Tabs
         const solutionTabs = document.querySelectorAll('.solution-tab');
         const solutionContents = document.querySelectorAll('.solution-content');
-        const solutionImages = document.querySelectorAll('[id^="/assets/imagessolutions"]');
+        const solutionImages = document.querySelectorAll('[id^="assets/imagessolutions"]');
         let solutionIndex = 0;
         let solutionInterval;
 
@@ -707,3 +806,165 @@
     });
 </script>
 
+<div class="mt-auto bg-cover bg-no-repeat text-white p-10 flex flex-col"
+style="background-image: url('assets/images/footer.png');">
+<div class="container mx-auto">
+    <div class="flex flex-col md:flex-row flex-wrap justify-between items-start mb-20  gap-y-10">
+
+        <div class="flex flex-col justify-start items-start gap-1.5 font-semibold">
+            <img src="assets/images/tchLogo.png" alt="facebook" class="w-40 -ml-4" />
+            
+            <div class="flex flex-row gap-1">
+                <a href="https://web.facebook.com/techcargohub" target="_blank" class="cursor-pointer">
+                    <img src="assets/images/fb.png" alt="facebook"
+                        class="w-[2.45rem] h-[2.45rem] object-fill" />
+                </a>
+                <a target="_blank" class="cursor-pointer" >
+                    <img src="assets/images/ig.png" alt="instagram"
+                        class="w-[2.25rem] h-[2.25rem] object-fill" />
+                </a>
+                <a href="https://x.com/TechCargoHub" target="_blank" class="cursor-pointer">
+                    <img src="assets/images/x.png" alt="x"
+                        class="w-[2.25rem] h-[2.25rem] object-fill" />
+                </a>
+                <a href="https://www.linkedin.com/company/tech-cargo-hub-lk/" target="_blank" class="cursor-pointer">
+                    <img src="assets/images/linkdIn.png" alt="linkdin"
+                        class="w-[2.25rem] h-[2.25rem] object-fill" />
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col justify-start items-start gap-1">
+            <div class=" text-greenheading font-bold">
+                Quick Links
+            </div>
+
+            <a href="/"
+                class="block text-offwhitetext hover:text-greenheading font-semibold">Home</a>
+
+            <a href="/about"
+                class="block text-offwhitetext hover:text-greenheading font-semibold">About Us</a>
+
+            <a href="/techsolutions"
+                class="block text-offwhitetext hover:text-greenheading font-semibold">Tech Solutions</a>
+
+            <a href="/servicesector"
+                class="block text-offwhitetext hover:text-greenheading font-semibold">Service Sector</a>
+
+        </div>
+
+        <div class="flex flex-col justify-start items-start gap-1">
+            <div class=" text-greenheading font-bold">Contact Us</div>
+            <div class=" text-offwhitetext"><a href="tel:+94777289656">+94 77 728 9656</a></div>
+            <div class=" text-offwhitetext"><a href="mailto:Hello@techcargohub.com">Hello@techcargohub.com</a>
+            </div>
+            <div class=" text-offwhitetext">
+                Tech Cargo Hub (Pvt) Ltd <br />
+                112, Centre Road, Mattakkuliya, <br />
+                Colombo 15. Sri Lanka.
+            </div>
+        </div>
+
+        <div class="flex flex-col justify-start items-start gap-2">
+            <div>Subscribe to our newsletter</div>
+            <form action="https://techcargohub.com/subscribe" method="POST" class="bg-[#1A1A1A9C] rounded-xl w-full relative">
+                <input type="hidden" name="_token" value="CsHtrhQAA56CdCw0c7RK9LR5hY9P0XbY12ZcaRIL">                    <input type="email" name="email" id="email" placeholder="Enter your email"
+                    class="!bg-[#1A1A1A9C] border-none focus:border-none outline-none w-80 p-3 rounded-xl"
+                    required />
+                <button type="submit" class="absolute right-0 top-0 sendbtn">
+                    <img src="assets/images/newsletter1.png" class="w-10" />
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-start mt-auto text-sm text-graytext">
+        <div class="flex flex-row gap-4">
+            <div>
+                <a href="/privacy-policy" class="block hover:text-greenheading font-semibold cursor-pointer">
+    Privacy Policy
+</a>
+            </div>
+
+        </div>
+        <div>
+            Copyright © 2025 Tech Cargo Hub (Pvt) Ltd ®. All rights reserved.
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="flex flex-row justify-start gap-0">
+<div class="bg-green1 h-2 w-20 md:w-64"></div>
+<div class="bg-olivine h-2 w-full"></div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            navText: [
+                `<img src="https://techcargohub.com/assets/images/greenarrow.png" alt="greenArrow" class="w-5 h-auto" style="transform: scaleX(-1);" />`,
+                `<img src="https://techcargohub.com/assets/images/greenarrow.png" alt="greenArrow" class="w-5 h-auto" />`
+            ],
+            autoplay: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+const urlParams = new URLSearchParams(window.location.search);
+
+const scrollTargets = {
+    'scroll': {selector: '#contact-form', offset: 80},
+    'gscroll': {selector: '#general-cargo', offset: 100},
+    'pscroll': {selector: '#pharmaceutical', offset: 100},
+    'fcmgscroll': {selector: '#fcmg', offset: 100},
+    'cscroll': {selector: '#consumer-electronics', offset: 100}
+};
+
+Object.keys(scrollTargets).forEach(param => {
+    if (urlParams.get(param) === 'true') {
+        const {selector, offset} = scrollTargets[param];
+        const target = document.querySelector(selector);
+        if (target) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: target.offsetTop - offset,
+                    behavior: 'smooth'
+                });
+            }, 70);
+        }
+    }
+});
+});
+
+
+</script>
+
+
+
+
+
+
+    </body>
+</html>
