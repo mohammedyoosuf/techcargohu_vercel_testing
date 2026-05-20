@@ -90,7 +90,20 @@ export function WarehouseCalculatorApp() {
     const errors = validateStepTwo(businessDetails);
     setStepTwoErrors(errors);
     if (Object.keys(errors).length === 0) {
-      setResult(buildEstimateResult(stepOne, presentCosts, businessDetails));
+      const estimateResult = buildEstimateResult(stepOne, presentCosts, businessDetails);
+      setResult(estimateResult);
+
+      fetch("/api/submit-warehouse-estimate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          stepOne,
+          presentCosts,
+          businessDetails,
+          result: estimateResult,
+          productTypeLabel: businessDetails.productType,
+        }),
+      }).catch(() => {});
     }
   }
 
@@ -280,29 +293,6 @@ export function WarehouseCalculatorApp() {
                         type="number"
                         value={stepOne.fulfilmentUnits}
                         onChange={(value) => updateStepOne("fulfilmentUnits", value)}
-                        optional
-                      />
-                    </div>
-                  </div>
-
-                  <div className="border-t border-line pt-2.5">
-                    <p className="text-sm font-semibold text-ink">Handling (Optional)</p>
-                    <div className="mt-2 grid gap-2">
-                      <SelectInput
-                        id="handlingSize"
-                        label="Size (in inches)"
-                        value={stepOne.handlingSize}
-                        onChange={(value) => updateStepOne("handlingSize", value)}
-                        options={sizeOptions}
-                        optional
-                        placeholder="Select size"
-                      />
-                      <TextInput
-                        id="handlingUnits"
-                        label="Units"
-                        type="number"
-                        value={stepOne.handlingUnits}
-                        onChange={(value) => updateStepOne("handlingUnits", value)}
                         optional
                       />
                     </div>

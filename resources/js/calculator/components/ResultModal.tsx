@@ -39,9 +39,9 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4">
-      <div className="w-full max-w-[980px] overflow-hidden rounded-[1.7rem] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
-        <div className="rounded-t-[1.7rem] bg-gradient-to-r from-brand to-mint px-5 py-5 text-white sm:px-8 sm:py-7">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4 sm:p-6">
+      <div className="flex max-h-[88vh] w-full max-w-[620px] flex-col overflow-hidden rounded-[1.7rem] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+        <div className="shrink-0 rounded-t-[1.7rem] bg-gradient-to-r from-brand to-mint px-5 py-4 text-white sm:px-7 sm:py-5">
           <div className="flex items-start justify-between gap-6">
             <div className="min-w-0">
               <h2 className="text-[1.7rem] font-semibold tracking-[-0.04em] sm:text-[2.05rem]">
@@ -62,7 +62,7 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
           </div>
         </div>
 
-        <div className="space-y-3.5 px-4 py-4 sm:px-5 sm:py-4">
+        <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4 sm:px-5 sm:py-4">
           <section className="w-full rounded-[1.35rem] border border-[#d8dde7] bg-gradient-to-r from-[#fafbfd] to-[#f5f7fb] px-4 py-4 shadow-[0_8px_24px_rgba(18,32,57,0.08)] sm:px-5 sm:py-4">
             <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-[#18243a] sm:text-[1.32rem]">
               1. How much is it costing me at present
@@ -116,10 +116,30 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
                 </p>
               </div>
               {result.handling > 0 ? (
-                <DetailRow label="Handling" value={formatCurrency(result.handling)} />
+                <div className="flex items-start justify-between gap-6">
+                  <div className="min-w-0">
+                    <p className="text-[0.98rem] font-semibold text-[#18243a]">Additional Handling</p>
+                    {result.handlingSummary ? (
+                      <p className="mt-1 text-[0.9rem] leading-6 text-[#4a5a72]">{result.handlingSummary}</p>
+                    ) : null}
+                  </div>
+                  <p className="shrink-0 text-right text-[0.98rem] font-semibold text-[#161616]">
+                    {formatCurrency(result.handling)}
+                  </p>
+                </div>
               ) : null}
-              {result.fulfilment > 0 ? (
-                <DetailRow label="Fulfilment" value={formatCurrency(result.fulfilment)} />
+              {result.sorting > 0 ? (
+                <div className="flex items-start justify-between gap-6">
+                  <div className="min-w-0">
+                    <p className="text-[0.98rem] font-semibold text-[#18243a]">Fulfilment Charges</p>
+                    {result.sortingSummary ? (
+                      <p className="mt-1 text-[0.9rem] leading-6 text-[#4a5a72]">{result.sortingSummary}</p>
+                    ) : null}
+                  </div>
+                  <p className="shrink-0 text-right text-[0.98rem] font-semibold text-[#161616]">
+                    {formatCurrency(result.sorting)}
+                  </p>
+                </div>
               ) : null}
             </div>
             <div className="mt-2.5 border-t border-[#c7cdd7] pt-2.5">

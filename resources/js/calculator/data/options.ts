@@ -2,18 +2,23 @@ import type { CalculatorOption } from "../features/calculator/types";
 
 export const storageWeightOptions: CalculatorOption[] = [
   {
+    value: "under-10kg",
+    label: "<10 kg",
+    description: "Garments / Toys / Electronics / Stationary",
+  },
+  {
     value: "10-20kg",
-    label: "10-20kg",
+    label: "11-20kg",
     description: "Household Goods / Electrical Appliances / Lighting Fixtures",
   },
   {
-    value: "20-30kg",
-    label: "20-30kg",
+    value: "21-30kg",
+    label: "21-30kg",
     description: "Kitchen Appliances / Auto Spare Parts",
   },
   {
-    value: "30-40kg",
-    label: "30-40kg",
+    value: "31-40kg",
+    label: "31-40kg",
     description: "Machinery Spares / Pumps / Motors / Tool Kits",
   },
 ];
@@ -25,18 +30,18 @@ export const containerTypeOptions: CalculatorOption[] = [
 ];
 
 export const sizeOptions: CalculatorOption[] = [
-  { value: "24-under-10", label: "<10kg (24\" x 24\" x 24\" / 60.98cm)" },
-  { value: "24-10-20", label: "10-20kg (24\" x 24\" x 24\" / 60.98cm)" },
-  { value: "24-20-30", label: "20-30kg (24\" x 24\" x 24\" / 60.98cm)" },
-  { value: "24-30-40", label: "30-40kg (24\" x 24\" x 24\" / 60.98cm)" },
-  { value: "36-under-10", label: "<10kg (36\" x 36\" x 36\" / 91.44cm)" },
-  { value: "36-10-20", label: "10-20kg (36\" x 36\" x 36\" / 91.44cm)" },
-  { value: "36-20-30", label: "20-30kg (36\" x 36\" x 36\" / 91.44cm)" },
-  { value: "36-30-40", label: "30-40kg (36\" x 36\" x 36\" / 91.44cm)" },
-  { value: "48-under-10", label: "<10kg (48\" x 48\" x 48\" / 121.92cm)" },
-  { value: "48-10-20", label: "10-20kg (48\" x 48\" x 48\" / 121.92cm)" },
-  { value: "48-20-30", label: "20-30kg (48\" x 48\" x 48\" / 121.92cm)" },
-  { value: "48-30-40", label: "30-40kg (48\" x 48\" x 48\" / 121.92cm)" },
+  { value: "24-24-24-under-10", label: '<10kg (24" x 24" x 24")' },
+  { value: "24-24-24-11-20", label: '11-20kg (24" x 24" x 24")' },
+  { value: "24-24-24-21-30", label: '21-30kg (24" x 24" x 24")' },
+  { value: "24-24-24-31-40", label: '31-40kg (24" x 24" x 24")' },
+  { value: "36-36-36-under-10", label: '<10kg (36" x 36" x 36")' },
+  { value: "36-36-36-11-20", label: '11-20kg (36" x 36" x 36")' },
+  { value: "36-36-36-21-30", label: '21-30kg (36" x 36" x 36")' },
+  { value: "36-36-36-31-40", label: '31-40kg (36" x 36" x 36")' },
+  { value: "48-48-48-under-10", label: '<10kg (48" x 48" x 48")' },
+  { value: "48-48-48-11-20", label: '11-20kg (48" x 48" x 48")' },
+  { value: "48-48-48-21-30", label: '21-30kg (48" x 48" x 48")' },
+  { value: "48-48-48-31-40", label: '31-40kg (48" x 48" x 48")' },
 ];
 
 export const productTypeOptions: CalculatorOption[] = [

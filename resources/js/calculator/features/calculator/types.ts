@@ -47,10 +47,13 @@ export type EstimateResult = {
   };
   currentTotal: number;
   storage: number;
-  fulfilment: number;
   handling: number;
+  sorting: number;
+  fulfilment: number;
   tchTotal: number;
   storageSummary: string;
+  handlingSummary: string;
+  sortingSummary: string;
   savings: number;
   savingsPercent: number;
   isSavingsPositive: boolean;
