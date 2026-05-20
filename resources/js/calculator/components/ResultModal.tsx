@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { formatCurrency } from "../lib/calculations";
 import type { EstimateResult } from "../features/calculator/types";
 
@@ -6,85 +7,183 @@ type ResultModalProps = {
   onClose: () => void;
 };
 
-function ResultRow({
+function DetailRow({
   label,
   value,
-  emphasized = false,
+  className = "",
 }: {
   label: string;
-  value: number;
-  emphasized?: boolean;
+  value: string;
+  className?: string;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 py-1.5">
-      <span className="text-sm text-ink/72">{label}</span>
-      <span className={emphasized ? "text-base font-semibold text-ink" : "text-sm font-medium text-ink"}>
-        {formatCurrency(value)}
-      </span>
+    <div className={`flex items-start justify-between gap-6 ${className}`.trim()}>
+      <span className="text-[1.05rem] text-[#4a5a72]">{label}</span>
+      <span className="text-right text-[1.05rem] font-medium text-[#161616]">{value}</span>
     </div>
   );
 }
 
 export function ResultModal({ result, onClose }: ResultModalProps) {
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, []);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/45 p-4">
-      <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-[24px] bg-white p-5 shadow-2xl sm:p-6">
-        <div className="flex items-start justify-between gap-4 border-b border-line pb-4">
-          <div>
-            <h2 className="text-2xl font-semibold text-ink">Your Cost Comparison</h2>
-            <p className="mt-1 text-sm text-ink/65">
-              {result.organizationName || result.customerName
-                ? `Prepared for ${result.organizationName || result.customerName}`
-                : "Review your current cost against TCH"}
-            </p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4">
+      <div className="w-full max-w-[980px] overflow-hidden rounded-[1.7rem] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+        <div className="rounded-t-[1.7rem] bg-gradient-to-r from-brand to-mint px-5 py-5 text-white sm:px-8 sm:py-7">
+          <div className="flex items-start justify-between gap-6">
+            <div className="min-w-0">
+              <h2 className="text-[1.7rem] font-semibold tracking-[-0.04em] sm:text-[2.05rem]">
+                Your Cost Comparison
+              </h2>
+              <p className="mt-1.5 text-base font-medium text-white/95 sm:text-[1.05rem]">
+                Detailed breakdown and savings analysis
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="text-3xl leading-none text-white/95 transition hover:text-white"
+            >
+              ×
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-lg border border-line px-3 py-2 text-sm text-ink transition hover:border-ink/35"
-          >
-            Close
-          </button>
         </div>
 
-        <div className="mt-5 grid gap-3 lg:grid-cols-[1fr_1fr_0.92fr]">
-          <div className="rounded-2xl border border-line bg-soft px-4 py-3.5">
-            <h3 className="text-sm font-semibold text-ink">How much is it costing me at present</h3>
-            <div className="mt-3">
-              <ResultRow label="Monthly Total" value={result.currentTotal} emphasized />
+        <div className="space-y-3.5 px-4 py-4 sm:px-5 sm:py-4">
+          <section className="w-full rounded-[1.35rem] border border-[#d8dde7] bg-gradient-to-r from-[#fafbfd] to-[#f5f7fb] px-4 py-4 shadow-[0_8px_24px_rgba(18,32,57,0.08)] sm:px-5 sm:py-4">
+            <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-[#18243a] sm:text-[1.32rem]">
+              1. How much is it costing me at present
+            </h3>
+            <div className="mt-4 space-y-2.5">
+              <DetailRow
+                label="Warehouse Rent:"
+                value={formatCurrency(result.currentBreakdown.warehouseRent)}
+              />
+              <DetailRow
+                label="Monthly Capex Allocation:"
+                value={formatCurrency(result.currentBreakdown.monthlyCapexAllocation)}
+              />
+              <DetailRow
+                label="Staff Costs:"
+                value={formatCurrency(result.currentBreakdown.staffCosts)}
+              />
+              <DetailRow
+                label="Utilities:"
+                value={formatCurrency(result.currentBreakdown.utilities)}
+              />
+              <DetailRow
+                label="Other Expenses:"
+                value={formatCurrency(result.currentBreakdown.otherExpenses)}
+              />
+              <DetailRow label="WMS:" value={formatCurrency(result.currentBreakdown.wms)} />
             </div>
-          </div>
-
-          <div className="rounded-2xl border border-line bg-soft px-4 py-3.5">
-            <h3 className="text-sm font-semibold text-ink">How much will it cost at TCH</h3>
-            <div className="mt-3 divide-y divide-line">
-              <ResultRow label="Storage" value={result.storage} />
-              <ResultRow label="Handling" value={result.handling} />
-              <ResultRow label="Fulfilment" value={result.fulfilment} />
-              <ResultRow label="Total" value={result.tchTotal} emphasized />
+            <div className="mt-2.5 border-t border-[#c7cdd7] pt-2.5">
+              <DetailRow
+                label="Monthly Total:"
+                value={formatCurrency(result.currentTotal)}
+                className="items-end"
+              />
             </div>
-          </div>
+          </section>
 
-          <div
-            className={`rounded-2xl border px-4 py-3.5 ${
+          <section className="w-full rounded-[1.35rem] border border-[#99f2bf] bg-gradient-to-r from-[#f2fcf6] to-[#eefcf4] px-4 py-4 shadow-[0_8px_24px_rgba(31,169,122,0.08)] sm:px-5 sm:py-4">
+            <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-[#18243a] sm:text-[1.32rem]">
+              2. How much will it cost at TCH
+            </h3>
+            <div className="mt-4 space-y-2">
+              <div className="flex items-start justify-between gap-6">
+                <div className="min-w-0">
+                  <p className="text-[0.98rem] font-semibold text-[#18243a]">Storage</p>
+                  <p className="mt-1 text-[0.9rem] leading-6 text-[#4a5a72]">
+                    {result.storageSummary}
+                  </p>
+                </div>
+                <p className="shrink-0 text-right text-[0.98rem] font-semibold text-[#161616]">
+                  {formatCurrency(result.storage)}
+                </p>
+              </div>
+              {result.handling > 0 ? (
+                <DetailRow label="Handling" value={formatCurrency(result.handling)} />
+              ) : null}
+              {result.fulfilment > 0 ? (
+                <DetailRow label="Fulfilment" value={formatCurrency(result.fulfilment)} />
+              ) : null}
+            </div>
+            <div className="mt-2.5 border-t border-[#c7cdd7] pt-2.5">
+              <div className="flex items-end justify-between gap-6">
+                <span className="text-[1rem] font-semibold text-[#161616]">
+                  TCH Total Cost:
+                </span>
+                <span className="text-right text-[1.18rem] font-semibold text-[#1fa97a] sm:text-[1.3rem]">
+                  {formatCurrency(result.tchTotal)}
+                </span>
+              </div>
+            </div>
+          </section>
+
+          <section
+            className={`w-full rounded-[1.35rem] border px-4 py-4 shadow-[0_8px_24px_rgba(18,32,57,0.06)] sm:px-5 sm:py-4 ${
               result.isSavingsPositive
-                ? "border-success/25 bg-success/10"
-                : "border-danger/25 bg-danger/10"
+                ? "border-[#8de2b3] bg-gradient-to-r from-[#f4fcf7] to-[#f6fffa]"
+                : "border-[#ff6b6b] bg-gradient-to-r from-[#fff7f7] to-[#fffafb]"
             }`}
           >
-            <h3 className="text-sm font-semibold text-ink">Savings</h3>
-            <p
-              className={`mt-4 text-3xl font-semibold ${
-                result.isSavingsPositive ? "text-success" : "text-danger"
-              }`}
+            <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-[#18243a] sm:text-[1.32rem]">
+              3. Savings Analysis
+            </h3>
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p
+                  className={`text-[1.02rem] font-semibold ${
+                    result.isSavingsPositive ? "text-[#109863]" : "text-[#d60000]"
+                  }`}
+                >
+                  {result.isSavingsPositive ? "You save with TCH" : "TCH costs more"}
+                </p>
+                <p className="mt-1.5 text-[0.9rem] text-[#4a5a72]">
+                  {result.isSavingsPositive ? "Estimated monthly savings" : "Additional monthly cost"}
+                </p>
+              </div>
+              <div className="text-left sm:text-right">
+                <p
+                  className={`text-[1.85rem] font-semibold tracking-[-0.04em] sm:text-[2.15rem] ${
+                    result.isSavingsPositive ? "text-[#109863]" : "text-[#ed0000]"
+                  }`}
+                >
+                  {formatCurrency(Math.abs(result.savings))}
+                </p>
+                <p
+                  className={`mt-1 text-[0.92rem] font-semibold ${
+                    result.isSavingsPositive ? "text-[#109863]" : "text-[#ed0000]"
+                  }`}
+                >
+                  {result.savingsPercent.toFixed(2)}%
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <div className="w-full border-t border-[#e5e7eb] pt-3.5">
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex h-12 w-full items-center justify-center rounded-[1.35rem] bg-gradient-to-r from-brand to-mint px-6 text-[1rem] font-semibold text-white shadow-[0_10px_24px_rgba(15,61,51,0.22)] transition hover:opacity-95"
             >
-              {formatCurrency(Math.abs(result.savings))}
-            </p>
-            <p className="mt-2 text-sm text-ink/72">
-              {result.isSavingsPositive
-                ? "You save with Tech Cargo Hub."
-                : "TCH costs more than your current setup."}
-            </p>
+              Close
+            </button>
           </div>
         </div>
       </div>

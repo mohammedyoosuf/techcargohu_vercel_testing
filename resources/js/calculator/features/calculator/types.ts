@@ -37,11 +37,21 @@ export type BusinessDetailsState = {
 export type EstimateResult = {
   customerName: string;
   organizationName: string;
+  currentBreakdown: {
+    warehouseRent: number;
+    monthlyCapexAllocation: number;
+    staffCosts: number;
+    utilities: number;
+    otherExpenses: number;
+    wms: number;
+  };
   currentTotal: number;
   storage: number;
   fulfilment: number;
   handling: number;
   tchTotal: number;
+  storageSummary: string;
   savings: number;
+  savingsPercent: number;
   isSavingsPositive: boolean;
 };

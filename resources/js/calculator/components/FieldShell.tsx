@@ -5,6 +5,7 @@ type FieldShellProps = {
   htmlFor: string;
   error?: string;
   optional?: boolean;
+  required?: boolean;
   children: ReactNode;
 };
 
@@ -13,6 +14,7 @@ export function FieldShell({
   htmlFor,
   error,
   optional = false,
+  required = false,
   children,
 }: FieldShellProps) {
   return (
@@ -20,6 +22,7 @@ export function FieldShell({
       <span className="text-[13px] font-medium text-ink/80">
         {label}
         {optional ? <span className="ml-1 text-ink/45">(optional)</span> : null}
+        {!optional && required ? <span className="ml-1 text-danger">*</span> : null}
       </span>
       {children}
       {error ? <span className="text-xs text-danger">{error}</span> : null}
