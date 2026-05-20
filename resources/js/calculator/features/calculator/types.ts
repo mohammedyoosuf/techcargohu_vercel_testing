@@ -8,6 +8,9 @@ export type StepOneFormState = {
   productWeight: string;
   cbm: string;
   days: string;
+  containerType: string;
+  fulfilmentSize: string;
+  fulfilmentUnits: string;
   handlingSize: string;
   handlingUnits: string;
   packingSize: string;

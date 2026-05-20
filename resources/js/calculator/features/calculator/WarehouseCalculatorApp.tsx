@@ -23,6 +23,9 @@ const initialStepOne: StepOneFormState = {
   productWeight: "",
   cbm: "",
   days: "",
+  containerType: "",
+  fulfilmentSize: "",
+  fulfilmentUnits: "",
   handlingSize: "",
   handlingUnits: "",
   packingSize: "",
@@ -75,8 +78,6 @@ export function WarehouseCalculatorApp() {
     setStepTwoErrors((current) => ({ ...current, [key]: "" }));
   }
 
-  const [isSending, setIsSending] = useState(false);
-
   function handleContinue() {
     const errors = validateStepOne(stepOne, presentCosts);
     setStepOneErrors(errors);
@@ -85,59 +86,19 @@ export function WarehouseCalculatorApp() {
     }
   }
 
-  async function handleEstimate() {
+  function handleEstimate() {
     const errors = validateStepTwo(businessDetails);
     setStepTwoErrors(errors);
-
     if (Object.keys(errors).length === 0) {
-      const calculatedResult = buildEstimateResult(stepOne, presentCosts, businessDetails);
-      setResult(calculatedResult);
-
-      // Send to backend for email notification
-      setIsSending(true);
-      try {
-        const productTypeLabel =
-          productTypeOptions.find((opt) => opt.value === businessDetails.productType)?.label ||
-          businessDetails.productType;
-
-        await fetch("/api/submit-warehouse-estimate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            stepOne,
-            presentCosts,
-            businessDetails,
-            result: calculatedResult,
-            productTypeLabel,
-          }),
-        });
-      } catch (error) {
-        console.error("Failed to send estimate email:", error);
-      } finally {
-        setIsSending(false);
-      }
+      setResult(buildEstimateResult(stepOne, presentCosts, businessDetails));
     }
   }
 
   return (
-    <main className="min-h-screen bg-canvas/50 px-4 py-5 sm:px-6 lg:px-8">
+    <main className="min-h-screen overflow-x-clip bg-canvas px-4 py-5 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1380px]">
-        <div className="mb-5 flex items-center justify-between gap-4 rounded-2xl border border-line bg-white px-4 py-3 sm:px-5">
-          <div>
-            <p className="text-sm font-medium text-ink">Warehouse Cost Calculator</p>
-            <p className="text-xs text-ink/55">Step {step} of 2</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className={`h-2.5 w-14 rounded-full ${step >= 1 ? "bg-mint" : "bg-line"}`} />
-            <div className={`h-2.5 w-14 rounded-full ${step === 2 ? "bg-mint" : "bg-line"}`} />
-          </div>
-        </div>
-
         {step === 1 ? (
-          <div className="grid gap-5 lg:grid-cols-[minmax(340px,0.95fr)_minmax(0,1.45fr)] lg:items-start">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)] lg:items-start">
             <div className="min-w-0 space-y-5">
               <section className="pt-1">
                 <h1 className="max-w-[17ch] text-[2rem] font-semibold leading-tight tracking-[-0.04em] text-ink sm:text-[2.3rem]">
@@ -152,13 +113,15 @@ export function WarehouseCalculatorApp() {
                 </p>
               </section>
 
-              <SectionCard title="How much is it costing me at present">
-                <div className="rounded-2xl border border-danger/25 bg-danger/10 px-4 py-2.5 text-sm leading-6 text-danger">
-                  A minimum six (6) months&apos; key money is applicable to all warehouses.
-                  However, this requirement is waived for clients utilizing TCH.
-                </div>
-
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <SectionCard>
+                <header className="mb-4">
+                  <h2 className="text-[1.5rem] font-semibold leading-none tracking-[-0.04em] text-ink sm:text-[1.8rem]">
+                    <span className="bg-gradient-to-r from-brand to-mint bg-clip-text text-transparent">
+                      How much is it costing me at present
+                    </span>
+                  </h2>
+                </header>
+                <div className="grid gap-3 sm:grid-cols-2">
                   <TextInput
                     id="warehouseRent"
                     label="Warehouse Rent"
@@ -208,33 +171,58 @@ export function WarehouseCalculatorApp() {
                     error={stepOneErrors.wms}
                   />
                 </div>
+
+                <div className="mt-4 rounded-2xl border border-danger/25 bg-danger/10 px-4 py-2.5 text-sm leading-6 text-danger">
+                  A minimum six (6) months&apos; key money is applicable to all warehouses.
+                  However, this requirement is waived for clients utilizing TCH.
+                </div>
               </SectionCard>
 
-              <SectionCard title="Important Notes">
-                <ul className="list-disc space-y-2 pl-4 text-sm leading-6 text-ink/74">
-                  <li>
-                    Services include secure storage solutions, loading and unloading operations,
-                    advanced inventory management through CargoWise WMS, and Tier 1 business
-                    intelligence powered by Microsoft Power BI.
-                  </li>
-                  <li>Packing and labelling material to be provided by the client.</li>
-                  <li>
-                    TCH shall not be held liable for any content displayed on stickers or logos.
-                  </li>
-                  <li>A minimum storage period of 15 days is applicable.</li>
-                  <li>6 months key money is waived for TCH clients.</li>
-                </ul>
+              <SectionCard className="border-mint/20 bg-gradient-to-r from-[#f7fcf7] via-[#eef8f0] to-[#eaf8ef] shadow-[0_8px_24px_rgba(31,169,122,0.08)]">
+                <div>
+                  <h2 className="text-[1.05rem] font-semibold text-[#21354b] sm:text-[1.1rem]">
+                    Important Notes
+                  </h2>
+                  <ul className="mt-4 space-y-3 text-sm leading-6 text-[#4c5d75]">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-mint" />
+                      <span>
+                        Services include secure storage solutions, loading and unloading
+                        operations, advanced inventory management through CargoWise WMS, and
+                        Tier 1 business intelligence powered by Microsoft Power BI.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-mint" />
+                      <span>Packing and labelling material to be provided by the client.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-mint" />
+                      <span>
+                        TCH shall not be held liable for any content displayed on stickers or
+                        logos of the customers.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
               </SectionCard>
             </div>
 
             <div className="min-w-0 space-y-3">
-              <SectionCard title="How much will it cost at TCH">
-                <div className="space-y-5">
+              <SectionCard>
+                <header className="mb-2.5">
+                  <h2 className="text-[1.5rem] font-semibold leading-none tracking-[-0.04em] text-ink sm:text-[1.8rem]">
+                    <span className="bg-gradient-to-r from-brand to-mint bg-clip-text text-transparent">
+                      How much will it cost at TCH
+                    </span>
+                  </h2>
+                </header>
+                <div className="space-y-3">
                   <div>
                     <p className="text-sm font-semibold text-ink">
                       Storage / Loading and Unloading / Inventory Control
                     </p>
-                    <div className="mt-3 space-y-3">
+                    <div className="mt-2 space-y-2">
                       <SelectInput
                         id="productWeight"
                         label="Kg - Range"
@@ -244,7 +232,7 @@ export function WarehouseCalculatorApp() {
                         error={stepOneErrors.productWeight}
                         placeholder="Choose a range"
                       />
-                      <div className="grid gap-3 sm:grid-cols-2">
+                      <div className="grid gap-2.5 sm:grid-cols-3">
                         <TextInput
                           id="cbm"
                           label="CBM"
@@ -262,21 +250,52 @@ export function WarehouseCalculatorApp() {
                           error={stepOneErrors.days}
                           min={1}
                         />
+                        <SelectInput
+                          id="containerType"
+                          label="Container Type"
+                          value={stepOne.containerType}
+                          onChange={(value) => updateStepOne("containerType", value)}
+                          options={containerTypeOptions}
+                          error={stepOneErrors.containerType}
+                        />
                       </div>
                     </div>
                   </div>
 
-                  <div className="border-t border-line pt-4">
-                    <p className="text-sm font-semibold text-ink">Additional Handling Charges</p>
-                    <div className="mt-3 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,220px)]">
+                  <div className="border-t border-line pt-2.5">
+                    <p className="text-sm font-semibold text-ink">Fulfilment Charges</p>
+                    <div className="mt-2 grid gap-2">
+                      <SelectInput
+                        id="fulfilmentSize"
+                        label="Additional Handling"
+                        value={stepOne.fulfilmentSize}
+                        onChange={(value) => updateStepOne("fulfilmentSize", value)}
+                        options={sizeOptions}
+                        optional
+                        placeholder="Select size"
+                      />
+                      <TextInput
+                        id="fulfilmentUnits"
+                        label="Units"
+                        type="number"
+                        value={stepOne.fulfilmentUnits}
+                        onChange={(value) => updateStepOne("fulfilmentUnits", value)}
+                        optional
+                      />
+                    </div>
+                  </div>
+
+                  <div className="border-t border-line pt-2.5">
+                    <p className="text-sm font-semibold text-ink">Handling (Optional)</p>
+                    <div className="mt-2 grid gap-2">
                       <SelectInput
                         id="handlingSize"
-                        label="Size and Weight Category"
+                        label="Size (in inches)"
                         value={stepOne.handlingSize}
                         onChange={(value) => updateStepOne("handlingSize", value)}
                         options={sizeOptions}
                         optional
-                        placeholder="Select size/weight"
+                        placeholder="Select size"
                       />
                       <TextInput
                         id="handlingUnits"
@@ -289,19 +308,19 @@ export function WarehouseCalculatorApp() {
                     </div>
                   </div>
 
-                  <div className="border-t border-line pt-4">
+                  <div className="border-t border-line pt-2.5">
                     <p className="text-sm font-semibold text-ink">
-                      Picking, Sorting, Packing and Labelling
+                      Picking sorting packing and labelling (Optional)
                     </p>
-                    <div className="mt-3 grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,220px)]">
+                    <div className="mt-2 grid gap-2">
                       <SelectInput
                         id="packingSize"
-                        label="Size and Weight Category"
+                        label="Size (in inches)"
                         value={stepOne.packingSize}
                         onChange={(value) => updateStepOne("packingSize", value)}
                         options={sizeOptions}
                         optional
-                        placeholder="Select size/weight"
+                        placeholder="Select size"
                       />
                       <TextInput
                         id="packingUnits"
@@ -314,11 +333,15 @@ export function WarehouseCalculatorApp() {
                     </div>
                   </div>
 
-                  <div className="border-t border-line pt-4">
-                    <p className="text-sm font-semibold text-ink">Goods Type</p>
-                    <p className="mt-2.5 rounded-2xl border border-line bg-soft px-4 py-2.5 text-sm text-ink/74">
-                      {goodsTypeLabel}
+                  <div className="border-t border-line pt-2.5">
+                    <p className="text-center text-[1.05rem] font-semibold text-[#243247] sm:text-[1.15rem]">
+                      Goods Type
                     </p>
+                    <div className="mt-2 flex justify-center">
+                      <p className="inline-flex max-w-full items-center justify-center rounded-[999px] bg-gradient-to-r from-brand to-mint px-4 py-2 text-center text-[0.82rem] font-semibold text-white shadow-[0_8px_18px_rgba(15,61,51,0.18)] sm:px-5 sm:text-[0.88rem]">
+                        {goodsTypeLabel}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </SectionCard>
@@ -333,34 +356,52 @@ export function WarehouseCalculatorApp() {
             </div>
           </div>
         ) : (
-          <div className="grid gap-5 lg:grid-cols-[minmax(320px,0.95fr)_minmax(0,1.45fr)] lg:items-start">
-            <div className="min-w-0 space-y-5">
-              <section className="pt-1">
-                <h1 className="max-w-[16ch] text-[2rem] font-semibold leading-tight tracking-[-0.04em] text-ink sm:text-[2.3rem]">
-                  Business details for your warehouse estimate.
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)] lg:items-start">
+            <div className="min-w-0 space-y-6 pt-1">
+              <section>
+                <h1 className="max-w-[17ch] text-[2rem] font-semibold leading-tight tracking-[-0.04em] text-ink sm:text-[2.3rem]">
+                  Get An Instant Quote For{" "}
+                  <span className="bg-gradient-to-r from-brand to-mint bg-clip-text text-transparent">
+                    Warehousing Solutions.
+                  </span>
                 </h1>
                 <p className="mt-3 max-w-xl text-sm leading-6 text-ink/70">
-                  Share your contact details so we can package the estimate in a format your
-                  team can review quickly.
+                  Our services are powered by cutting-edge technology. Use our calculator to
+                  get a quick estimate and plan your logistics with confidence.
                 </p>
               </section>
 
-              <SectionCard title="Disclaimer">
-                <div className="space-y-2 text-sm leading-6 text-ink/74">
-                  <p>
-                    We adhere to a strict code of confidentiality; all information shared will
-                    not be disclosed.
-                  </p>
-                  <p>
-                    Please double-check your contact details before submitting to ensure
-                    accuracy.
-                  </p>
-                </div>
+              <SectionCard className="border-[#bcd5ff] bg-gradient-to-r from-[#f5f9ff] via-[#eef4ff] to-[#f6f9ff] px-5 py-5 shadow-[0_10px_30px_rgba(74,134,255,0.10)] sm:px-6 sm:py-6">
+                <h2 className="text-[1rem] font-semibold text-[#16233a] sm:text-[1.05rem]">
+                  Disclaimer:
+                </h2>
+                <ul className="mt-4 space-y-3 text-[0.84rem] leading-6 text-[#56657c] sm:text-[0.88rem]">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5aa2ff]" />
+                    <span>
+                      We adhere to a strict code of confidentiality; all information shared
+                      will not be disclosed.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5aa2ff]" />
+                    <span>
+                      Please double-check your contact details before submitting to ensure
+                      accuracy.
+                    </span>
+                  </li>
+                </ul>
               </SectionCard>
             </div>
 
-            <SectionCard title="Business Details">
-              <div className="grid gap-3 sm:grid-cols-2">
+            <SectionCard className="rounded-[2rem] px-5 py-5 shadow-[0_14px_38px_rgba(15,61,51,0.10)] sm:px-6 sm:py-6">
+              <header className="mb-5">
+                <h2 className="text-[1.75rem] font-semibold tracking-[-0.04em] text-[#16233a]">
+                  Business Details
+                </h2>
+              </header>
+
+              <div className="grid gap-x-4 gap-y-3 sm:grid-cols-2">
                 <TextInput
                   id="organizationName"
                   label="Organization Name"
@@ -403,21 +444,20 @@ export function WarehouseCalculatorApp() {
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-col gap-3 border-t border-line pt-4 sm:flex-row sm:justify-between">
+              <div className="mt-6 flex flex-col gap-3 pt-2 sm:flex-row">
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="inline-flex h-11 w-full items-center justify-center rounded-xl border border-line px-5 text-sm font-medium text-ink transition hover:border-ink/35 sm:w-auto"
+                  className="inline-flex h-11 w-full items-center justify-center rounded-[1.2rem] border border-[#ccd3df] bg-white px-6 text-[0.98rem] font-semibold text-[#34435b] transition hover:border-[#aeb7c6] sm:flex-1"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   onClick={handleEstimate}
-                  disabled={isSending}
-                  className="inline-flex h-11 w-full items-center justify-center rounded-xl bg-brand px-5 text-sm font-medium text-white transition hover:bg-brand/92 disabled:opacity-70 sm:w-auto"
+                  className="inline-flex h-11 w-full items-center justify-center rounded-[1.2rem] bg-gradient-to-r from-brand to-mint px-6 text-[0.98rem] font-semibold text-white shadow-[0_10px_24px_rgba(15,61,51,0.20)] transition hover:opacity-95 sm:flex-1"
                 >
-                  {isSending ? "Processing..." : "Get Estimate"}
+                  Get Estimate
                 </button>
               </div>
             </SectionCard>
