@@ -146,6 +146,22 @@ class EstimateController extends Controller
             // Log success
             Log::info('Warehouse estimate emails sent for: ' . $data['email']);
 
+            // Send to Zoho CRM
+            try {
+                $zohoCRM = new ZohoCRMService();
+                $leadData = $zohoCRM->mapWarehouseEstimateToLead($data);
+                $zohoResult = $zohoCRM->createLead($leadData);
+                
+                if ($zohoResult['success']) {
+                    Log::info('✅ Warehouse Lead successfully created in Zoho CRM');
+                } else {
+                    Log::warning('⚠️ Failed to create warehouse lead in Zoho CRM', ['error' => $zohoResult['error']]);
+                }
+            } catch (\Exception $e) {
+                // Don't fail the entire request if Zoho fails
+                Log::error('❌ Zoho CRM integration error: ' . $e->getMessage());
+            }
+
             return response()->json([
                 'success' => true,
                 'message' => 'Warehouse estimate processed and emails sent successfully.',
