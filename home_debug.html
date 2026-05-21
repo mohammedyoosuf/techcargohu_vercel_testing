@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Statamic</title>
+
+        <!-- Legacy Styles from Header -->
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="assets/css/owl.theme.green.min.css" />
+        <link rel="stylesheet" href="assets/css/toastr.min.css">
+        <link rel="stylesheet" href="assets/css/app-45b68f9a.css" />
+        
+        <!-- Fonts -->
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&amp;display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+        <!-- React / Vite සඳහා -->
+        <script type="module">
+            import RefreshRuntime from 'http://127.0.0.1:5173/@react-refresh'
+            RefreshRuntime.injectIntoGlobalHook(window)
+            window.$RefreshReg$ = () => {}
+            window.$RefreshSig$ = () => (type) => type
+            window.__vite_plugin_react_preamble_installed__ = true
+        </script>
+
+        <script type="module" src="http://127.0.0.1:5173/@vite/client"></script><link rel="stylesheet" href="http://127.0.0.1:5173/resources/css/tailwind.css" /><script type="module" src="http://127.0.0.1:5173/resources/js/site.js"></script>
+
+        <!-- JQuery (Legacy) -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/toastr.min.js"></script>
+
+        <!-- Meta Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '656439483891293');
+            fbq('track', 'PageView');
+        </script>
+    </head>
+    <body class="antialiased flex flex-col min-h-svh mx-auto font-['Poppins']"
+        style="background-image: url('assets/images/bg.png'); 
+               background-position: center;
+               background-repeat: no-repeat;
+               background-size: cover;
+               position: relative;">
+        
+        <nav id="navbar" class="p-4 w-full sticky top-0 z-50 bg-white/80 backdrop-blur-md">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="assets/images/tchLogo.png" alt="tch" class="logo w-20 md:w-[159px] transition-all duration-300" />
+        </a>
+        <button data-collapse-toggle="navbar-dropdown" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-dropdown" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0">
+                <li>
+                    <a href="/" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
+                        aria-current="page">Home</a>
+                </li>
+                <li>
+                    <a href="/about" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">About Us</a>
+                </li>
+                <li>
+                    <a href="/techsolutions" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Tech Solutions</a>
+                </li>
+                <li>
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar-1"
+                        class="flex items-center justify-between w-full py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">
+                        <a href="/servicesector" class="block hover:text-greenheading font-semibold">Service Sector</a>
+                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <div id="dropdownNavbar-1"
+                        class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-48">
+                        <ul class="py-2 text-sm" aria-labelledby="dropdownLargeButton">
+                            <li class="general-cargo">
+                                <a href="/servicesector#general-cargo"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">General Cargo</a>
+                            </li>
+                            <li class="pharmaceutical">
+                                <a href="/servicesector#pharmaceutical"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">Pharmaceutical</a>
+                            </li>
+                            <li class="fcmg">
+                                <a href="/servicesector#fcmg"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">FMCG</a>
+                            </li>
+                            <li class="consumer-electronics">
+                                <a href="/servicesector#consumer-electronics"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">Consumer Electronics</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="/calculator" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Pricing Calculator</a>
+                </li>
+                <li class="gradient-border">
+                    <a href="/contact" class="block py-2 px-3 text-lg text-greenheading font-semibold text-navColor">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('#navbar-dropdown a');
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPath || (href === '/' && currentPath === '')) {
+                link.classList.remove('text-navColor');
+                link.classList.add('text-greenheading');
+            }
+        });
+
+        // Handle Service Sector dropdown
+        const serviceSectorButton = document.querySelector('#dropdownNavbarLink');
+        if (currentPath === '/servicesector') {
+            serviceSectorButton.classList.remove('text-navColor');
+            serviceSectorButton.classList.add('text-greenheading');
+        }
+    });
+</script>
+
+
+
+<style>
+    .active {
+    background-color: #01a68c;
+    color: #fff !important;
+}
+ @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes popIn {
+        from { transform: scale(0.95); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+    #price-calculator-popup.flex #popup-card {
+        animation: popIn 0.4s ease-out forwards;
+    }
+        .popup-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: #9ca3af;
+        z-index: 10;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .popup-close-btn:hover {
+        color: #374151;
+    }
+
+</style>
+
+<div class="flex-grow container mx-auto">
+    <!-- Banner Section -->
+    <div class="md:h-[85svh] top-0 relative flex flex-col justify-center items-center rounded-[30px] mx-5"
+        style="background-image: url(''); background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+        <div class="bg-[#000000c1] w-full py-10 px-10 flex flex-col justify-center items-center md:h-[85svh] rounded-[30px] opacity-1">
+            <div class="text-2xl md:text-7xl text-white font-[900] capitalize text-center">
+                <h1>
+                    <span class="text-[#C4FFC6]"> </span>
+                    
+                </h1>
+            </div>
+            <div class="text-white text-center md:px-20 lg:text-[20px] font-[700] py-10 gap-3 flex flex-col">
+                <p></p>
+            </div>
+            <a href="/contact" target="_blank" class="scroll-to">
+                <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                    style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                    <img src="assets/images/quote.png" alt="quote" class="w-7 h-7" />
+                    
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Process Steps Section -->
+    <div class="container mx-auto space-y-10 py-10 px-10">
+        <div class="processsteps flex flex-col justify-center items-center min-h-svh">
+            <p class="text-lightText text-center font-[400] text-lg md:leading-10">
+                
+            </p>
+            <div class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-center">
+                <p> <span class="text-highlightGreen"></span></p>
+                <div class="flex flex-row text-center justify-center items-center gap-0">
+                    <p> <span class="text-highlightGreen"></span>.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center items-center py-10 md:py-20">
+                
+                    <p>No locations available.</p>
+                
+            </div>
+
+            <div class="w-80 justify-center flex items-center">
+                <a href="/contact" target="_blank" class="scroll-to">
+                    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                        <img src="assets/images/quote.png" alt="quote" class="w-7 h-7" />
+                        
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Solutions Section -->
+        <div class="solutions flex flex-col justify-center items-center min-h-svh">
+            <p class="text-lightText text-center font-[400] text-lg leading-10">
+                
+            </p>
+            <h2 class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-highlightGreen">
+                
+            </h2>
+            <h2 class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-center">
+                <span class="text-highlightGreen">.</span>
+            </h2>
+
+            <div class="relative pt-10">
+                <div class="flex flex-col justify-center items-center md:gap-10 py-10 relative">
+                    <div class="flex flex-wrap justify-center gap-10">
+                        
+                            <p>No locations available.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 Step Process Section -->
+        <div class="processsteps flex flex-col justify-center items-center min-h-svh pb-10">
+            <div class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-center">
+                <span class="text-highlightGreen">.</span>
+            </div>
+            <p class="text-lightText text-center text-[18px] font-[400] md:w-7/12 mt-3">
+                
+            </p>
+
+            <div id="step-tabs" class="my-10 w-fit flex flex-row justify-center items-center bg-white rounded-[40px] shadow-xl p-2 gap-2">
+                <div class="flex items-center">
+                    <div data-step="0" class="step-tab group cursor-pointer bg-white text-[#01A68C] hover:bg-lightGreenBg hover:text-[#01A68C] rounded-full md:w-16 md:h-16 font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2 active">
+                        <div class="group-hover:bg-[#8CC88F66] cursor-pointer rounded-full w-7 h-7 md:w-10 md:h-10 font-bold text-xl flex justify-center items-center">1</div>
+                        <div class="cursor-pointer bg-white rounded-full w-1.5 h-1.5 md:w-2 md:h-2 absolute bottom-[1px]"></div>
+                    </div>
+                    <div class="w-10 h-10 hidden md:flex justify-center items-center text-[#01A68C] font-thin text-xl mx-2">------</div>
+                </div>
+                <div class="flex items-center">
+                    <div data-step="1" class="step-tab group cursor-pointer bg-white text-[#01A68C] hover:bg-lightGreenBg hover:text-[#01A68C] rounded-full md:w-16 md:h-16 font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2">
+                        <div class="group-hover:bg-[#8CC88F66] cursor-pointer rounded-full w-7 h-7 md:w-10 md:h-10 font-bold text-xl flex justify-center items-center">2</div>
+                        <div class="cursor-pointer bg-white rounded-full w-1.5 h-1.5 md:w-2 md:h-2 absolute bottom-[1px]"></div>
+                    </div>
+                    <div class="w-10 h-10 hidden md:flex justify-center items-center text-[#01A68C] font-thin text-xl mx-2">------</div>
+                </div>
+                <div class="flex items-center">
+                    <div data-step="2" class="step-tab group cursor-pointer bg-white text-[#01A68C] hover:bg-lightGreenBg hover:text-[#01A68C] rounded-full md:w-16 md:h-16 font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2">
+                        <div class="group-hover:bg-[#8CC88F66] cursor-pointer rounded-full w-7 h-7 md:w-10 md:h-10 font-bold text-xl flex justify-center items-center">3</div>
+                        <div class="cursor-pointer bg-white rounded-full w-1.5 h-1.5 md:w-2 md:h-2 absolute bottom-[1px]"></div>
+                    </div>
+                    <div class="w-10 h-10 hidden md:flex justify-center items-center text-[#01A68C] font-thin text-xl mx-2">------</div>
+                </div>
+                <div class="flex items-center">
+                    <div data-step="3" class="step-tab group cursor-pointer bg-white text-[#01A68C] hover:bg-lightGreenBg hover:text-[#01A68C] rounded-full md:w-16 md:h-16 font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2">
+                        <div class="group-hover:bg-[#8CC88F66] cursor-pointer rounded-full w-7 h-7 md:w-10 md:h-10 font-bold text-xl flex justify-center items-center">4</div>
+                        <div class="cursor-pointer bg-white rounded-full w-1.5 h-1.5 md:w-2 md:h-2 absolute bottom-[1px]"></div>
+                    </div>
+                    <div class="w-10 h-10 hidden md:flex justify-center items-center text-[#01A68C] font-thin text-xl mx-2">------</div>
+                </div>
+                <div class="flex items-center">
+                    <div data-step="4" class="step-tab group cursor-pointer bg-white text-[#01A68C] hover:bg-lightGreenBg hover:text-[#01A68C] rounded-full md:w-16 md:h-16 font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2">
+                        <div class="group-hover:bg-[#8CC88F66] cursor-pointer rounded-full w-7 h-7 md:w-10 md:h-10 font-bold text-xl flex justify-center items-center">5</div>
+                        <div class="cursor-pointer bg-white rounded-full w-1.5 h-1.5 md:w-2 md:h-2 absolute bottom-[1px]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pb-5">
+                <div class="step-content flex" id="step0">
+                    <div class="flex flex-col justify-center items-center gap-10">
+                        <div class="text-xl text-heroText font-[400]"></div>
+                        <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
+                            <img src="" alt="Book your space." class="object-fill" />
+                        </div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
+                    </div>
+                </div>
+                <div class="step-content hidden" id="step1">
+                    <div class="flex flex-col justify-center items-center gap-10">
+                        <div class="text-xl text-heroText font-[400]"></div>
+                        <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
+                            <img src="" alt="Manage and view inventory." class="object-fill" />
+                        </div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
+                    </div>
+                </div>
+                <div class="step-content hidden" id="step2">
+                    <div class="flex flex-col justify-center items-center gap-10">
+                        <div class="text-xl text-heroText font-[400]"></div>
+                        <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
+                            <img src="" alt="Dispatch orders." class="object-fill" />
+                        </div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
+                    </div>
+                </div>
+                <div class="step-content hidden" id="step3">
+                    <div class="flex flex-col justify-center items-center gap-10">
+                        <div class="text-xl text-heroText font-[400]"></div>
+                        <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
+                            <img src="" alt="Track shipments in real time." class="object-fill" />
+                        </div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
+                    </div>
+                </div>
+                <div class="step-content hidden" id="step4">
+                    <div class="flex flex-col justify-center items-center gap-10">
+                        <div class="text-xl text-heroText font-[400]"></div>
+                        <div class="bg-iconBg rounded-2xl p-5 h-20 md:h-32 w-20 md:w-32">
+                            <img src="" alt="Leverage analytics." class="object-fill" />
+                        </div>
+                        <div class="text-green1 font-extrabold uppercase text-xl md:text-2xl text-center"></div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="service-sector.html">
+                <div class="text-green1 font-bold border-green1 border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
+                    Learn more
+                    <img src="assets/images/greenarrow.png" alt="arrow" class="w-5" />
+                </div>
+            </a>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <div class="text-3xl md:text-6xl font-extrabold capitalize boldTexts">
+            <p><span class="text-highlightGreen"></span> </p>
+        </div>
+
+        <div class="my-10 pb-10">
+            <div class="flex lg:flex-row flex-col justify-start items-start gap-10">
+                <div class="flex-1 flex flex-col gap-5 bg-lightgreen p-4 md:p-10 rounded-[20px]">
+                    
+                </div>
+
+                <div class="flex-1 flex justify-center items-center w-full md:w-fit object-fill relative md:h-[57svh] lg:h-[75svh] rounded-[20px]"
+                    style="background-image: url(''); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                    <div class="h-24 md:h-[85svh] top-0 relative flex flex-col justify-center items-center">
+                        <a href="/contact" target="_blank" class="scroll-to" style="margin-top: 600px;">
+                            <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                                style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                <img src="assets/images/quote.png" alt="quote" class="w-7 h-7" />
+                                
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tailored Solutions Section -->
+        <div class="processsteps flex flex-col justify-center items-center md:min-h-svh">
+            <p class="text-lightText text-center font-[400]">
+                
+            </p>
+            <div class="text-3xl md:text-5xl font-extrabold capitalize boldTexts text-center gap-1">
+                <span class="text-highlightGreen">.</span>
+            </div>
+
+            <!-- Desktop Tabs -->
+            <div class="hidden md:flex flex-col items-center justify-center">
+                <div id="solution-tabs" class="my-10 w-fit flex flex-col md:flex-row justify-center items-center bg-white rounded-[40px] shadow-xl p-2 gap-2">
+                    <div class="flex items-center">
+                        <div data-solution="0" class="solution-tab group cursor-pointer bg-[#01A68C] text-white hover:bg-lightGreenBg hover:text-[#01A68C] rounded-[40px] font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2 w-full active">
+                            <div class="cursor-pointer w-96 md:w-fit p-3 font-bold text-xl flex justify-center items-center">General Cargo</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div data-solution="1" class="solution-tab group cursor-pointer bg-white text-[#01A68C] hover:bg-lightGreenBg hover:text-[#01A68C] rounded-[40px] font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2 w-full">
+                            <div class="cursor-pointer w-96 md:w-fit p-3 font-bold text-xl flex justify-center items-center">Pharmaceutical</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div data-solution="2" class="solution-tab group cursor-pointer bg-white text-[#01A68C] hover:bg-lightGreenBg hover:text-[#01A68C] rounded-[40px] font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2 w-full">
+                            <div class="cursor-pointer w-96 md:w-fit p-3 font-bold text-xl flex justify-center items-center">FMCG</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div data-solution="3" class="solution-tab group cursor-pointer bg-white text-[#01A68C] hover:bg-lightGreenBg hover:text-[#01A68C] rounded-[40px] font-bold text-xl flex flex-col justify-center items-center gap-2 relative p-2 w-full">
+                            <div class="cursor-pointer w-96 md:w-fit p-3 font-bold text-xl flex justify-center items-center">Consumer Electronics</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:min-w-[80svw] flex flex-col justify-center items-center gap-10 p-2 relative bg-cover bg-no-repeat">
+                    <img src="assets/images/Solutions1.png" alt="solutions" class="w-full  object-cover rounded-[40px]" id="assets/imagessolutions0" />
+                    <img src="assets/images/Solutions2.png" alt="solutions" class="w-full  object-cover rounded-[40px] hidden" id="assets/imagessolutions1" />
+                    <img src="assets/images/Solutions3.png" alt="solutions" class="w-full object-cover rounded-[40px] hidden" id="assets/imagessolutions2" />
+                    <img src="assets/images/Solutions4.png" alt="solutions" class="w-full object-cover rounded-[40px] hidden" id="assets/imagessolutions3"  />
+
+                    <div id="solutions0" class="solution-content absolute flex flex-col justify-center items-center gap-5 text-xl">
+                        <div class="text-white text-center md:w-9/12 p-2 gap-5 flex flex-col">
+                            <p>A diverse range of non-specialized goods, including consumer products, machinery, and industrial equipment.</p>
+                            <p>At Tech Cargo Hub, we recognize the unique characteristics and challenges associated with managing such cargo within warehouses.</p>
+                        </div>
+                        <a href="service-sectorceba.html?gscroll=true#general-cargo">
+                            <div class="text-white border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
+                                Learn more
+                                <img src="assets/images/whiteArrow.png" alt="arrow" class="w-5" />
+                            </div>
+                        </a>
+                    </div>
+                    <div id="solutions1" class="solution-content absolute hidden flex-col justify-center items-center gap-5 text-xl">
+                        <div class="text-white text-center md:w-9/12 p-2 gap-5 flex flex-col">
+                            <p>At Tech Cargo Hub, we understand the critical importance of maintaining the integrity and safety of pharmaceutical products.</p>
+                            <p>Our tailored warehousing solutions for the pharmaceutical industry ensure sanitation and safety, temperature control, regulatory compliance and intelligent warehouse technology.</p>
+                        </div>
+                        <a href="service-sectorb9cb.html?pscroll=true#pharmaceutical">
+                            <div class="text-white border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
+                                Learn more
+                                <img src="assets/images/whiteArrow.png" alt="arrow" class="w-5" />
+                            </div>
+                        </a>
+                    </div>
+                    <div id="solutions2" class="solution-content absolute hidden flex-col justify-center items-center gap-5 text-xl">
+                        <div class="text-white text-center md:w-9/12 p-2 gap-5 flex flex-col">
+                            <p>Our FMCG Solutions drive towards elevated profit margins and minimized operational costs through enhanced processes, optimized stock picking, and strategic location efficiencies.</p>
+                            <p>Our WMS Warehouse Management Software goes beyond traditional functionalities, offering features like Cross Docking, Load Bay Management, Handheld Device Integration, Bulk Packing, and Task Scheduling.</p>
+                        </div>
+                        <a href="service-sectordc72.html?fcmgscroll=true#fcmg">
+                            <div class="text-white border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
+                                Learn more
+                                <img src="assets/images/whiteArrow.png" alt="arrow" class="w-5" />
+                            </div>
+                        </a>
+                    </div>
+                    <div id="solutions3" class="solution-content absolute hidden flex-col justify-center items-center gap-5 text-xl">
+                        <div class="text-white text-center md:w-9/12 p-2 gap-5 flex flex-col">
+                            <p>Our services are powered by cutting-edge warehouse technology, ensuring the efficient picking, packing, and distribution of even the most demanding electronic orders.</p>
+                            <p>We prioritize rapidity, security, and care, ensuring that customers receive their devices promptly and in pristine condition.</p>
+                            <p>With secure storage facilities, meticulous warehouse inventory management, streamlined order processing, fast fulfillment, and specialized handling capabilities, we meet the unique requirements of consumer electronics, safeguarding products from theft, damage, and environmental hazards during transit.</p>
+                        </div>
+                        <a href="service-sector58cd.html?cscroll=true#consumer-electronics">
+                            <div class="text-white border-2 p-2.5 px-10 rounded-lg flex flex-row w-fit gap-5 justify-between items-center cursor-pointer">
+                                Learn more
+                                <img src="assets/images/whiteArrow.png" alt="arrow" class="w-5" />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Accordion -->
+            <div class="flex-1 flex flex-col md:hidden gap-20 w-full pt-10">
+                <div class="p-4 md:p-10 bg-lightgreen rounded-2xl">
+                    <div id="accordion-flush-serviceList" data-accordion="collapse" class="w-full">
+                        <h2 id="accordion-flush-serviceList-heading-0" class="w-full">
+                            <button type="button"
+                                class="flex items-center justify-between w-full p-5 font-semibold text-xl text-left text-[#3E3E3E] border-b border-[#D9D9D9] gap-3 !bg-transparent"
+                                data-accordion-target="#accordion-flush-serviceList-body-0" aria-expanded="true"
+                                aria-controls="accordion-flush-serviceList-body-0">
+                                <span class="flex items-center">General Cargo</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-serviceList-body-0" class="hidden" aria-labelledby="accordion-flush-serviceList-heading-0">
+                            <div class="p-5 border-b border-[#D9D9D9] font-semibold text-lg">
+                                <p class="mb-2 text-[#818181]">A diverse range of non-specialized goods, including consumer products, machinery, and industrial equipment. At Tech Cargo Hub, we recognize the unique characteristics and challenges associated with managing such cargo within warehouses.</p>
+                                <div class="flex justify-center items-center px-10 py-4 my-4 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold shadow-gradient md:w-fit w-full"
+                                    style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                    <a href="service-sector.html#general-cargo" class="text-inherit">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 id="accordion-flush-serviceList-heading-1" class="w-full">
+                            <button type="button"
+                                class="flex items-center justify-between w-full p-5 font-semibold text-xl text-left text-[#3E3E3E] border-b border-[#D9D9D9] gap-3 !bg-transparent"
+                                data-accordion-target="#accordion-flush-serviceList-body-1" aria-expanded="false"
+                                aria-controls="accordion-flush-serviceList-body-1">
+                                <span class="flex items-center">Pharmaceutical</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-serviceList-body-1" class="hidden" aria-labelledby="accordion-flush-serviceList-heading-1">
+                            <div class="p-5 border-b border-[#D9D9D9] font-semibold text-lg">
+                                <p class="mb-2 text-[#818181]">At Tech Cargo Hub, we understand the critical importance of maintaining the integrity and safety of pharmaceutical products. Our tailored warehousing solutions for the pharmaceutical industry ensure sanitation and safety, temperature control, regulatory compliance and intelligent warehouse technology.</p>
+                                <div class="flex justify-center items-center px-10 py-4 my-4 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold shadow-gradient md:w-fit w-full"
+                                    style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                    <a href="service-sector.html#pharmaceutical" class="text-inherit">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 id="accordion-flush-serviceList-heading-2" class="w-full">
+                            <button type="button"
+                                class="flex items-center justify-between w-full p-5 font-semibold text-xl text-left text-[#3E3E3E] border-b border-[#D9D9D9] gap-3 !bg-transparent"
+                                data-accordion-target="#accordion-flush-serviceList-body-2" aria-expanded="false"
+                                aria-controls="accordion-flush-serviceList-body-2">
+                                <span class="flex items-center">FMCG</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-serviceList-body-2" class="hidden" aria-labelledby="accordion-flush-serviceList-heading-2">
+                            <div class="p-5 border-b border-[#D9D9D9] font-semibold text-lg">
+                                <p class="mb-2 text-[#818181]">Our FMCG Solutions drive towards elevated profit margins and minimized operational costs through enhanced processes, optimized stock picking, and strategic location efficiencies. Our WMS Warehouse Management Software goes beyond traditional functionalities, offering features like Cross Docking, Load Bay Management, handheld device integration, Bulk Packing, and Task Scheduling.</p>
+                                <div class="flex justify-center items-center px-10 py-4 my-4 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold shadow-gradient md:w-fit w-full"
+                                    style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                    <a href="service-sector.html#fcmg" class="text-inherit">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 id="accordion-flush-serviceList-heading-3" class="w-full">
+                            <button type="button"
+                                class="flex items-center justify-between w-full p-5 font-semibold text-xl text-left text-[#3E3E3E] border-b border-[#D9D9D9] gap-3 !bg-transparent"
+                                data-accordion-target="#accordion-flush-serviceList-body-3" aria-expanded="false"
+                                aria-controls="accordion-flush-serviceList-body-3">
+                                <span class="flex items-center">Consumer Electronics</span>
+                                <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-serviceList-body-3" class="hidden" aria-labelledby="accordion-flush-serviceList-heading-3">
+                            <div class="p-5 border-b border-[#D9D9D9] font-semibold text-lg">
+                                <p class="mb-2 text-[#818181]">Our services are powered by cutting-edge warehouse technology, ensuring the efficient picking, packing, and distribution of even the most demanding electronic orders. We prioritize rapidity, security, and care, ensuring that customers receive their devices promptly and in pristine condition. With secure storage facilities, meticulous warehouse inventory management, streamlined order processing, fast fulfillment, and specialized handling capabilities, we meet the unique requirements of consumer electronics, safeguarding products from theft, damage, and environmental hazards during transit.</p>
+                                <div class="flex justify-center items-center px-10 py-4 my-4 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold shadow-gradient md:w-fit w-full"
+                                    style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                    <a href="service-sector.html#consumer-electronics" class="text-inherit">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Get a Quote Section -->
+        <div class="flex flex-col justify-start items-start mb-20 gap-2 py-10">
+            <div class="text-5xl font-[900] capitalize gap-1" style="letter-spacing: -0.20rem">
+                Get A Quick Quote<span class="text-highlightGreen">.</span>
+            </div>
+            <p class="text-lightText my-5 text-lg">
+                Through our streamlined approach, your business can accurately budget for costs and <br />
+                plan for future growth, resulting in improved efficiency, cost savings, and ultimately, business expansion.
+            </p>
+            <div class="mt-5">
+                <a href="/contact" target="_blank" class="scroll-to">
+                    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                        <img src="assets/images/quote.png" alt="quote" class="w-7 h-7" />
+                        Get a Quote
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="price-calculator-popup" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-[#01A68C] relative transform transition-all duration-300 scale-95 opacity-0" id="popup-card">
+        
+        <button id="close-popup-btn" class="popup-close-btn">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="mx-auto mb-4 bg-[#F6FFF6] rounded-full flex items-center justify-center">
+            <img src="assets/images/tchLogo.png" alt="calculator icon" class="w-13"/>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-[900] text-[#0D3832] mb-3">
+            Get a Quick Price Estimate!
+        </h2>
+        <p class="mb-6 text-lightText text-lg">
+            You can be eligible for upto 30% discount!!
+        </p>
+        
+        <a href="/calculator" class="w-full flex justify-center items-center px-10 py-3 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold transform hover:scale-105 transition-transform"
+           style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+            Go to Calculator
+        </a>
+    </div>
+</div>
+
+<script>
+    // Accordion Functionality (unchanged from your original code, with first item always open)
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".accordion-button");
+        const bodies = document.querySelectorAll(".accordion-body");
+        const icons = document.querySelectorAll(".accordion-button svg");
+
+        // Activate first accordion by default
+        if (bodies.length > 0) {
+            bodies[0].classList.remove("hidden");
+            icons[0].classList.add("rotate-180");
+        }
+
+        buttons.forEach((btn, index) => {
+            btn.addEventListener("click", () => {
+                const body = btn.parentElement.nextElementSibling;
+                const icon = btn.querySelector("svg");
+                const isAlreadyOpen = !body.classList.contains("hidden");
+
+                // Prevent closing the first accordion
+                if (index === 0 && isAlreadyOpen) {
+                    return;
+                }
+
+                // Close all bodies and reset icons
+                bodies.forEach((b, i) => {
+                    b.classList.add("hidden");
+                    icons[i].classList.remove("rotate-180");
+                });
+
+                // Open the clicked one unless it's the first and already open
+                if (!isAlreadyOpen) {
+                    body.classList.remove("hidden");
+                    icon.classList.add("rotate-180");
+                } else {
+                    // Reopen the first if user tries to close all
+                    bodies[0].classList.remove("hidden");
+                    icons[0].classList.add("rotate-180");
+                }
+            });
+        });
+
+        // Mobile Accordion for Tailored Solutions
+        const accordionButtons = document.querySelectorAll('[data-accordion-target]');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-accordion-target');
+                const targetBody = document.querySelector(targetId);
+                const isOpen = targetBody.classList.contains('hidden');
+                const icon = button.querySelector('svg');
+
+                // Close all other accordion items
+                document.querySelectorAll('[id^="accordion-flush-serviceList-body-"]').forEach(body => {
+                    body.classList.add('hidden');
+                    const relatedButton = document.querySelector(`[aria-controls="${body.id}"]`);
+                    const relatedIcon = relatedButton.querySelector('svg');
+                    relatedIcon.classList.add('rotate-180');
+                });
+
+                // Toggle the clicked accordion
+                if (isOpen) {
+                    targetBody.classList.remove('hidden');
+                    icon.classList.remove('rotate-180');
+                    button.setAttribute('aria-expanded', 'true');
+                } else {
+                    targetBody.classList.add('hidden');
+                    icon.classList.add('rotate-180');
+                    button.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        // 5 Step Process Tabs
+        const stepTabs = document.querySelectorAll('.step-tab');
+        const stepContents = document.querySelectorAll('.step-content');
+        let stepIndex = 0;
+        let stepInterval;
+
+        function showStep(index) {
+            stepTabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+                tab.classList.toggle('bg-[#01A68C]', i === index);
+                tab.classList.toggle('text-white', i === index);
+                tab.classList.toggle('bg-white', i !== index);
+                tab.classList.toggle('text-[#01A68C]', i !== index);
+                tab.querySelector('div:first-child').classList.toggle('bg-[#8CC88F66]', i === index);
+                tab.querySelector('div:first-child').classList.toggle('bg-white', i !== index);
+            });
+            stepContents.forEach((content, i) => {
+                content.classList.toggle('hidden', i !== index);
+                content.classList.toggle('flex', i === index);
+            });
+            stepIndex = index;
+        }
+
+        function startStepAutoCycle() {
+            stepInterval = setInterval(() => {
+                stepIndex = (stepIndex + 1) % 5;
+                showStep(stepIndex);
+            }, 1500);
+        }
+
+        stepTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                clearInterval(stepInterval);
+                showStep(parseInt(tab.getAttribute('data-step')));
+                startStepAutoCycle();
+            });
+        });
+
+        // Initialize first step
+        showStep(0);
+        startStepAutoCycle();
+
+        // Tailored Solutions Tabs
+        const solutionTabs = document.querySelectorAll('.solution-tab');
+        const solutionContents = document.querySelectorAll('.solution-content');
+        const solutionImages = document.querySelectorAll('[id^="assets/imagessolutions"]');
+        let solutionIndex = 0;
+        let solutionInterval;
+
+        function showSolution(index) {
+            solutionTabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+                tab.classList.toggle('bg-[#01A68C]', i === index);
+                tab.classList.toggle('text-white', i === index);
+                tab.classList.toggle('bg-white', i !== index);
+                tab.classList.toggle('text-[#01A68C]', i !== index);
+            });
+            solutionContents.forEach((content, i) => {
+                content.classList.toggle('hidden', i !== index);
+                content.classList.toggle('flex', i === index);
+            });
+            solutionImages.forEach((img, i) => {
+                img.classList.toggle('hidden', i !== index);
+            });
+            solutionIndex = index;
+        }
+
+        function startSolutionAutoCycle() {
+            solutionInterval = setInterval(() => {
+                solutionIndex = (solutionIndex + 1) % 4;
+                showSolution(solutionIndex);
+            }, 30000);
+        }
+
+        solutionTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                clearInterval(solutionInterval);
+                showSolution(parseInt(tab.getAttribute('data-solution')));
+                startSolutionAutoCycle();
+            });
+        });
+
+        // Initialize first solution
+        showSolution(0);
+        startSolutionAutoCycle();
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const popup = document.getElementById('price-calculator-popup');
+        const closeBtn = document.getElementById('close-popup-btn');
+        
+        let popupHasBeenClosed = false;
+
+        const showPopup = () => {
+            if (!popupHasBeenClosed) {
+                popup.classList.remove('hidden');
+                popup.classList.add('flex');
+            }
+        };
+
+        const closePopup = () => {
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+            popupHasBeenClosed = true;
+        };
+
+        setTimeout(showPopup, 7000);
+        closeBtn.addEventListener('click', closePopup);
+        
+    });
+</script>
+
+<div class="mt-auto bg-cover bg-no-repeat text-white p-10 flex flex-col"
+style="background-image: url('assets/images/footer.png');">
+<div class="container mx-auto">
+    <div class="flex flex-col md:flex-row flex-wrap justify-between items-start mb-20  gap-y-10">
+
+        <div class="flex flex-col justify-start items-start gap-1.5 font-semibold">
+            <img src="assets/images/tchLogo.png" alt="facebook" class="w-40 -ml-4" />
+            
+            <div class="flex flex-row gap-1">
+                <a href="https://web.facebook.com/techcargohub" target="_blank" class="cursor-pointer">
+                    <img src="assets/images/fb.png" alt="facebook"
+                        class="w-[2.45rem] h-[2.45rem] object-fill" />
+                </a>
+                <a target="_blank" class="cursor-pointer" >
+                    <img src="assets/images/ig.png" alt="instagram"
+                        class="w-[2.25rem] h-[2.25rem] object-fill" />
+                </a>
+                <a href="https://x.com/TechCargoHub" target="_blank" class="cursor-pointer">
+                    <img src="assets/images/x.png" alt="x"
+                        class="w-[2.25rem] h-[2.25rem] object-fill" />
+                </a>
+                <a href="https://www.linkedin.com/company/tech-cargo-hub-lk/" target="_blank" class="cursor-pointer">
+                    <img src="assets/images/linkdIn.png" alt="linkdin"
+                        class="w-[2.25rem] h-[2.25rem] object-fill" />
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col justify-start items-start gap-1">
+            <div class=" text-greenheading font-bold">
+                Quick Links
+            </div>
+
+            <a href="/"
+                class="block text-offwhitetext hover:text-greenheading font-semibold">Home</a>
+
+            <a href="/about"
+                class="block text-offwhitetext hover:text-greenheading font-semibold">About Us</a>
+
+            <a href="/techsolutions"
+                class="block text-offwhitetext hover:text-greenheading font-semibold">Tech Solutions</a>
+
+            <a href="/servicesector"
+                class="block text-offwhitetext hover:text-greenheading font-semibold">Service Sector</a>
+
+        </div>
+
+        <div class="flex flex-col justify-start items-start gap-1">
+            <div class=" text-greenheading font-bold">Contact Us</div>
+            <div class=" text-offwhitetext"><a href="tel:+94777289656">+94 77 728 9656</a></div>
+            <div class=" text-offwhitetext"><a href="mailto:Hello@techcargohub.com">Hello@techcargohub.com</a>
+            </div>
+            <div class=" text-offwhitetext">
+                Tech Cargo Hub (Pvt) Ltd <br />
+                112, Centre Road, Mattakkuliya, <br />
+                Colombo 15. Sri Lanka.
+            </div>
+        </div>
+
+        <div class="flex flex-col justify-start items-start gap-2">
+            <div>Subscribe to our newsletter</div>
+            <form action="https://techcargohub.com/subscribe" method="POST" class="bg-[#1A1A1A9C] rounded-xl w-full relative">
+                <input type="hidden" name="_token" value="CsHtrhQAA56CdCw0c7RK9LR5hY9P0XbY12ZcaRIL">                    <input type="email" name="email" id="email" placeholder="Enter your email"
+                    class="!bg-[#1A1A1A9C] border-none focus:border-none outline-none w-80 p-3 rounded-xl"
+                    required />
+                <button type="submit" class="absolute right-0 top-0 sendbtn">
+                    <img src="assets/images/newsletter1.png" class="w-10" />
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-start mt-auto text-sm text-graytext">
+        <div class="flex flex-row gap-4">
+            <div>
+                <a href="/privacy-policy" class="block hover:text-greenheading font-semibold cursor-pointer">
+    Privacy Policy
+</a>
+            </div>
+
+        </div>
+        <div>
+            Copyright © 2025 Tech Cargo Hub (Pvt) Ltd ®. All rights reserved.
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="flex flex-row justify-start gap-0">
+<div class="bg-green1 h-2 w-20 md:w-64"></div>
+<div class="bg-olivine h-2 w-full"></div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            navText: [
+                `<img src="https://techcargohub.com/assets/images/greenarrow.png" alt="greenArrow" class="w-5 h-auto" style="transform: scaleX(-1);" />`,
+                `<img src="https://techcargohub.com/assets/images/greenarrow.png" alt="greenArrow" class="w-5 h-auto" />`
+            ],
+            autoplay: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+const urlParams = new URLSearchParams(window.location.search);
+
+const scrollTargets = {
+    'scroll': {selector: '#contact-form', offset: 80},
+    'gscroll': {selector: '#general-cargo', offset: 100},
+    'pscroll': {selector: '#pharmaceutical', offset: 100},
+    'fcmgscroll': {selector: '#fcmg', offset: 100},
+    'cscroll': {selector: '#consumer-electronics', offset: 100}
+};
+
+Object.keys(scrollTargets).forEach(param => {
+    if (urlParams.get(param) === 'true') {
+        const {selector, offset} = scrollTargets[param];
+        const target = document.querySelector(selector);
+        if (target) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: target.offsetTop - offset,
+                    behavior: 'smooth'
+                });
+            }, 70);
+        }
+    }
+});
+});
+
+
+</script>
+
+
+
+
+
+
+    </body>
+</html>

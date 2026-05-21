@@ -89,12 +89,10 @@
                 <li>BI Dashboards (Microsoft Power BI)</li>
                 <li>Handling - Loading &amp; Unloading</li>
                 <li>24/7 CCTV Camera Access</li>
-                <li>Fully Insured Facility</li>
                 <li>Storage/CBM/Day</li>
                 <li>Operations &amp; Labor Charges</li>
                 <li>Customer Service (WhatsApp, Email, Calls)</li>
             </ul>
-
 <hr>
 
             <p>Please note that this is an estimate. Our team will contact you shortly to discuss your requirements.</p>

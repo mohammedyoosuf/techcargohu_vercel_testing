@@ -4,17 +4,63 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ title ?? site:name }}</title>
-        <link rel="stylesheet" href="{{ mix src='css/tailwind.css' }}">
-       
+        <title>{{ if title }}{{ title }} - {{ /if }}{{ site:name }}</title>
+
+        <!-- Legacy Styles from Header -->
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
+        <link rel="stylesheet" href="/assets/css/owl.theme.green.min.css" />
+        <link rel="stylesheet" href="/assets/css/toastr.min.css">
+        <link rel="stylesheet" href="/assets/css/app-45b68f9a.css" />
+        
+        <!-- Fonts -->
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&amp;display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+
+        <!-- React / Vite සඳහා -->
+        <script type="module">
+            import RefreshRuntime from 'http://127.0.0.1:5173/@react-refresh'
+            RefreshRuntime.injectIntoGlobalHook(window)
+            window.$RefreshReg$ = () => {}
+            window.$RefreshSig$ = () => (type) => type
+            window.__vite_plugin_react_preamble_installed__ = true
+        </script>
+
+        {{ vite src="resources/css/tailwind.css|resources/js/site.js" }}
+
+        <!-- JQuery (Legacy) -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/toastr.min.js"></script>
+
+        <!-- Meta Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '656439483891293');
+            fbq('track', 'PageView');
+        </script>
     </head>
-    <body>
-      
-            {{ template_content }}
-       
-        <script src="{{ mix src='/js/site.js' }}"></script>
-      
-        <!-- Bootstrap Bundle Min JS -->
-       
+    <body class="antialiased flex flex-col min-h-svh mx-auto font-['Poppins']"
+        style="background-image: url('/assets/images/bg.png'); 
+               background-position: center;
+               background-repeat: no-repeat;
+               background-size: cover;
+               position: relative;">
+        
+        {{ partial:header }}
+
+        {{ template_content }}
+
+        {{ partial:footer }}
     </body>
 </html>

@@ -15,9 +15,7 @@ use Statamic\Facades\Entry;
 */
 
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+// Route::statamic('/', 'home');
 
 // // Route::get('/about', function () {
 // //     return view('about');
@@ -28,9 +26,7 @@ use Statamic\Facades\Entry;
 //    'title' => 'Example'
 // ]);
 
-Route::get('/calculator', function () {
-    return view('calculator');
-});
+Route::statamic('/calculator', 'calculator', ['title' => 'Pricing Calculator']);
 
 
 Route::get('/privacy-policy', function () {
