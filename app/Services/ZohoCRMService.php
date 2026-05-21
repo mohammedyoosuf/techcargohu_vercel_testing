@@ -160,4 +160,57 @@ class ZohoCRMService
         ->map(fn ($v, $k) => "$k: $v")
         ->implode("\n");
     }
+    /**
+     * Map warehouse estimate values to Zoho Lead structure
+     */
+    public function mapWarehouseEstimateToLead(array $data)
+    {
+        // Split user name
+        $nameParts = explode(' ', $data['yourName'], 2);
+        $firstName = $nameParts[0] ?? 'Customer';
+        $lastName  = $nameParts[1] ?? 'User';
+
+        $stepOne = $data['stepOne'];
+        $result = $data['result'];
+
+        return [
+            'First_Name' => $firstName,
+            'Last_Name'  => $lastName,
+            'Company'    => $data['organizationName'] ?: 'N/A',
+            'Email'      => $data['email'],
+            'Phone'      => $data['phone'],
+            'Lead_Source' => 'Warehouse Calculator',
+
+            // Full description
+            'Description' => $this->buildWarehouseDescription($data),
+
+            // 🔥 Custom fields to pass through Lead → Deal conversion
+            'Type_of_Container' => $stepOne['containerType'] ?? null,
+            'No_of_Containers'  => null, 
+            'Expected_Volume'   => $stepOne['cbm'] ?? null,
+            'Amount'            => $result['monthlyTotalCost'] ?? null,
+        ];
+    }
+
+    /**
+     * Build formatted text description for Warehouse Calculator
+     */
+    private function buildWarehouseDescription(array $data)
+    {
+        $stepOne = $data['stepOne'];
+        $result = $data['result'];
+
+        return collect([
+            'Product Type' => $data['productTypeLabel'],
+            'Weight Range' => $stepOne['productWeight'],
+            'CBM' => $stepOne['cbm'],
+            'Days' => $stepOne['days'],
+            'Container Type' => $stepOne['containerType'],
+            'Monthly Total Cost' => 'Rs. ' . number_format($result['monthlyTotalCost'] ?? 0, 2),
+            'Estimated Total Cost' => 'Rs. ' . number_format($result['totalCost'] ?? 0, 2),
+        ])
+        ->filter(fn($v) => !empty($v))
+        ->map(fn ($v, $k) => "$k: $v")
+        ->implode("\n");
+    }
 }
