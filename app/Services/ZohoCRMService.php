@@ -184,9 +184,13 @@ class ZohoCRMService
             // Full description
             'Description' => $this->buildWarehouseDescription($data),
 
-            // 🔥 Custom fields to pass through Lead → Deal conversion
-            'Type_of_Container' => $stepOne['containerType'] ?? null,
-            'No_of_Containers'  => null, 
+            // 🔥 Custom fields based on CRM Screenshot
+            'Product_Type'           => $data['productTypeLabel'] ?? null,
+            'Product_Weight_Buckets' => $stepOne['productWeight'] ?? null,
+            'Type_of_Container'      => $stepOne['containerType'] ?? null,
+            'No_of_containers_monthly' => null, // Not collected in Warehouse form
+
+            // Other fields (for deal conversion or fallback)
             'Expected_Volume'   => $stepOne['cbm'] ?? null,
             'Amount'            => $result['monthlyTotalCost'] ?? null,
         ];
