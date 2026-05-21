@@ -103,7 +103,7 @@ export function WarehouseCalculatorApp() {
           result: estimateResult,
           productTypeLabel: businessDetails.productType,
         }),
-      }).catch(() => {});
+      }).catch(() => { });
     }
   }
 
@@ -336,13 +336,7 @@ export function WarehouseCalculatorApp() {
                 </div>
               </SectionCard>
 
-              <button
-                type="button"
-                onClick={handleContinue}
-                className="inline-flex h-11 w-full items-center justify-center rounded-xl bg-brand px-5 text-sm font-medium text-white transition hover:bg-brand/92 sm:w-auto"
-              >
-                Continue to Business Details
-              </button>
+
             </div>
           </div>
         ) : (
@@ -453,7 +447,19 @@ export function WarehouseCalculatorApp() {
             </SectionCard>
           </div>
         )}
+        {step === 1 && (
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              onClick={handleContinue}
+              className="inline-flex h-11 w-full items-center justify-center rounded-xl bg-brand px-5 text-sm font-medium text-white transition hover:bg-brand/92 sm:w-auto"
+            >
+              Continue to Business Details
+            </button>
+          </div>
+        )}
       </div>
+
 
       {result ? <ResultModal result={result} onClose={() => setResult(null)} /> : null}
     </main>

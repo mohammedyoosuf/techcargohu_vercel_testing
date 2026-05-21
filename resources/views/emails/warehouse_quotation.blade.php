@@ -53,6 +53,28 @@
         .service-item { display: table-row; }
         .service-icon { display: table-cell; padding: 5px 10px 5px 0; color: #01A68C; font-size: 16px; vertical-align: top; width: 20px; }
         .service-text { display: table-cell; padding: 5px 0; font-size: 13px; color: #4a5568; vertical-align: top; }
+        /* Services Included Section CSS */
+        .services-table-included { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 10px; 
+        }
+        .services-table-included td { 
+            padding: 6px 0; 
+            vertical-align: top; 
+        }
+        .services-table .service-check { 
+            color: #01A68C; 
+            font-size: 16px; 
+            font-weight: bold; 
+            width: 24px; 
+            line-height: 1.4;
+        }
+        .services-table .service-name { 
+            font-size: 14px; 
+            color: #4a5568; 
+            line-height: 1.5; 
+        }
 
         .disclaimer { background-color: #f7fafc; border-left: 3px solid #cbd5e0; border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 20px 0 0; font-size: 13px; color: #718096; }
 
@@ -146,18 +168,33 @@
         @endif
 
         {{-- Services --}}
+        {{-- Services Included --}}
         <p class="section-label" style="margin-top:24px;">Services Included</p>
-        <div class="services-grid">
-            <div class="service-item"><span class="service-icon">&#10003;</span><span class="service-text">Inventory Control (CargoWise WMS + Stock Reports)</span></div>
-            <div class="service-item"><span class="service-icon">&#10003;</span><span class="service-text">BI Dashboards (Microsoft Power BI)</span></div>
-            <div class="service-item"><span class="service-icon">&#10003;</span><span class="service-text">Secure Storage, Loading &amp; Unloading</span></div>
-            <div class="service-item"><span class="service-icon">&#10003;</span><span class="service-text">24/7 CCTV Camera Access</span></div>
-            <div class="service-item"><span class="service-icon">&#10003;</span><span class="service-text">Fully Insured Facility</span></div>
-            <div class="service-item"><span class="service-icon">&#10003;</span><span class="service-text">Dedicated Customer Service</span></div>
-        </div>
+        <table class="services-table" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="service-check">&#10003;</td>
+                <td class="service-name">Inventory Control (CargoWise WMS + Stock Reports)</td>
+            </tr>
+            <tr>
+                <td class="service-check">&#10003;</td>
+                <td class="service-name">BI Dashboards (Microsoft Power BI)</td>
+            </tr>
+            <tr>
+                <td class="service-check">&#10003;</td>
+                <td class="service-name">Secure Storage, Loading &amp; Unloading</td>
+            </tr>
+            <tr>
+                <td class="service-check">&#10003;</td>
+                <td class="service-name">24/7 CCTV Camera Access</td>
+            </tr>
+            <tr>
+                <td class="service-check">&#10003;</td>
+                <td class="service-name">Dedicated Customer Service</td>
+            </tr>
+        </table>
 
         <div class="disclaimer">
-            This is an automated estimate. Our team will contact you shortly to provide a customised proposal based on your specific requirements. A minimum storage period of 15 days is applicable.
+            This is an automated estimate. Our team will contact you shortly to provide a customised proposal based on your specific requirements.
         </div>
 
         <p style="margin-top:24px; font-size:14px; color:#4a5568;">Best Regards,<br><strong>The Tech Cargo Hub Team</strong></p>
