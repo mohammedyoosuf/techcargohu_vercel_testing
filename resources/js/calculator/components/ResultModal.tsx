@@ -106,7 +106,7 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
             <div className="mt-4 space-y-2">
               <div className="flex items-start justify-between gap-6">
                 <div className="min-w-0">
-                  <p className="text-[0.98rem] font-semibold text-[#18243a]">Storage</p>
+                  <p className="text-[0.98rem] font-semibold text-[#18243a]">Storage / Loading and Unloading / Inventory Control</p>
                   <p className="mt-1 text-[0.9rem] leading-6 text-[#4a5a72]">
                     {result.storageSummary}
                   </p>

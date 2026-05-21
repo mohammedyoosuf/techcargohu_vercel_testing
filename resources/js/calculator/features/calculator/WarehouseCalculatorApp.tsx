@@ -137,7 +137,7 @@ export function WarehouseCalculatorApp() {
                 <div className="grid gap-3 sm:grid-cols-2">
                   <TextInput
                     id="warehouseRent"
-                    label="Warehouse Rent"
+                    label="Warehouse Rent*"
                     type="number"
                     value={presentCosts.warehouseRent}
                     onChange={(value) => updatePresentCost("warehouseRent", value)}
@@ -145,7 +145,7 @@ export function WarehouseCalculatorApp() {
                   />
                   <TextInput
                     id="monthlyCapexAllocation"
-                    label="Monthly Capex Allocation"
+                    label="Monthly Capex Allocation*"
                     type="number"
                     value={presentCosts.monthlyCapexAllocation}
                     onChange={(value) => updatePresentCost("monthlyCapexAllocation", value)}
@@ -153,7 +153,7 @@ export function WarehouseCalculatorApp() {
                   />
                   <TextInput
                     id="staffCosts"
-                    label="Staff Costs"
+                    label="Staff Costs*"
                     type="number"
                     value={presentCosts.staffCosts}
                     onChange={(value) => updatePresentCost("staffCosts", value)}
@@ -161,7 +161,7 @@ export function WarehouseCalculatorApp() {
                   />
                   <TextInput
                     id="utilities"
-                    label="Utilities"
+                    label="Utilities*"
                     type="number"
                     value={presentCosts.utilities}
                     onChange={(value) => updatePresentCost("utilities", value)}
@@ -169,7 +169,7 @@ export function WarehouseCalculatorApp() {
                   />
                   <TextInput
                     id="otherExpenses"
-                    label="Other Expenses"
+                    label="Other Expenses*"
                     type="number"
                     value={presentCosts.otherExpenses}
                     onChange={(value) => updatePresentCost("otherExpenses", value)}
@@ -177,7 +177,7 @@ export function WarehouseCalculatorApp() {
                   />
                   <TextInput
                     id="wms"
-                    label="WMS"
+                    label="WMS*"
                     type="number"
                     value={presentCosts.wms}
                     onChange={(value) => updatePresentCost("wms", value)}
@@ -238,7 +238,7 @@ export function WarehouseCalculatorApp() {
                     <div className="mt-2 space-y-2">
                       <SelectInput
                         id="productWeight"
-                        label="Kg - Range"
+                        label="Kg - Range*"
                         value={stepOne.productWeight}
                         onChange={(value) => updateStepOne("productWeight", value)}
                         options={storageWeightOptions}
