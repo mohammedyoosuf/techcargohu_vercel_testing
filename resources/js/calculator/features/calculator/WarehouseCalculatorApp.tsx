@@ -248,7 +248,7 @@ export function WarehouseCalculatorApp() {
                       <div className="grid gap-2.5 sm:grid-cols-3">
                         <TextInput
                           id="cbm"
-                          label="CBM"
+                          label="CBM*"
                           type="number"
                           value={stepOne.cbm}
                           onChange={(value) => updateStepOne("cbm", value)}
@@ -256,7 +256,7 @@ export function WarehouseCalculatorApp() {
                         />
                         <TextInput
                           id="days"
-                          label="Days"
+                          label="Days*"
                           type="number"
                           value={stepOne.days}
                           onChange={(value) => updateStepOne("days", value)}
@@ -388,21 +388,21 @@ export function WarehouseCalculatorApp() {
               <div className="grid gap-x-4 gap-y-3 sm:grid-cols-2">
                 <TextInput
                   id="organizationName"
-                  label="Organization Name"
+                  label="Organization Name*"
                   value={businessDetails.organizationName}
                   onChange={(value) => updateBusinessDetails("organizationName", value)}
                   error={stepTwoErrors.organizationName}
                 />
                 <TextInput
                   id="yourName"
-                  label="Your Name"
+                  label="Your Name*"
                   value={businessDetails.yourName}
                   onChange={(value) => updateBusinessDetails("yourName", value)}
                   error={stepTwoErrors.yourName}
                 />
                 <TextInput
                   id="email"
-                  label="Email"
+                  label="Email*"
                   type="email"
                   value={businessDetails.email}
                   onChange={(value) => updateBusinessDetails("email", value)}
@@ -410,7 +410,7 @@ export function WarehouseCalculatorApp() {
                 />
                 <TextInput
                   id="phone"
-                  label="Phone"
+                  label="Phone*"
                   type="tel"
                   value={businessDetails.phone}
                   onChange={(value) => updateBusinessDetails("phone", value)}
@@ -419,7 +419,7 @@ export function WarehouseCalculatorApp() {
                 <div className="sm:col-span-2">
                   <SelectInput
                     id="productType"
-                    label="Product Type"
+                    label="Product Type*"
                     value={businessDetails.productType}
                     onChange={(value) => updateBusinessDetails("productType", value)}
                     options={productTypeOptions}
