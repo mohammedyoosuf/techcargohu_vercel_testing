@@ -83,6 +83,7 @@ export function WarehouseCalculatorApp() {
     setStepOneErrors(errors);
     if (Object.keys(errors).length === 0) {
       setStep(2);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }
 
@@ -111,8 +112,8 @@ export function WarehouseCalculatorApp() {
     <main className="min-h-screen overflow-x-clip bg-canvas px-4 py-5 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1380px]">
         {step === 1 ? (
-          <div className="grid gap-5 lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)] lg:items-start">
-            <div className="min-w-0 space-y-5">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,45fr)_minmax(0,55fr)] lg:items-stretch">
+            <div className="min-w-0 flex flex-col gap-5 h-full">
               <section className="pt-1">
                 <h1 className="max-w-[17ch] text-[2rem] font-semibold leading-tight tracking-[-0.04em] text-ink sm:text-[2.3rem]">
                   Get An Instant Quote For{" "}
@@ -127,11 +128,12 @@ export function WarehouseCalculatorApp() {
               </section>
 
               <SectionCard>
-                <header className="mb-4">
-                  <h2 className="text-[1.5rem] font-semibold leading-none tracking-[-0.04em] text-ink sm:text-[1.8rem]">
-                    <span className="bg-gradient-to-r from-brand to-mint bg-clip-text text-transparent">
-                      How much is it costing me at present
-                    </span>
+                <header className="mb-4 flex items-center gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0D3832]">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path></svg>
+                  </div>
+                  <h2 className="text-[1.15rem] font-bold leading-none text-[#01A68C] sm:text-[1.3rem]">
+                    How much is it costing me at present
                   </h2>
                 </header>
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -185,20 +187,30 @@ export function WarehouseCalculatorApp() {
                   />
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-danger/25 bg-danger/10 px-4 py-2.5 text-sm leading-6 text-danger">
-                  A minimum six (6) months&apos; key money is applicable to all warehouses.
-                  However, this requirement is waived for clients utilizing TCH.
+                <div className="mt-4 flex items-start gap-3 rounded-lg border border-[#fca5a5] bg-[#fef2f2] px-4 py-3 text-sm leading-6 text-[#dc2626]">
+                  <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#dc2626]">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  </div>
+                  <p>
+                    A minimum six (6) months&apos; key money is applicable to all warehouses.
+                    However, this requirement is waived for clients utilizing TCH.
+                  </p>
                 </div>
               </SectionCard>
 
-              <SectionCard className="border-mint/20 bg-gradient-to-r from-[#f7fcf7] via-[#eef8f0] to-[#eaf8ef] shadow-[0_8px_24px_rgba(31,169,122,0.08)]">
+              <SectionCard className="border-none bg-[#f4faf7] shadow-sm flex-1">
                 <div>
-                  <h2 className="text-[1.05rem] font-semibold text-[#21354b] sm:text-[1.1rem]">
-                    Important Notes
-                  </h2>
+                  <header className="mb-4 flex items-center gap-3">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#01A68C]">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h2 className="text-[1.15rem] font-bold leading-none text-[#01A68C] sm:text-[1.3rem]">
+                      Important Notes
+                    </h2>
+                  </header>
                   <ul className="mt-4 space-y-3 text-sm leading-6 text-[#4c5d75]">
                     <li className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-mint" />
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#01A68C]" />
                       <span>
                         Services include secure storage solutions, loading and unloading
                         operations, advanced inventory management through CargoWise WMS, and
@@ -206,11 +218,11 @@ export function WarehouseCalculatorApp() {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-mint" />
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#01A68C]" />
                       <span>Packing and labelling material to be provided by the client.</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-mint" />
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#01A68C]" />
                       <span>
                         TCH shall not be held liable for any content displayed on stickers or
                         logos of the customers.
@@ -221,16 +233,17 @@ export function WarehouseCalculatorApp() {
               </SectionCard>
             </div>
 
-            <div className="min-w-0 space-y-3">
-              <SectionCard>
-                <header className="mb-2.5">
-                  <h2 className="text-[1.5rem] font-semibold leading-none tracking-[-0.04em] text-ink sm:text-[1.8rem]">
-                    <span className="bg-gradient-to-r from-brand to-mint bg-clip-text text-transparent">
-                      How much will it cost at TCH
-                    </span>
+            <div className="min-w-0 flex flex-col h-full">
+              <SectionCard className="flex-1 flex flex-col">
+                <header className="mb-4 flex items-center gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0D3832]">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"></path><path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2-4h14l2 4"></path><line x1="4" y1="21" x2="4" y2="10"></line><line x1="20" y1="21" x2="20" y2="10"></line><path d="M8 21v-4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"></path></svg>
+                  </div>
+                  <h2 className="text-[1.15rem] font-bold leading-none text-[#01A68C] sm:text-[1.3rem]">
+                    How much will it cost at TCH
                   </h2>
                 </header>
-                <div className="space-y-3">
+                <div className="space-y-6 flex-1 flex flex-col">
                   <div>
                     <p className="text-sm font-semibold text-ink">
                       Storage / Loading and Unloading / Inventory Control
@@ -323,12 +336,12 @@ export function WarehouseCalculatorApp() {
                     </div>
                   </div>
 
-                  <div className="border-t border-line pt-2.5">
+                  <div className="border-t border-line pt-2.5 flex-1 flex flex-col justify-center pb-2">
                     <p className="text-center text-[1.05rem] font-semibold text-[#243247] sm:text-[1.15rem]">
                       Goods Type
                     </p>
                     <div className="mt-2 flex justify-center">
-                      <p className="inline-flex max-w-full items-center justify-center rounded-[999px] bg-gradient-to-r from-brand to-mint px-4 py-2 text-center text-[0.82rem] font-semibold text-white shadow-[0_8px_18px_rgba(15,61,51,0.18)] sm:px-5 sm:text-[0.88rem]">
+                      <p className="inline-flex max-w-full items-center justify-center rounded-[999px] bg-gradient-to-r from-[#0D3832] to-[#01A68C] px-4 py-2 text-center text-[0.82rem] font-semibold text-white shadow-md sm:px-5 sm:text-[0.88rem]">
                         {goodsTypeLabel}
                       </p>
                     </div>
@@ -448,11 +461,11 @@ export function WarehouseCalculatorApp() {
           </div>
         )}
         {step === 1 && (
-          <div className="mt-6 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <button
               type="button"
               onClick={handleContinue}
-              className="inline-flex h-11 w-full items-center justify-center rounded-xl bg-brand px-5 text-sm font-medium text-white transition hover:bg-brand/92 sm:w-auto"
+              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-gradient-to-r from-[#0D3832] to-[#01A68C] px-8 text-[1rem] font-medium text-white shadow-lg transition hover:opacity-90 sm:w-auto min-w-[280px]"
             >
               Continue to Business Details
             </button>
