@@ -140,7 +140,7 @@ class EstimateController extends Controller
             Mail::to($data['email'])->send(new WarehouseQuotationMail($data));
 
             // Send to company
-            $ownerEmail = env('COMPANY_OWNER_EMAIL', 'wpslakshiha@gmail.com');
+            $ownerEmail = env('COMPANY_OWNER_EMAIL', 'wpslakshitha@gmail.com');
             Mail::to($ownerEmail)->send(new WarehouseInternalNotificationMail($data));
 
             // Log success
