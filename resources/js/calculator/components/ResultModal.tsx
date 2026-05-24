@@ -40,7 +40,7 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4 sm:p-6">
-      <div className="flex max-h-[88vh] w-full max-w-[620px] flex-col overflow-hidden rounded-[1.7rem] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+      <div className="flex max-h-[88vh] w-full max-w-[620px] md:max-w-[850px] lg:max-w-[950px] flex-col overflow-hidden rounded-[1.7rem] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
         <div className="shrink-0 rounded-t-[1.7rem] bg-gradient-to-r from-brand to-mint px-5 py-4 text-white sm:px-7 sm:py-5">
           <div className="flex items-start justify-between gap-6">
             <div className="min-w-0">
@@ -62,12 +62,13 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
           </div>
         </div>
 
-        <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4 sm:px-5 sm:py-4">
-          <section className="w-full rounded-[1.35rem] border border-[#d8dde7] bg-gradient-to-r from-[#fafbfd] to-[#f5f7fb] px-4 py-4 shadow-[0_8px_24px_rgba(18,32,57,0.08)] sm:px-5 sm:py-4">
-            <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-[#18243a] sm:text-[1.32rem]">
-              1. How much is it costing me at present
-            </h3>
-            <div className="mt-4 space-y-2.5">
+        <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <section className="w-full h-full flex flex-col rounded-[1.35rem] border border-[#d8dde7] bg-gradient-to-r from-[#fafbfd] to-[#f5f7fb] px-4 py-4 shadow-[0_8px_24px_rgba(18,32,57,0.08)] sm:px-5 sm:py-4">
+              <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-[#18243a] sm:text-[1.32rem]">
+                1. How much is it costing me at present
+              </h3>
+              <div className="mt-4 space-y-2.5 flex-1">
               <DetailRow
                 label="Warehouse Rent:"
                 value={formatCurrency(result.currentBreakdown.warehouseRent)}
@@ -90,7 +91,7 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
               />
               <DetailRow label="WMS:" value={formatCurrency(result.currentBreakdown.wms)} />
             </div>
-            <div className="mt-2.5 border-t border-[#c7cdd7] pt-2.5">
+            <div className="mt-4 border-t border-[#c7cdd7] pt-3">
               <DetailRow
                 label="Monthly Total:"
                 value={formatCurrency(result.currentTotal)}
@@ -99,11 +100,11 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
             </div>
           </section>
 
-          <section className="w-full rounded-[1.35rem] border border-[#99f2bf] bg-gradient-to-r from-[#f2fcf6] to-[#eefcf4] px-4 py-4 shadow-[0_8px_24px_rgba(31,169,122,0.08)] sm:px-5 sm:py-4">
-            <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-[#18243a] sm:text-[1.32rem]">
-              2. How much will it cost at TCH
-            </h3>
-            <div className="mt-4 space-y-2">
+            <section className="w-full h-full flex flex-col rounded-[1.35rem] border border-[#99f2bf] bg-gradient-to-r from-[#f2fcf6] to-[#eefcf4] px-4 py-4 shadow-[0_8px_24px_rgba(31,169,122,0.08)] sm:px-5 sm:py-4">
+              <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-[#18243a] sm:text-[1.32rem]">
+                2. How much will it cost at TCH
+              </h3>
+              <div className="mt-4 space-y-2 flex-1">
               <div className="flex items-start justify-between gap-6">
                 <div className="min-w-0">
                   <p className="text-[0.98rem] font-semibold text-[#18243a]">Storage / Loading and Unloading / Inventory Control</p>
@@ -142,7 +143,7 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
                 </div>
               ) : null}
             </div>
-            <div className="mt-2.5 border-t border-[#c7cdd7] pt-2.5">
+            <div className="mt-4 border-t border-[#c7cdd7] pt-3">
               <div className="flex items-end justify-between gap-6">
                 <span className="text-[1rem] font-semibold text-[#161616]">
                   TCH Total Cost:
@@ -152,7 +153,8 @@ export function ResultModal({ result, onClose }: ResultModalProps) {
                 </span>
               </div>
             </div>
-          </section>
+            </section>
+          </div>
 
           <section
             className={`w-full rounded-[1.35rem] border px-4 py-4 shadow-[0_8px_24px_rgba(18,32,57,0.06)] sm:px-5 sm:py-4 ${
