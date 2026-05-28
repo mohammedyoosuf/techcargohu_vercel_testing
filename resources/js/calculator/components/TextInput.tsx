@@ -34,12 +34,12 @@ export function TextInput({
         placeholder={placeholder}
         onChange={(event) => {
           const val = event.target.value;
-          // Extra safety check in case they paste a negative number
-          if (type === "number" && val.includes("-")) return;
+          // Extra safety check in case they paste a negative number or decimal
+          if (type === "number" && (val.includes("-") || val.includes(".") || val.includes(","))) return;
           onChange(val);
         }}
         onKeyDown={(event) => {
-          if (type === "number" && (event.key === "-" || event.key === "e" || event.key === "E")) {
+          if (type === "number" && (event.key === "-" || event.key === "e" || event.key === "E" || event.key === "." || event.key === ",")) {
             event.preventDefault();
           }
         }}
