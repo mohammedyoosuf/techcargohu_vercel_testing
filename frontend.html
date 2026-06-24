@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Cargo Hub - Extra Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ==================== CSS ==================== */
+
+        :root {
+            --brand-teal: #00A88F;
+            --brand-teal-hover: #008773;
+            --brand-teal-alpha: rgba(0, 168, 143, 0.12);
+            --dark-slate: #1A3B32;
+            --text-main: #2D3748;
+            --text-muted: #64748B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* ==================== NAVBAR ==================== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 6%;
+            background-color: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .site-logo {
+            height: 46px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 500;
+            font-size: 15px;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--brand-teal);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active-link::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active-link {
+            color: var(--brand-teal);
+        }
+
+        .btn-contact {
+            background: transparent;
+            border: 2px solid var(--brand-teal);
+            color: var(--brand-teal);
+            padding: 11px 26px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-contact:hover {
+            background: var(--brand-teal);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .cowork-hero {
+            padding: 40px 6% 50px;
+            background: linear-gradient(135deg,
+                    rgba(0, 168, 143, 0.08) 0%,
+                    rgba(255, 255, 255, 1) 50%);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 168, 143, 0.1);
+            color: var(--brand-teal);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 68px;
+            font-weight: 700;
+            line-height: 1.05;
+            color: #0F172A;
+            margin-bottom: 24px;
+            letter-spacing: -2.5px;
+        }
+
+        .hero-content h1 span {
+            color: var(--brand-teal);
+            display: block;
+        }
+
+        .hero-content p {
+            max-width: 780px;
+            margin: 0 auto 50px;
+            font-size: 20px;
+            color: var(--text-muted);
+            line-height: 1.85;
+        }
+
+        .hero-cards {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-card {
+            background: white;
+            width: 280px;
+            padding: 32px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+            transition: all 0.4s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 168, 143, 0.12);
+        }
+
+        .hero-card i {
+            font-size: 36px;
+            color: var(--brand-teal);
+            margin-bottom: 18px;
+        }
+
+        .hero-card h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+            color: #0F172A;
+        }
+
+        .hero-card span {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* ==================== MAIN CONTENT ==================== */
+        .booking-container {
+            max-width: 1200px;
+            margin: 30px auto 60px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .feature-split {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .feature-split.inverse {
+            flex-direction: row-reverse;
+        }
+
+        .content-side {
+            flex: 1.1;
+        }
+
+        .image-side {
+            flex: 0.9;
+        }
+
+        .content-side h2 {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.8px;
+            margin-bottom: 24px;
+            color: #0F172A;
+        }
+
+        .description {
+            font-size: 19px;
+            line-height: 1.9;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        .features-list h3 {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--dark-slate);
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .features-list ul li {
+            font-size: 16px;
+            margin-bottom: 14px;
+            padding-left: 26px;
+            position: relative;
+        }
+
+        .features-list ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--brand-teal);
+            font-weight: bold;
+        }
+
+        .btn-book {
+            background: transparent;
+            border: 1px solid rgba(15, 23, 42, 0.25);
+            color: #0F172A;
+            padding: 13px 38px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-book:hover {
+            background: var(--brand-teal);
+            color: white;
+            border-color: var(--brand-teal);
+        }
+
+        .space-display-img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: 0.4s;
+        }
+
+        .space-display-img:hover {
+            transform: translateY(-8px);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .site-footer {
+            background: linear-gradient(180deg, #050C0A 0%, #010302 100%);
+            color: white;
+            padding: 90px 6% 35px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr 1.3fr 1.5fr;
+            gap: 50px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-logo {
+            height: 42px;
+            margin-bottom: 28px;
+        }
+
+        .social-links-row a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links-row a:hover {
+            background: var(--brand-teal);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .feature-split,
+            .feature-split.inverse {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sticky Navbar -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="https://lh3.googleusercontent.com/d/1zBF3aEJ6QAI1V2PsdgEJI6m-9E4iED1r" alt="TCH Logo"
+                class="site-logo">
+        </div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Tech Solutions</a>
+            <a href="#">Service Sectors</a>
+            <a href="#">Pricing Calculator</a>
+            <a href="#" class="active-link">Co-work</a>
+        </nav>
+        <button class="btn-contact">Contact Us</button>
+    </header>
+
+    <!-- Hero Section (Now properly under navbar) -->
+    <section class="cowork-hero">
+        <div class="hero-content">
+            <span class="hero-badge">INTERNATIONAL COWORKING EXPERIENCE</span>
+
+            <h1>
+                Premium Spaces Designed For<br>
+                <span>Modern Businesses</span>
+            </h1>
+
+            <p>
+                Whether you're hosting executive meetings, producing creative content,
+                or building the next big idea, Tech Cargo Hub provides flexible,
+                world-class workspaces designed to support productivity,
+                collaboration and business growth.
+            </p>
+
+            <div class="hero-cards">
+                <div class="hero-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Premium Facilities</h3>
+                    <span>Modern professional environment</span>
+                </div>
+                <div class="hero-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Business Community</h3>
+                    <span>Network with professionals</span>
+                </div>
+                <div class="hero-card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>High-Speed Internet</h3>
+                    <span>Reliable enterprise connectivity</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Co-working Spaces -->
+    <main class="cowork-section">
+        <div class="booking-container">
+
+            <!-- Board Room -->
+            <section id="board-room" class="feature-split">
+                <div class="content-side">
+                    <h2><span style="color:#0D1B2A;">Board </span><span style="color:#00A88F;">Room</span></h2>
+                    <p class="description">
+                        Impress clients and align teams in a premium, private executive setting.
+                        Engineered for seamless hybrid presentations, collaborative workshops,
+                        and high-stakes pitches.
+                    </p>
+                    <div class="features-list">
+                        <h3>Key Features :</h3>
+                        <ul>
+                            <li>Accommodates up to 7 participants in a structured and professional layout</li>
+                            <li>55” screen for high-quality presentations, video conferencing, and digital collaboration
+                            </li>
+                            <li>Whiteboard available to facilitate planning, ideation, and structured discussions</li>
+                            <li>High-speed internet ensuring seamless communication and uninterrupted workflow</li>
+                        </ul>
+                    </div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+                <div class="image-side">
+                    <img src="https://lh3.googleusercontent.com/d/10MP2oNwcVCirZm-ZTrM8TknHMxan8Dm1"
+                        alt="TCH Board Room Space" class="space-display-img">
+                </div>
+            </section>
+
+            <!-- Studio -->
+            <section id="studio" class="feature-split inverse">
+                <div class="content-side">
+                    <h2><span style="color:#00A88F;">Studio</span></h2>
+                    <p class="description">
+                        A modern content studio built for high-quality product shoots, podcasts, and professional media
+                        production.
+                    </p>
+                    <div class="features-list">
+                        <h3>Benefits of Studio:</h3>
+                        <ul>
+                            <li>Professionally set lighting for consistent, high-quality visuals</li>
+                            <li>Green and black backdrops for versatile shooting requirements</li>
+                            <li> Ideal for product photography, video shoots, and podcast recordings</li>
+                            <li> Clean, controlled environment designed for seamless content creation</li>
+                        </ul>
+                    </div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+                <div class="image-side">
+                    <img src="https://lh3.googleusercontent.com/d/1cNdUO4g40NkH9qN8ag8PzOSZ_QRo35Vn"
+                        alt="TCH Studio Workspace" class="space-display-img">
+                </div>
+            </section>
+
+            <!-- Working Space -->
+            <section id="working-space" class="feature-split">
+                <div class="content-side">
+                    <h2><span style="color:#0D1B2A;">Working </span><span style="color:#00A88F;">Space</span></h2>
+                    <p class="description">
+                        Maximize focus and daily output within our bright, dedicated hot-desking and open-plan layout.
+                        Perfect for freelancers, remote builders, and distributed teams needing clean structural focus.
+                    </p>
+                    <div class="features-list">
+                        <h3>Benefits of Working Space:</h3>
+                        <ul>
+                            <li>Privacy dividers integrated flawlessly on premium light wood desks</li>
+                            <li>Abundant natural light via expansive floor-to-ceiling perimeter windows</li>
+                            <li>Ergonomic mesh-back task chairs designed for long-form comfort</li>
+                            <li>High speed internet access for seamless connectivity</li>
+                        </ul>
+                    </div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+                <div class="image-side">
+                    <img src="https://lh3.googleusercontent.com/d/1SgjNHzEXwLdOoPZRvImmXPKLsP3fkM7R"
+                        alt="TCH Shared Working Space Area" class="space-display-img">
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <img src="https://lh3.googleusercontent.com/d/1zBF3aEJ6QAI1V2PsdgEJI6m-9E4iED1r" alt="TCH Light Logo"
+                    class="footer-logo">
+                <div class="social-links-row">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="#">Home</a><br><br>
+                <a href="#">About Us</a><br><br>
+                <a href="#">Tech Solutions</a><br><br>
+                <a href="#">Service Sectors</a><br><br>
+                <a href="#">Extra Services</a>
+            </div>
+
+            <div>
+                <h3>Contact Us</h3>
+                <p>+94 77 728 9656</p>
+                <p>Hello@techcargohub.com</p>
+                <p>Tech Cargo Hub (Pvt) Ltd<br>
+                    112, Centre Road, Mattakkuliya,<br>
+                    Colombo 15. Sri Lanka.</p>
+            </div>
+
+            <div>
+                <h3>Subscribe to our newsletter</h3>
+                <input type="email" placeholder="Enter your email"
+                    style="padding:12px; width:100%; border-radius:50px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); color:white; margin-top:15px;">
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
