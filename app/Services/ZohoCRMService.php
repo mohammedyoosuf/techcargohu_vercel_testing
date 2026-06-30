@@ -217,4 +217,20 @@ class ZohoCRMService
         ->map(fn ($v, $k) => "$k: $v")
         ->implode("\n");
     }
+
+/**
+ * Map Website Contact Form to Zoho Lead
+ */
+public function mapContactFormToLead(array $data)
+{
+    return [
+        'Last_Name'   => $data['name'],
+        'Company'     => 'Website Inquiry',
+        'Email'       => $data['email'],
+        'Phone'       => $data['phone'],
+        'Description' => $data['message'],
+        'Lead_Source' => 'Website Contact Form',
+    ];
+}
+
 }
