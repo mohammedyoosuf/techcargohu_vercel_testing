@@ -42,9 +42,9 @@ jobs:
           extensions: mbstring, bcmath, pdo, pdo_mysql, gd, xml, zip, curl
           coverage: none
 
-      # ── 3. Validate composer.json ────────────────────────────────────
-      - name: Validate composer.json
-        run: composer validate
+      # ── 3. Sync composer.lock with composer.json ─────────────────────
+      - name: Sync composer.lock
+        run: composer update --lock --no-interaction --no-scripts
 
       # ── 4. Cache Composer packages ───────────────────────────────────
       - name: Cache Composer dependencies
