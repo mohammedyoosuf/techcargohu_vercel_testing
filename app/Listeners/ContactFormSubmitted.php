@@ -37,11 +37,17 @@ class ContactFormSubmitted
 
         $submission = $event->submission;
 
+        // country_code is stored as e.g. "🇱🇰 SL  (  +94 )" — pull out just the dial code
+        preg_match('/\+\d+/', (string) $submission->get('country_code'), $matches);
+        $dialCode = $matches[0] ?? '';
+
+        $mobileNumber = preg_replace('/\D/', '', (string) $submission->get('mobile_number'));
+
         // Get submitted form values
         $data = [
             'name'    => $submission->get('name'),
             'email'   => $submission->get('email'),
-            'phone'   => trim($submission->get('country_code') . ' ' . $submission->get('mobile_number')),
+            'phone'   => trim($dialCode . ' ' . $mobileNumber),
             'message' => $submission->get('message'),
         ];
 
