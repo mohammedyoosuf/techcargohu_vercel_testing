@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstimateController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use App\Http\Controllers\EstimateController;
 */
 
 Route::post('/submit-estimate', [EstimateController::class, 'store']);
+
+Route::post('/submit-contact', [ContactController::class, 'store']);
 
 Route::get('/estimates', [EstimateController::class, 'index']);
 
