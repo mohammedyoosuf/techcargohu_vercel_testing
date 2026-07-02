@@ -26,9 +26,18 @@ use Statamic\Facades\Entry;
 //    'title' => 'Example'
 // ]);
 
+
 Route::statamic('/calculator', 'calculator', ['title' => 'Pricing Calculator']);
 
 
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
+});
+
+// Temporary route for local testing
+
+// Route::view('/yoosuf-test', 'frontend');
+// Route::statamic('/yoosuf-test', 'frontend');
+Route::get('/yoosuf-test', function () {
+    return view('frontend');
 });

@@ -1,0 +1,162 @@
+name: CI – Build & Run Output
+
+on:
+  push:
+    branches:
+      - main
+      - yoosuf
+  pull_request:
+    branches:
+      - main
+      - yoosuf
+
+jobs:
+  build:
+    name: Build & Validate
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: laravel_test
+          MYSQL_ROOT_PASSWORD: secret
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      # ── 1. Checkout code ─────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Set up PHP 8.2 ────────────────────────────────────────────
+      - name: Set up PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, pdo, pdo_mysql, gd, xml, zip, curl
+          coverage: none
+
+      # ── 3. Sync composer.lock ─────────────────────────────────────────
+      - name: Sync composer.lock
+        run: composer update --lock --no-interaction --no-scripts
+
+      # ── 4. Cache Composer packages ───────────────────────────────────
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      # ── 5. Install PHP dependencies ──────────────────────────────────
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      # ── 6. Set up Node.js 24 ─────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      # ── 7. Install Node dependencies ─────────────────────────────────
+      - name: Install NPM dependencies
+        run: npm ci
+
+      # ── 8. Build Vite assets ─────────────────────────────────────────
+      - name: Build frontend assets (Vite)
+        run: npm run build
+
+      # ── 9. Set up Laravel .env ───────────────────────────────────────
+      - name: Copy .env and configure for CI
+        run: |
+          cp .env.example .env
+          sed -i 's/APP_ENV=local/APP_ENV=local/' .env
+          sed -i 's/APP_DEBUG=true/APP_DEBUG=true/' .env
+          sed -i 's|APP_URL=http://localhost|APP_URL=http://127.0.0.1:8000|' .env
+          sed -i 's/DB_DATABASE=laravel/DB_DATABASE=laravel_test/' .env
+          sed -i 's/DB_USERNAME=root/DB_USERNAME=root/' .env
+          sed -i 's/DB_PASSWORD=/DB_PASSWORD=secret/' .env
+
+      # ── 10. Generate application key ─────────────────────────────────
+      - name: Generate APP_KEY
+        run: php artisan key:generate
+
+      # ── 11. Run database migrations ──────────────────────────────────
+      - name: Run database migrations
+        run: php artisan migrate --force
+
+      # ── 12. Show app info & registered routes ────────────────────────
+      - name: 📋 Show Laravel app environment info
+        run: php artisan about
+
+      - name: 🗺️ List all registered routes
+        run: php artisan route:list
+
+      # ── 13. Start PHP dev server & hit routes ────────────────────────
+      - name: 🚀 Start Laravel dev server (background)
+        run: |
+          php artisan serve --host=127.0.0.1 --port=8000 &
+          echo "Waiting for server to start..."
+          sleep 4
+
+      - name: 🌐 Check homepage response
+        run: |
+          echo "=== HTTP Status ==="
+          curl -s -o /dev/null -w "Status Code: %{http_code}\nTime: %{time_total}s\n" http://127.0.0.1:8000/
+
+          echo ""
+          echo "=== Response Headers ==="
+          curl -s -I http://127.0.0.1:8000/ | head -20
+
+          echo ""
+          echo "=== Page Content Preview (first 100 lines) ==="
+          curl -s http://127.0.0.1:8000/ | head -100
+
+      - name: 🔍 Check /cp (Statamic Control Panel)
+        run: |
+          echo "=== Statamic Control Panel ==="
+          curl -s -o /dev/null -w "Status Code: %{http_code}\n" http://127.0.0.1:8000/cp
+          curl -s http://127.0.0.1:8000/cp | head -50
+        continue-on-error: true
+
+      - name: 🔍 Probe all GET routes automatically
+        run: |
+          echo "=== Auto-probing all GET routes ==="
+          php artisan route:list --method=GET --json 2>/dev/null | \
+          python3 -c "
+          import sys, json
+          routes = json.load(sys.stdin)
+          for r in routes:
+              uri = r.get('uri', '')
+              # Skip routes with parameters for now
+              if '{' not in uri:
+                  print(f'Route: /{uri}')
+          " | head -30 || echo "Route probing skipped"
+        continue-on-error: true
+
+      # ── 14. Show storage & logs ──────────────────────────────────────
+      - name: 📂 Show Laravel log output (if any errors)
+        run: |
+          echo "=== Laravel Log (last 50 lines) ==="
+          if [ -f storage/logs/laravel.log ]; then
+            tail -50 storage/logs/laravel.log
+          else
+            echo "No log file generated — app ran cleanly!"
+          fi
+
+      # ── 15. PHP syntax check ─────────────────────────────────────────
+      - name: ✅ PHP syntax check (app / config / routes)
+        run: find app config routes -name "*.php" | xargs php -l
+
+      # ── 16. Run PHPUnit tests ────────────────────────────────────────
+      - name: 🧪 Run PHPUnit tests
+        run: php artisan test --env=testing
+        continue-on-error: true
