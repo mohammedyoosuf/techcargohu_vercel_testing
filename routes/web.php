@@ -41,3 +41,5 @@ Route::get('/privacy-policy', function () {
 Route::get('/yoosuf-test', function () {
     return view('frontend');
 });
+Route::statamic('frontend', 'frontend', ['layout' => 'layout']);
+// Route::statamic('frontend', 'frontend', ['layout' => false]);
