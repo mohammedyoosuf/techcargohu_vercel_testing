@@ -1,19 +1,21 @@
-   <!-- Include the Header Partial -->
-   
-   <div class="flex-grow container mx-auto">
-        
+<!-- Include the Header Partial -->
+
+<div class="flex-grow container mx-auto">
+
     <div class="md:space-y-20">
 
         <div class="container mx-auto pb-20">
-            <div class="flex flex-col md:flex-row gap-5 justify-start items-start w-full px-5 md:px-0 h-full md:h-[500px]">
+            <div
+                class="flex flex-col md:flex-row gap-5 justify-start items-start w-full px-5 md:px-0 h-full md:h-[500px]">
                 <div
                     class="flex-1 p-10 bg-heroBg rounded-[2.9rem] flex flex-col justify-center items-start h-full md:h-[500px] text-left">
                     <h1 class="md:text-3xl lg:text-5xl text-2xl font-[900] text-left gap-2 capitalize aboutcss"
                         style="letter-spacing: -0.15rem">
-                      {{service_sector_title}}
+                        {{service_sector_title}}
                     </h1>
                 </div>
-                <div class="flex-1 rounded-[2.9rem] overflow-hidden h-full md:h-[500px] flex items-center justify-center">
+                <div
+                    class="flex-1 rounded-[2.9rem] overflow-hidden h-full md:h-[500px] flex items-center justify-center">
                     <img src="{{service_sector_image}}" alt="serviceSectorHero" class="w-full h-full object-fill" />
                 </div>
             </div>
@@ -22,262 +24,585 @@
 
         <div class="relative" id="general-cargo">
             <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
-    style="background-image: url('{{general_cargo_image}}');">
-    <div class="container space-y-10 flex flex-row">
-        <div class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
-            <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
-                {{general_cargo_title}}
-            </h2>
-            <p class="text-white md:text-lg">
-                {{general_cargo_discription}}
-            </p>
-        </div>
-        <div class="hidden md:flex flex-1">
-        </div>
-    </div>
-</div>
+                style="background-image: url('{{general_cargo_image}}');">
+                <div class="container space-y-10 flex flex-row">
+                    <div
+                        class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+                        <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
+                            {{general_cargo_title}}
+                        </h2>
+                        <p class="text-white md:text-lg">
+                            {{general_cargo_discription}}
+                        </p>
+                    </div>
+                    <div class="hidden md:flex flex-1">
+                    </div>
+                </div>
+            </div>
 
             <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
                 <div class="grid gird-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
                     {{ if general_cargo_card }}
-                 
+
                     {{ general_cargo_card }}
-  <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
-style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
+                        style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
 ">
-                            
-                            {{ if icon}}
-                             <div class="bg-iconBg p-4 rounded-xl">
-                                    <img src="{{icon}}" alt="icon"
-                                        class="w-7 h-7" />
-                                </div>
-                          
-                            {{ /if }}
-                              <div class="font-[550] text-xl group-hover:text-darkGreen">
-                                    {{title}}
-                                </div>
-                              <div class="text-left font-[400] text-sm">
-                                    {{discription}}
-                                </div>
-                                
-                        
+
+                        {{ if icon}}
+                        <div class="bg-iconBg p-4 rounded-xl">
+                            <img src="{{icon}}" alt="icon" class="w-7 h-7" />
                         </div>
+
+                        {{ /if }}
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            {{title}}
+                        </div>
+                        <div class="text-left font-[400] text-sm">
+                            {{discription}}
+                        </div>
+
+
+                    </div>
                     {{ /general_cargo_card }}
-                    
-            {{ else }}
-                <p>No locations available.</p>
-            {{ /if }}                  
-                                            
-                                         
-                                          
-                                           
-                    
+
+                    {{ else }}
+                    <p>No locations available.</p>
+                    {{ /if }}
+
+
+
+
+
                     <div class="flex justify-center items-center">
-                        <a href="/contact" target="_blank" class="scroll-to">
-    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
-        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-        <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
-       {{general_cargo_button}}
-    </div>
-</a>
+                        <a href="/calculator" target="_self" class="scroll-to"> <!-- replaced -->
+                            <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                                style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+                                {{general_cargo_button}}
+                            </div>
+                        </a>
                     </div>
 
                 </div>
             </div>
         </div>
 
-
+        <!-- Pharmaceutical -->
+        <!-- Pharmaceutical 
         <div class="relative" id="pharmaceutical">
             <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
-    style="background-image: url('{{pharmaceutical_image}}');">
-    <div class="container space-y-10 flex flex-row">
-        <div class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
-            <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
-               {{pharmaceutical_title}}
-            </h2>
-            <p class="text-white md:text-lg">
-               {{pharmaceutical_discription}}
-            </p>
-        </div>
-        <div class="hidden md:flex flex-1">
-        </div>
-    </div>
-</div>
+                style="background-image: url('{{pharmaceutical_image}}');">
+                <div class="container space-y-10 flex flex-row">
+                    <div
+                        class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+                        <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
+                            {{pharmaceutical_title}}
+                        </h2>
+                        <p class="text-white md:text-lg">
+                            {{pharmaceutical_discription}}
+                        </p>
+                    </div>
+                    <div class="hidden md:flex flex-1">
+                    </div>
+                </div>
+            </div>
 
             <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
                 <div class="grid gird-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
-                                           
-                                         
+
+
                     {{ if pharmaceutical_card }}
-                 
+
                     {{ pharmaceutical_card }}
-  <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
-style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
+                        style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
 ">
-                            
-                            {{ if image}}
-                             <div class="bg-iconBg p-4 rounded-xl">
-                                    <img src="{{image}}" alt="icon"
-                                        class="w-7 h-7" />
-                                </div>
-                          
-                            {{ /if }}
-                              <div class="font-[550] text-xl group-hover:text-darkGreen">
-                                    {{title}}
-                                </div>
-                              <div class="text-left font-[400] text-sm">
-                                    {{discription}}
-                                </div>
-                                
-                        
+
+                        {{ if image}}
+                        <div class="bg-iconBg p-4 rounded-xl">
+                            <img src="{{image}}" alt="icon" class="w-7 h-7" />
                         </div>
+
+                        {{ /if }}
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            {{title}}
+                        </div>
+                        <div class="text-left font-[400] text-sm">
+                            {{discription}}
+                        </div>
+
+
+                    </div>
                     {{ /pharmaceutical_card }}
-                    
-            {{ else }}
-                <p>No locations available.</p>
-            {{ /if }}                         
-                                            
-                                            
-                    
+
+                    {{ else }}
+                    <p>No locations available.</p>
+                    {{ /if }}
+
+
+
                     <div class="flex justify-center items-center">
-                        <a href="/contact" target="_blank" class="scroll-to">
-    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
-        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-        <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
-        {{pharmaceutical_button}}
-    </div>
-</a>
+                        <a href="/calculator" target="_self" class="scroll-to"> 
+                            <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                                style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+                                {{pharmaceutical_button}}
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+ -->
+        <!-- end of pharmaceutical -->
 
+        <!-- start of agricultural  -->
 
+        <!-- Agriculture Section -->
+        <div class="relative" id="agriculture">
+            <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
+                style="background-image: url('https://lh3.googleusercontent.com/d/1TUszU1bu_EA552hBUagS8Fpl56AVOpyu');">
+                <div class="container space-y-10 flex flex-row">
+                    <div
+                        class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+
+                        <h2 class="text-4xl md:text-5xl font-bold capitalize text-white">
+                            Agriculture & Farming Solutions
+                        </h2>
+
+                        <p class="text-white md:text-lg">
+                            From agricultural machinery to farming essentials, we provide secure warehousing
+                            and efficient logistics solutions designed to protect your valuable products.
+                            Our facilities support reliable storage, inventory management, and timely
+                            distribution for businesses across the agricultural sector.
+                        </p>
+
+                    </div>
+
+                    <div class="hidden md:flex flex-1"></div>
+                </div>
+            </div>
+
+            <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
+
+                    <!-- Card 1 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl">
+                            <img src="https://lh3.googleusercontent.com/d/1JTY4NrS01VVeDmmd-XNYgQfDFPIICLVF"
+                                alt="Agricultural Machinery" class="w-7 h-7" />
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Agricultural Machinery
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Secure storage and handling for tractors, harvesters, cultivation equipment,
+                            and heavy agricultural machinery.
+                        </div>
+
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl">
+                            <img src="https://lh3.googleusercontent.com/d/1Lf3iJwIR8l1EVuZuBBmjLJIMKaGAOBkQ"
+                                alt="Seeds & Crop Supplies" class="w-7 h-7" />
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Seeds & Crop Supplies
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Climate-conscious storage for seeds, fertilizers, pesticides, and other
+                            agricultural inputs to maintain product quality.
+                        </div>
+
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl">
+                            <img src="https://lh3.googleusercontent.com/d/1dIgqqFfQo3MsrW1D2PlaOVC-CbVVtEIF"
+                                alt="Irrigation & Farming Equipment" class="w-7 h-7" />
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Irrigation & Farming Equipment
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Safe warehousing for irrigation systems, pumps, pipes, greenhouse equipment,
+                            and modern farming accessories.
+                        </div>
+
+                    </div>
+
+                    <div class="flex justify-center items-center md:col-span-3">
+                        <a href="/calculator" target="_self">
+                            <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold"
+                                style="background:linear-gradient(93.3deg,#01A68C -3.43%,#50A454 100%);">
+
+                                <img src="/assets/images/quote.png" alt="Quote" class="w-7 h-7">
+
+                                Get a Free Quote
+
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end  of agricultural  -->
+        <!--- start  of fmcg-->
+        <!---
         <div class="relative" id="fcmg">
             <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
-    style="background-image: url('{{fmcg_image}}');">
-    <div class="container space-y-10 flex flex-row">
-        <div class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
-            <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
-                {{fmcg_title}}
-            </h2>
-            <p class="text-white md:text-lg">
-               {{fmcg_discription}}
-            </p>
-        </div>
-        <div class="hidden md:flex flex-1">
-        </div>
-    </div>
-</div>
+                style="background-image: url('{{fmcg_image}}');">
+                <div class="container space-y-10 flex flex-row">
+                    <div
+                        class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+                        <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
+                            {{fmcg_title}}
+                        </h2>
+                        <p class="text-white md:text-lg">
+                            {{fmcg_discription}}
+                        </p>
+                    </div>
+                    <div class="hidden md:flex flex-1">
+                    </div>
+                </div>
+            </div>
             <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
                 <div class="grid gird-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
                     {{ if fmcg_card }}
-                 
+
                     {{ fmcg_card }}
-  <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
-style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
+                        style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
 ">
-                            
-                            {{ if image}}
-                             <div class="bg-iconBg p-4 rounded-xl">
-                                    <img src="{{image}}" alt="icon"
-                                        class="w-7 h-7" />
-                                </div>
-                          
-                            {{ /if }}
-                              <div class="font-[550] text-xl group-hover:text-darkGreen">
-                                    {{title}}
-                                </div>
-                              <div class="text-left font-[400] text-sm">
-                                    {{discription}}
-                                </div>
-                                
-                        
+
+                        {{ if image}}
+                        <div class="bg-iconBg p-4 rounded-xl">
+                            <img src="{{image}}" alt="icon" class="w-7 h-7" />
                         </div>
+
+                        {{ /if }}
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            {{title}}
+                        </div>
+                        <div class="text-left font-[400] text-sm">
+                            {{discription}}
+                        </div>
+
+
+                    </div>
                     {{ /fmcg_card }}
-                    
-            {{ else }}
-                <p>No locations available.</p>
-            {{ /if }}                   
-                                          
-                    
+
+                    {{ else }}
+                    <p>No locations available.</p>
+                    {{ /if }}
+
+
                     <div class="flex justify-center items-center">
-                        <a href="/contact" target="_blank" class="scroll-to">
-    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
-        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-        <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
-       {{fmcg_button}}
-    </div>
-</a>
+                        <a href="/calculator" target="_self" class="scroll-to">
+                            <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                                style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+                                {{fmcg_button}}
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        -->
+        <!--- end of fmcg-->
+        <!--- start  of caterig equipment-->
+        <!-- Catering Equipment Section -->
+        <div class="relative" id="catering-equipment">
+            <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
+                style="background-image: url('https://lh3.googleusercontent.com/d/1UFvMIawWiq4ktxqJdLkOHvcusNB5kAA0');">
 
+                <div class="container space-y-10 flex flex-row">
+                    <div
+                        class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
 
+                        <h2 class="text-4xl md:text-5xl font-bold capitalize text-white">
+                            Catering Equipment Logistics
+                        </h2>
+
+                        <p class="text-white md:text-lg">
+                            From commercial kitchen appliances to food service essentials, we provide secure
+                            warehousing and dependable logistics solutions for the catering industry.
+                            Our facilities ensure safe handling, organized storage, inventory management,
+                            and timely distribution to restaurants, hotels, cafés, and catering businesses.
+                        </p>
+
+                    </div>
+
+                    <div class="hidden md:flex flex-1"></div>
+                </div>
+            </div>
+
+            <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
+
+                    <!-- Card 1 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl text-3xl">
+                            🍳
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Commercial Kitchen Equipment
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Secure warehousing for ovens, refrigerators, freezers, stoves, mixers,
+                            food preparation equipment, and commercial kitchen appliances.
+                        </div>
+
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl text-3xl">
+                            🍽️
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Dining & Serving Equipment
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Reliable storage solutions for tableware, buffet equipment, serving
+                            utensils, catering accessories, and hospitality supplies.
+                        </div>
+
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl text-3xl">
+                            📦
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Catering Supplies & Packaging
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Efficient inventory management and distribution of food containers,
+                            disposable products, packaging materials, and catering essentials.
+                        </div>
+
+                    </div>
+
+                    <div class="flex justify-center items-center md:col-span-3">
+                        <a href="/calculator" target="_self">
+                            <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold"
+                                style="background:linear-gradient(93.3deg,#01A68C -3.43%,#50A454 100%);">
+
+                                <img src="/assets/images/quote.png" alt="Quote" class="w-7 h-7">
+
+                                Get a Free Quote
+
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--- end of caterig equipment-->
+
+        <!-- start toys section -->
+
+        <!-- Toys Section -->
+        <div class="relative" id="toys">
+            <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
+                style="background-image: url('https://lh3.googleusercontent.com/d/1O21eM6F0nVB88LgNq3-zCfeVjPS3KM2c');">
+
+                <div class="container space-y-10 flex flex-row">
+                    <div
+                        class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+
+                        <h2 class="text-4xl md:text-5xl font-bold capitalize text-white">
+                            Toys & Children's Products Logistics
+                        </h2>
+
+                        <p class="text-white md:text-lg">
+                            We provide secure warehousing and dependable logistics solutions for toy manufacturers,
+                            wholesalers, retailers, and e-commerce businesses. From educational toys to electronic
+                            gaming products, our facilities ensure safe storage, efficient inventory management,
+                            and reliable distribution across local and international markets.
+                        </p>
+
+                    </div>
+
+                    <div class="hidden md:flex flex-1"></div>
+                </div>
+            </div>
+
+            <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
+
+                    <!-- Card 1 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl text-3xl">
+                            🧸
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Educational & Children's Toys
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Secure warehousing for educational toys, puzzles, dolls, action figures,
+                            building blocks, and children's learning products while maintaining excellent
+                            product quality.
+                        </div>
+
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl text-3xl">
+                            🎮
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Electronic Toys & Gaming
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Professional storage and logistics for electronic toys, gaming consoles,
+                            RC vehicles, battery-operated products, and gaming accessories with
+                            accurate inventory tracking.
+                        </div>
+
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen"
+                        style="box-shadow:0px 4px 47.2px 0px #3A3A3A17;">
+
+                        <div class="bg-iconBg p-4 rounded-xl text-3xl">
+                            🚚
+                        </div>
+
+                        <div class="font-[550] text-xl group-hover:text-darkGreen">
+                            Retail Distribution & Order Fulfilment
+                        </div>
+
+                        <div class="text-left font-[400] text-sm">
+                            Fast pick-and-pack services, barcode inventory management, and nationwide
+                            distribution for toy retailers, wholesalers, and online stores.
+                        </div>
+
+                    </div>
+
+                    <div class="flex justify-center items-center md:col-span-3">
+                        <a href="/calculator" target="_self">
+                            <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold"
+                                style="background:linear-gradient(93.3deg,#01A68C -3.43%,#50A454 100%);">
+
+                                <img src="/assets/images/quote.png" alt="Quote" class="w-7 h-7">
+
+                                Get a Free Quote
+
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end toys section -->
         <div class="relative" id="consumer-electronics">
             <div class="mt-auto bg-cover bg-no-repeat flex flex-col justify-start rounded-[40px]"
-    style="background-image: url('{{consumer_electronics_image}}');">
-    <div class="container space-y-10 flex flex-row">
-        <div class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
-            <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
-                {{consumer_electronics_title}}.
-            </h2>
-            <p class="text-white md:text-lg">
-               {{consumer_electronics_discriptions}}
-            </p>
-        </div>
-        <div class="hidden md:flex flex-1">
-        </div>
-    </div>
-</div>
+                style="background-image: url('{{consumer_electronics_image}}');">
+                <div class="container space-y-10 flex flex-row">
+                    <div
+                        class="w-full flex-1 bg-[#000000c1] space-y-5 py-20 px-10 md:py-32 md:px-20 opacity-95 rounded-[41px]">
+                        <h2 class="text-4xl md:text-5xl font-bold capitalize text-[#ffffff]">
+                            {{consumer_electronics_title}}.
+                        </h2>
+                        <p class="text-white md:text-lg">
+                            {{consumer_electronics_discriptions}}
+                        </p>
+                    </div>
+                    <div class="hidden md:flex flex-1">
+                    </div>
+                </div>
+            </div>
 
 
             <div class="relative">
                 <img src="/assets/images/shadow.png" alt="shadow" class="h-full z-2 absolute left-0 top-10" />
                 <div class="container mx-auto relative z-10 p-10 -mt-10 md:-mt-20 mb-20">
                     <div class="grid gird-cols-1 md:grid-cols-3 gap-5 md:gap-10 -mt-10">
-                                                  
-                                                  
-                                              
-                                                  
+
+
+
+
                         {{ if consumer_electronics_card }}
-                 
+
                         {{ consumer_electronics_card }}
-      <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
-    style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
+                        <div class="flex flex-col justify-start items-start w-full gap-2 py-10 px-5 border-greenBorder border-[1px] bg-white rounded-2xl h-full cursor-pointer group hover:bg-[#F6FFF6] hover:border-highlightGreen hover:border-[1px]"
+                            style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
 ">
-                                
-                                {{ if image}}
-								 <div class="bg-iconBg p-4 rounded-xl">
-                                        <img src="{{image}}" alt="icon"
-                                            class="w-7 h-7" />
-                                    </div>
-                              
-                                {{ /if }}
-                                  <div class="font-[550] text-xl group-hover:text-darkGreen">
-                                        {{title}}
-                                    </div>
-								  <div class="text-left font-[400] text-sm">
-                                        {{discription}}
-                                    </div>
-									
-							
+
+                            {{ if image}}
+                            <div class="bg-iconBg p-4 rounded-xl">
+                                <img src="{{image}}" alt="icon" class="w-7 h-7" />
                             </div>
+
+                            {{ /if }}
+                            <div class="font-[550] text-xl group-hover:text-darkGreen">
+                                {{title}}
+                            </div>
+                            <div class="text-left font-[400] text-sm">
+                                {{discription}}
+                            </div>
+
+
+                        </div>
                         {{ /consumer_electronics_card }}
-                        
-                {{ else }}
-                    <p>No locations available.</p>
-                {{ /if }}                   
-                        
+
+                        {{ else }}
+                        <p>No locations available.</p>
+                        {{ /if }}
+
                         <div class="flex justify-center items-center">
-                            <a href="/contact" target="_blank" class="scroll-to">
-    <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
-        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-        <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
-       {{consumer_electronics_button}}
-    </div>
-</a>
+                            <a href="/calculator" target="_self" class="scroll-to"> <!-- replaced -->
+                                <div class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
+                                    style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+                                    <img src="/assets/images/quote.png" alt="facebook" class="w-7 h-7" />
+                                    {{consumer_electronics_button}}
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -290,16 +615,17 @@ style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
     <div class="mt-auto bg-cover bg-center bg-no-repeat text-white  flex flex-col justify-center items-center mb-10 rounded-[20px] mx-2 md:mx-0"
         style="background-image: url('{{warehousing_image}}');">
 
-        <div class="bg-[#0D0D0D80] w-full py-20 flex flex-col justify-center items-center space-y-5 opacity-[8] rounded-[20px] px-5">
+        <div
+            class="bg-[#0D0D0D80] w-full py-20 flex flex-col justify-center items-center space-y-5 opacity-[8] rounded-[20px] px-5">
 
             <div class="text-2xl md:text-4xl font-bold text-center">
-               {{warehousing_title}}
+                {{warehousing_title}}
             </div>
 
             <div class="flex justify-center items-center px-10 py-4 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold"
                 style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
-     <a href="/contact">
-               {{warehousing_button}}
+                <a href="/contact">
+                    {{warehousing_button}}
                 </a>
             </div>
         </div>
@@ -307,50 +633,32 @@ style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;
 
 
     <script>
-        document.querySelector('.general-cargo').addEventListener('click', function(event) {
-            event.preventDefault();
-            const target = document.querySelector('#general-cargo');
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 100,
-                    behavior: 'smooth'
+        const scrollLinks = [
+            { cls: '.general-cargo', id: '#general-cargo' },
+            { cls: '.agriculture', id: '#agriculture' },
+            { cls: '.catering-equipment', id: '#catering-equipment' },
+            { cls: '.toys', id: '#toys' },
+            { cls: '.consumer-electronics', id: '#consumer-electronics' }
+        ];
+
+        scrollLinks.forEach(link => {
+            const el = document.querySelector(link.cls);
+            if (el) {
+                el.addEventListener('click', function (event) {
+                    const target = document.querySelector(link.id);
+                    if (target) {
+                        event.preventDefault();
+                        window.scrollTo({
+                            top: target.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        history.pushState(null, null, link.id);
+                    }
                 });
             }
         });
-        document.querySelector('.pharmaceutical').addEventListener('click', function(event) {
-            event.preventDefault();
-            const target = document.querySelector('#pharmaceutical');
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }
-        });
-        document.querySelector('.fcmg').addEventListener('click', function(event) {
-            event.preventDefault();
-            const target = document.querySelector('#fcmg');
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }
-        });
-        document.querySelector('.consumer-electronics').addEventListener('click', function(event) {
-            event.preventDefault();
-            const target = document.querySelector('#consumer-electronics');
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }
-        });
-        
     </script>
 
-    </div>
+</div>
 
-    <!-- Include the Footer Partial -->
-    
+<!-- Include the Footer Partial -->
