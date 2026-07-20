@@ -22,7 +22,8 @@ locations_space_colomn:
   -
     id: maar2yo1
     location_icon_image: area.png
-    location_discription: 'Total usable space: 100,000 sq ft.'
+    location_discription: 'Total usable space: 32,000 sq ft.' 
+    # changed 100,000 to 32,000 
   -
     id: maar2zsd
     location_icon_image: cargo.png

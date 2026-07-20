@@ -20,8 +20,8 @@ contact_info:
     id: m4ydra6m
     icon: email.png
     heading: Email
-    discription: service@techcargohub.com
-    linkfield: 'mailto:service@techcargohub.com'
+    discription: info@techcargohub.com
+    linkfield: 'mailto:info@techcargohub.com'
   -
     id: m4ydrz2l
     icon: call.png
