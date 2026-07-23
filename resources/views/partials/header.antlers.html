@@ -13,15 +13,16 @@
             </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0">
+            <!-- old -->
+            <!-- <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0"> -->
+
+            <!-- added new-->
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-6 rtl:space-x-reverse md:flex-row md:mt-0">
                 <li>
                     <a href="/" class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor"
                         aria-current="page">Home</a>
                 </li>
-                <li>
-                    <a href="/about"
-                        class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">About Us</a>
-                </li>
+
                 <li>
                     <a href="/techsolutions"
                         class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Tech
@@ -81,10 +82,75 @@
                         space</a> <!-- target="_blank" -->
                 </li>
 
+                <!-- changed : Team removed from here and added it in about us drop down-->
+                <!--
                 <li>
                     <a href="https://team.techcargohub.com/" target="_blank"
                         class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">Our Team</a>
                 </li>
+                -->
+                <!-- changed
+                <li>
+                    <a href="/about"
+                        class="block py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">About Us</a>
+                </li>-->
+                <li class="relative">
+                    <button id="dropdownAboutLink" data-dropdown-toggle="dropdownNavbar-2"
+                        class="flex items-center justify-between w-full py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">
+                        <span>About Us</span>
+                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <div id="dropdownNavbar-2"
+                        class="z-10 hidden absolute top-full left-0 md:mt-0 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-48">
+                        <ul class="py-2 text-sm" aria-labelledby="dropdownAboutLink">
+                            <li>
+                                <a href="/about"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">About
+                                    Us</a>
+                            </li>
+                            <li>
+                                <a href="https://team.techcargohub.com/" target="_self"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">Our
+                                    Team</a>
+                            </li>
+                            <li>
+                                <a href="/ourprofile"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">Our
+                                    Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li class="relative">
+                    <button id="dropdownAboutLink" data-dropdown-toggle="dropdownNavbar-2"
+                        class="flex items-center justify-between w-full py-2 px-3 text-lg hover:text-greenheading font-semibold text-navColor">
+                        <a href="/about" class="block hover:text-greenheading font-semibold">About Us</a>
+                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <div id="dropdownNavbar-2"
+                        class="z-10 hidden absolute top-full left-0 md:mt-0 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-48">
+                        <ul class="py-2 text-sm" aria-labelledby="dropdownAboutLink">
+                            <li>
+                                <a href="https://team.techcargohub.com/" target="_self"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">Our
+                                    Team</a>
+                            </li>
+                            <li>
+                                <a href="/ourprofile"
+                                    class="block px-4 py-2 hover:text-greenheading font-semibold text-navColor">Our
+                                    Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>-->
 
                 <li class="gradient-border">
                     <a href="/contact"
@@ -96,6 +162,7 @@
 </nav>
 
 <script>
+
     document.addEventListener('DOMContentLoaded', () => {
         const currentPath = window.location.pathname;
         const navLinks = document.querySelectorAll('#navbar-dropdown a');
@@ -109,6 +176,7 @@
         });
 
         // Handle Service Sector dropdown active state
+
         const serviceSectorButton = document.querySelector('#dropdownNavbarLink');
         if (currentPath === '/servicesector') {
             serviceSectorButton?.classList.remove('text-navColor');
@@ -126,23 +194,57 @@
                 toggleButton.setAttribute('aria-expanded', !isExpanded);
             });
         }
-
-        // --- NEW: Dropdown Toggle Logic ---
-        const dropdownButton = document.querySelector('[data-dropdown-toggle="dropdownNavbar-1"]');
-        const dropdownMenu = document.getElementById('dropdownNavbar-1');
-
-        if (dropdownButton && dropdownMenu) {
-            dropdownButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                dropdownMenu.classList.toggle('hidden');
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.classList.add('hidden');
+        /**
+                // --- NEW: Dropdown Toggle Logic ---
+                const dropdownButton = document.querySelector('[data-dropdown-toggle="dropdownNavbar-1"]');
+                const dropdownMenu = document.getElementById('dropdownNavbar-1');
+        
+                if (dropdownButton && dropdownMenu) {
+                    dropdownButton.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        dropdownMenu.classList.toggle('hidden');
+                    });
+        
+                    // Close dropdown when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                            dropdownMenu.classList.add('hidden');
+                        }
+                    });
                 }
             });
+            **/
+        // edited 
+
+
+        // Handle About Us dropdown active state
+        const aboutButton = document.querySelector('#dropdownAboutLink');
+        if (currentPath === '/about' || currentPath === '/ourprofile') {
+            aboutButton?.classList.remove('text-navColor');
+            aboutButton?.classList.add('text-greenheading');
         }
+        // --- NEW: Dropdown Toggle Logic (handles Service Sector + About Us) ---
+        const dropdownPairs = [
+            { button: '[data-dropdown-toggle="dropdownNavbar-1"]', menu: '#dropdownNavbar-1' },
+            { button: '[data-dropdown-toggle="dropdownNavbar-2"]', menu: '#dropdownNavbar-2' }
+        ];
+
+        dropdownPairs.forEach(({ button, menu }) => {
+            const dropdownButton = document.querySelector(button);
+            const dropdownMenu = document.querySelector(menu);
+
+            if (dropdownButton && dropdownMenu) {
+                dropdownButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                        dropdownMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
     });
 </script>

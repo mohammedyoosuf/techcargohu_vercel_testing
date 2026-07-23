@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ if title }}{{ title }} - {{ /if }}{{ site:name }}</title>
+
+    <!-- changed {{site:name}} to Tech Cargo Hub -->
+    <!-- <title>{{ if title }}{{ title }} - {{ /if }}{{ site:name }}</title> -->
+    <title>{{ if title }}{{ title }} - {{ /if }}Tech Cargo Hub</title>
 
     <!-- Legacy Styles from Header -->
     <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
@@ -43,7 +46,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -67,6 +70,16 @@
     {{ template_content }}
 
     {{ partial:footer }}
+
+    <!--Floating WhatsApp Button -->
+    <div class="fixed right-6 top-1/2 -translate-y-1/2 z-[999999]">
+        <a href="https://wa.me/94779622935" target="_blank" rel="noopener noreferrer"
+            aria-label="Chat with us on WhatsApp"
+            class="flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-[0_6px_20px_rgba(37,211,102,0.5)] focus:outline-none focus:ring-4 focus:ring-[#25D366]/50">
+            <img src="https://lh3.googleusercontent.com/d/1P_AU9CslZ2dMyrWmanFO7dQh9ynUywDa" alt="WhatsApp"
+                class="w-20 h-20 object-contain block" />
+        </a>
+    </div>
 </body>
 
 </html>
