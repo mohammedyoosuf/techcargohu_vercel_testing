@@ -28,6 +28,7 @@ use Statamic\Facades\Entry;
 
 
 Route::statamic('/calculator', 'calculator', ['title' => 'Pricing Calculator']);
+Route::statamic('/ourprofile', 'ourprofile', ['title' => 'Our Profile']);
 
 
 Route::get('/privacy-policy', function () {
