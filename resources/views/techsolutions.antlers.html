@@ -123,7 +123,8 @@
             class="flex-1 flex justify-center items-center w-full md:w-fit object-fill relative md:h-[57svh] lg:h-[60svh] rounded-[20px]"
             style="background-image: url('{{speak_volumes_image}}'); background-position: center; background-repeat: no-repeat; background-size: cover;">
             <div class="h-40 md:h-[85svh] top-0 relative flex flex-col justify-center items-center">
-              <a href="/calculator" target="_self" class="scroll-to" style="margin-top: 500px;"> <!--replaced-->
+              <a href="/calculator" target="_self" class="scroll-to hidden md:flex" style="margin-top: 500px;">
+                <!--edited button positioning for mobile-->
                 <div
                   class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold md:w-fit w-full"
                   style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
@@ -134,6 +135,16 @@
             </div>
           </div>
         </div>
+        <!-- Mobile-only Get a Quote button (appears below the Speak Volumes image on mobile) -->
+        <div class="flex md:hidden justify-center items-center py-5 px-5">
+          <a href="/calculator" target="_self"
+            class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold w-full sm:w-fit"
+            style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+            <img src="/assets/images/quote.png" alt="quote" class="w-7 h-7" />
+            {{speak_volumes_button}}
+          </a>
+        </div>
+
       </div>
       <script>
         document.addEventListener("DOMContentLoaded", () => {
