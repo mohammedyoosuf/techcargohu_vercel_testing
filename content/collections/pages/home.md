@@ -47,7 +47,7 @@ service_card:
     id: m50nj624
     image: seamlessdigitalwarehouseintegration.png
     title: 'Seamless Digital Warehouse Integration.'
-    discription: 'Incorporate cutting-edge digital warehouse solutions seamlessly into your operations.'
+    discription: 'Incorporate cutting-edge digital warehouse solutions seamlessly into your operations. Maximize inventory accuracy.'
   -
     id: m50o6utr
     image: expertsupplychainconsulting.png
@@ -62,7 +62,7 @@ service_card:
     id: m50o8djn
     image: ecommerceintegration.png
     title: 'E-Commerce Integration.'
-    discription: 'Enhance your online presence with custom e-commerce solutions crafted specifically for your business needs, or seamlessly integrate with global e-commerce platforms for effortless digital market access.'
+    discription: 'Enhance your online presence with custom e-commerce solutions tailored specifically to your business needs, or effortlessly and seamlessly scale global reach.'
   -
     id: m50o9cgr
     image: advanceddataanalysis.png
