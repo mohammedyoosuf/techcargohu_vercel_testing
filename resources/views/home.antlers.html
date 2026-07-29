@@ -51,103 +51,24 @@
     .popup-close-btn:hover {
         color: #374151;
     }
-
-    /* MOBILE ONLY FIX - Expand Banner Height & Natural Button Flow */
-    /* MOBILE ONLY FIXES (Desktop is 100% untouched) */
-    @media (max-width: 768px) {
-        .hero-banner-container {
-            background-image: url('https://lh3.googleusercontent.com/d/1BRICXlbUKBt_C2KYQJXLfVXLdcmUBbjX') !important;
-            height: auto !important;
-            min-height: 380px !important;
-            background-size: 100% 100% !important;
-            padding: 1.25rem 1rem 3.5rem 1rem !important;
-        }
-
-        .hero-text-content-wrapper {
-            margin-top: 0 !important;
-            gap: 0.5rem !important;
-            /* Tightens space between headline and body text */
-        }
-
-        /* 1. Constrains title width so it avoids the top-right logo */
-        .hero-title {
-            font-size: 1.35rem !important;
-            line-height: 1.6rem !important;
-            max-width: 75% !important;
-        }
-
-        /* Adjusted title styling for mobile 
-
-        .hero-title {
-            font-size: 1.25rem !important;
-            line-height: 1.4rem !important;
-            max-width: 100% !important;
-            
-        }*/
-
-
-
-        /* 2. Scaled-down paragraph text to eliminate the black gap */
-        .hero-description {
-            font-size: 0.78rem !important;
-            line-height: 1.15rem !important;
-        }
-
-        /* 3. Scaled-down button placed directly under text */
-        .hero-quote-btn-wrapper {
-            margin-top: 0.50rem !important;
-            transform: none !important;
-            /* Cancels -30px shift on mobile */
-        }
-
-        .hero-quote-btn {
-            padding: 0.45rem 1.25rem !important;
-            font-size: 0.85rem !important;
-        }
-
-        .hero-quote-btn img {
-            width: 1.25rem !important;
-            height: 1.25rem !important;
-        }
-
-    }
 </style>
-
 <div class="flex-grow container mx-auto">
     <!-- Banner Section -->
     <!--  <div class="relative flex flex-col md:flex-row items-center justify-between rounded-[30px] mx-5 mt-24 md:mt-28 overflow-hidden shadow-lg p-10 md:p-20"-->
 
     <!-- NEW LINE: -->
-    <!--- <div class="relative flex flex-col md:flex-row items-center justify-between rounded-[30px] mx-5 mt-6 md:mt-8 overflow-hidden shadow-lg p-6 sm:p-12 md:py-36 md:px-20 shrink-0"
-        style="background-image: url('https://lh3.googleusercontent.com/d/1BRICXlbUKBt_C2KYQJXLfVXLdcmUBbjX'); background-position: center; background-repeat: no-repeat; background-size: 100% 100%; min-height: 120vh;">-->
-    <div class="hero-banner-container relative flex flex-col md:flex-row items-start justify-between rounded-[30px] mx-5 mt-6 md:mt-8 overflow-hidden shadow-lg p-6 sm:p-12 md:py-36 md:px-20 shrink-0"
-        style="
-        background-image: url('https://lh3.googleusercontent.com/d/1BRICXlbUKBt_C2KYQJXLfVXLdcmUBbjX');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        height: calc(100vh - 48px);
-    "><!--relative flex flex-col md:flex-row items-start justify-between rounded-[20px] mx-5 mt-6 md:mt-8 overflow-hidden shadow-lg p-6 sm:p-12 md:py-36 md:px-20 shrink-0-->
+    <div class="relative flex flex-col md:flex-row items-center justify-between rounded-[30px] mx-5 mt-6 md:mt-8 overflow-hidden shadow-lg p-6 sm:p-12 md:py-36 md:px-20 shrink-0"
+        style="background-image: url('https://lh3.googleusercontent.com/d/19If0X1XyYb6tqRScTxXgeJKQWPEtHpXn'); background-position: center; background-repeat: no-repeat; background-size: 100% 100%; min-height: 120vh;">
 
-        <!--commented out this line for black overlay to remove it: -->
-        <!--<div class="absolute inset-0 bg-[#00000050]"></div>-->
+        <div class="absolute inset-0 bg-[#00000050]"></div>
 
-        <div
-            class="hero-text-content-wrapper relative z-10 w-full flex flex-col items-start justify-center gap-6 md:gap-10 -mt-9 md:-mt-24 ">
-
-
-            <!--relative z-10 w-full flex flex-col items-start justify-center gap-6 md:gap-10 md:-mt-10-- :::md:gap-10 -mt-8 md:-mt-24>
+        <div class="relative z-10 w-full flex flex-col items-start justify-center gap-4 md:gap-10 md:-mt-10">
+            <!--relative z-10 w-full flex flex-col items-start justify-center gap-6 md:gap-10 md:-mt-10-->
             <h1 class="text-white text-3xl sm:text-4xl md:text-6xl font-extrabold capitalize ">
                 Tech Based Warehouse Solutions
-            </h1>-->
-            <!--new line font size adjusted-->
-            <!-- 'Solutions' wrapped in 'block sm:inline' forces it to break to the next line on mobile only -->
-            <h1 class="hero-title text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold capitalize leading-tight">
-                <span class="text-[#01A68C]">Tech Based Warehouse</span>
-                <span class="text-white block sm:inline">Solutions</span>
             </h1>
-            <div
-                class="hero-description text-white text-sm sm:text-lg md:text-2xl font-medium max-w-3xl leading-relaxed text-left">
+
+            <div class="text-white text-base sm:text-lg md:text-2xl font-medium max-w-3xl leading-relaxed text-left">
 
                 Drawing on years of expertise in logistics management and the expansion of the need for fulfillment
                 centers,
@@ -159,11 +80,9 @@
                 set
                 for Sri Lanka's freight and logistics sector by 2029.
             </div>
-            <div class="hero-quote-btn-wrapper w-full flex justify-center sm:justify-center relative z-20 mt-6 md:mt-0  "
-                style="transform: translateY(-30px);">
-                <!--  changed: w-full flex justify-center sm:justify-end relative z-20 mt-6 md:mt-[-30px]-->
+            <div class="flex-shrink-0">
                 <a href="/calculator"
-                    class="hero-quote-btn flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold hover:scale-105 transition-transform"
+                    class="flex justify-center items-center px-10 py-2.5 gap-3 rounded-lg cursor-pointer text-white text-lg font-semibold hover:scale-105 transition-transform"
                     style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
                     <img src="/assets/images/quote.png" alt="quote" class="w-7 h-7" />
                     Get a Quote
