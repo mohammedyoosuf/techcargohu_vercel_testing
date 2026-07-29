@@ -10,50 +10,40 @@
     Every file must stay set to "Anyone with the link" or its image will break.
 -->
 
-<div class="flex-grow w-full"><!--container mx-auto remove to remove blanks -->
-    <!-- Banner + Video: fits one screen on phone, tablet, desktop -->
-    <div class="flex flex-col" style="height: calc(100vh - 48px);">
+<div class="flex-grow container mx-auto px-10">
 
-        <!-- Page Banner -->
-        <div class="w-full flex-shrink-0 flex items-center justify-center px-6 py-4 md:py-6 rounded-[30px]"
-            style="background: linear-gradient(180deg, #F2FAF8 0%, #E6F5F2 100%);">
+    <!-- Page Banner
+    <div class="max-w-4xl mx-auto rounded-[30px] mt-5 pt-16 pb-14 px-10 text-center"
+        style="background: linear-gradient(93.3deg, #01A68C -3.43%, #50A454 100%);">
+        <h1 class="text-3xl md:text-6xl font-[900] text-white capitalize">
+            Our Profile<span class="text-[#C4FFC6]">.</span>
+        </h1>
+        <p class="text-white text-lg font-[600] mt-4 max-w-2xl mx-auto">
 
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-[900] text-[#0F172A] tracking-tight text-center">
-                Our <span class="text-[#01A68C]">Profile</span>
-            </h1>
+        </p>
+    </div> -->
+    <!-- Page Banner -->
+    <div class="w-full pt-16 pb-12 px-6 text-center rounded-[30px] mt-5"
+        style="background: linear-gradient(180deg, #F2FAF8 0%, #E6F5F2 100%);">
 
-        </div>
+        <!-- Top Badge/Pill 
+        <div
+            class="inline-block bg-[#E2F7F3] text-[#01A68C] text-xs md:text-sm font-bold uppercase tracking-wider px-6 py-2 rounded-full mb-6">
+            Company Overview
+        </div>-->
 
-        <!-- Video Section -->
-        <div class="flex-1 min-h-0 flex items-center justify-center pb-4">
-            <!--<div class="w-full h-full flex bg-white rounded-2xl overflow-hidden border border-[#E5E5E5]"
-                style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17; max-width: 1100px;">-->
-            <div class="w-full h-full flex bg-white rounded-2xl overflow-hidden border border-[#E5E5E5]"
-                style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17; ">
-                <iframe src="https://www.youtube.com/embed/ZtLJqfq4d6U" title="Tech Cargo Hub Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen class="w-full h-full" style="border:0;"></iframe>
-            </div>
-        </div>
+        <!-- Main Heading -->
+        <h1 class="text-4xl md:text-6xl font-[900] text-[#0F172A] tracking-tight">
+            Our <span class="text-[#01A68C]">Profile</span>
+        </h1>
+
 
     </div>
-
-    <!-- Page Banner -->
-    <!--<div class="w-full pt-16 pb-12 px-6 text-center rounded-[30px] mt-5"
-        style="background: linear-gradient(180deg, #F2FAF8 0%, #E6F5F2 100%);">
-        Main Heading -->
-    <!-- <h1 class="text-4xl md:text-6xl font-[900] text-[#0F172A] tracking-tight">
-            Our <span class="text-[#01A68C]">Profile</span>
-        </h1> -->
-
-    <!--</div>-->
-    <!-- Video Section 
+    <!-- Video Section -->
     <div class="pt-16">
-        <div class=" w-full flex flex-col bg-white rounded-2xl overflow-hidden border border-[#E5E5E5]
-            style=" box-shadow: 0px 4px 47.2px 0px #3A3A3A17;>-->
-    <!-- max-w-4xl mx-auto flex flex-col bg-white rounded-2xl overflow-hidden border border-[#E5E5E5] is removed for eleminate tha blank space in left and right sides-->
-    <!--max-w-4xl mx-auto flex flex-col bg-white rounded-2xl p-6 md:p-8 border border-[#E5E5E5]-->
-    <!--
+        <div class="max-w-4xl mx-auto flex flex-col bg-white rounded-2xl p-6 md:p-8 border border-[#E5E5E5]"
+            style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;">
+            <!--
             <div class="flex items-center gap-3 mb-6">
                 <div class="bg-iconBg p-3 rounded-xl">
                     <svg class="w-6 h-6" fill="none" stroke="#01A68C" stroke-width="2" viewBox="0 0 24 24"
@@ -66,52 +56,52 @@
                 <h2 class="text-2xl font-bold text-[#0D3832]">Company Video</h2>
             </div> -->
 
-    <!-- 16:9 aspect ratio box - scales full width, nothing cropped -->
-    <!--<div class="w-full relative rounded-xl overflow-hidden border border-[#E5E5E5]"
+            <!-- 16:9 aspect ratio box - scales full width, nothing cropped -->
+            <div class="w-full relative rounded-xl overflow-hidden border border-[#E5E5E5]"
                 style="padding-top: 56.25%;">
                 <iframe src="https://www.youtube.com/embed/ZtLJqfq4d6U" title="Tech Cargo Hub Video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen
                     style="border:0; position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
-            </div>-->
-</div>
-</div>
-
-
-<!-- PDF Section: 12 page images, stacked, scrolls with the normal page -->
-<div class="pt-4 pb-16">
-    <div class="max-w-4xl mx-auto flex flex-col bg-white rounded-2xl overflow-hidden border border-[#E5E5E5]"
-        style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;">
-
-        <!-- Brochure pages (Google lh3 CDN hotlinked) -->
-        <div class="flex flex-col gap-0 w-full">
-            <img src="https://lh3.googleusercontent.com/d/1rdWg0QzmiiwhyZ3MI7lVjBwfHMBPcAwv" alt="Brochure page 1"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1gsbNb_uaVhEY_5LSKNR9428hVBF45P6z" alt="Brochure page 2"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1xtJt0yCKGbrKuWBdhKKWsui5NC6rjSgi" alt="Brochure page 3"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/18ubQqHctoj43ZbY9kRfsDX519slhDx9M" alt="Brochure page 4"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1f3EvvQ123piUBi9HzNcfqA2NWyOcAbSI" alt="Brochure page 5"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1WWL2MO1C3w00qNzEoTsUz_-WI4L_wzfm" alt="Brochure page 6"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1Pnl6yYiI3aof77L7MD96q41XX7bY6X5B" alt="Brochure page 7"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1zgKPBk0bmsQmoax1YHeisjpHfGHz_mpR" alt="Brochure page 8"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/134eSbq73ymzLnAj8qRSNaAftCJgHMCGL" alt="Brochure page 9"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1Rzr9egKzFlaoqJUL1gegIEP5jNQyZi8m" alt="Brochure page 10"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1revGuLI3AN3rupUwTbLXaCYzbXT-ReMj" alt="Brochure page 11"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
-            <img src="https://lh3.googleusercontent.com/d/1r_D8bg70BGaAMPYgofs8BaImht2e9A7b" alt="Brochure page 12"
-                class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+            </div>
         </div>
     </div>
-</div>
+
+
+    <!-- PDF Section: 12 page images, stacked, scrolls with the normal page -->
+    <div class="py-16">
+        <div class="max-w-4xl mx-auto flex flex-col bg-white rounded-2xl p-6 md:p-8 border border-[#E5E5E5]"
+            style="box-shadow: 0px 4px 47.2px 0px #3A3A3A17;">
+
+            <!-- Brochure pages (Google lh3 CDN hotlinked) -->
+            <div class="flex flex-col gap-0 w-full">
+                <img src="https://lh3.googleusercontent.com/d/1rdWg0QzmiiwhyZ3MI7lVjBwfHMBPcAwv" alt="Brochure page 1"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1gsbNb_uaVhEY_5LSKNR9428hVBF45P6z" alt="Brochure page 2"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1xtJt0yCKGbrKuWBdhKKWsui5NC6rjSgi" alt="Brochure page 3"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/18ubQqHctoj43ZbY9kRfsDX519slhDx9M" alt="Brochure page 4"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1f3EvvQ123piUBi9HzNcfqA2NWyOcAbSI" alt="Brochure page 5"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1WWL2MO1C3w00qNzEoTsUz_-WI4L_wzfm" alt="Brochure page 6"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1Pnl6yYiI3aof77L7MD96q41XX7bY6X5B" alt="Brochure page 7"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1zgKPBk0bmsQmoax1YHeisjpHfGHz_mpR" alt="Brochure page 8"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/134eSbq73ymzLnAj8qRSNaAftCJgHMCGL" alt="Brochure page 9"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1Rzr9egKzFlaoqJUL1gegIEP5jNQyZi8m" alt="Brochure page 10"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1revGuLI3AN3rupUwTbLXaCYzbXT-ReMj" alt="Brochure page 11"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+                <img src="https://lh3.googleusercontent.com/d/1r_D8bg70BGaAMPYgofs8BaImht2e9A7b" alt="Brochure page 12"
+                    class="w-full h-auto rounded-lg border border-[#E5E5E5]" />
+            </div>
+        </div>
+    </div>
 
 
 </div>
