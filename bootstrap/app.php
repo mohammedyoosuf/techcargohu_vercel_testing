@@ -17,6 +17,16 @@ $app = new Illuminate\Foundation\Application(
 
 /*
 |--------------------------------------------------------------------------
+| Vercel: Redirect storage to /tmp (read-only filesystem except /tmp)
+|--------------------------------------------------------------------------
+*/
+if (isset($_ENV['VERCEL']) || getenv('VERCEL')) {
+    $app->useStoragePath('/tmp/storage');
+    $app->useDatabasePath('/tmp/database');
+}
+
+/*
+|--------------------------------------------------------------------------
 | Bind Important Interfaces
 |--------------------------------------------------------------------------
 |

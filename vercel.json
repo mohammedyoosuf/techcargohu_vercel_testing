@@ -2,14 +2,22 @@
     "version": 2,
     "framework": null,
     "functions": {
-        "api/index.php": {
-            "runtime": "vercel-php@0.8.0"
+        "api/*.php": {
+            "runtime": "vercel-php@0.7.2"
         }
     },
     "routes": [
         {
-            "src": "/(css|js|images|build|assets|storage)/(.*)",
+            "src": "/(css|js|images|build|assets|storage|vendor|static)/(.*)",
             "dest": "/public/$1/$2"
+        },
+        {
+            "src": "/favicon\\.ico",
+            "dest": "/public/favicon.ico"
+        },
+        {
+            "src": "/robots\\.txt",
+            "dest": "/public/robots.txt"
         },
         {
             "src": "/(.*)",
@@ -25,9 +33,10 @@
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
         "VIEW_COMPILED_PATH": "/tmp/views",
-        "APP_STORAGE": "/tmp",
-        "CACHE_DRIVER": "file",
+        "CACHE_DRIVER": "array",
         "SESSION_DRIVER": "cookie",
-        "LOG_CHANNEL": "stderr"
+        "LOG_CHANNEL": "stderr",
+        "STATAMIC_STACHE_WATCHER": "false",
+        "STATAMIC_STATIC_CACHING_STRATEGY": "null"
     }
 }
